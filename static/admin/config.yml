@@ -18,6 +18,7 @@ collections:
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Blog Type", name: "type", widget: "select", options: ["news", "alert"], default: "News"}  
 
   - name: "pages"
     label: "Pages"
