@@ -9,9 +9,10 @@ const Navbar = () => (
     <div className="container">
       <div className="navbar-brand">
         <Link to="/" className="navbar-item">
-          <figure className="image">
+          {/* <figure className="image">
             <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-          </figure>
+          </figure> */}
+          C<span>ustom</span>F<span>abricating</span>I<span>ndustries</span>
         </Link>
       </div>
       <div className="navbar-start">
