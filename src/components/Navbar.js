@@ -4,7 +4,9 @@ import Link from 'gatsby-link'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 
-const Navbar = () => (
+
+
+const Navbar = ({data}) => ([
   <nav className="navbar is-transparent">
     <div className="container">
       <div className="navbar-brand">
@@ -15,7 +17,7 @@ const Navbar = () => (
           C<span>ustom</span>F<span>abricating</span>I<span>ndustries</span>
         </Link>
       </div>
-      <div className="navbar-start">
+      <div className="navbar-end">
         <Link className="navbar-item" to="/about">
           About
         </Link>
@@ -23,7 +25,7 @@ const Navbar = () => (
           Products
         </Link>
       </div>
-      <div className="navbar-end">
+      {/* <div className="navbar-end">
         <a
           className="navbar-item"
           href="https://github.com/AustinGreen/gatsby-netlify-cms-boilerplate"
@@ -34,9 +36,45 @@ const Navbar = () => (
             <img src={github} alt="Github" />
           </span>
         </a>
-      </div>
+      </div> */}
     </div>
-  </nav>
-)
+  </nav>,
+  <StatusAlert message="data.alertMessage" />
+])
+
+StatusAlert.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      message: PropTypes.string,
+    })
+  ),
+}
 
 export default Navbar
+
+export const newestStatusAlertQuery = graphql`
+query Navbar {
+  allMarkdownRemark(
+    sort: { order: DESC, fields: [frontmatter___date] },
+    filter: { 
+      frontmatter: { templateKey: { eq: "blog-post" }},
+      frontmatter: {type: {eq: "alert"}}
+    }
+  ) {
+    edges {
+      node {
+        excerpt(pruneLength: 400)
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          templateKey
+          date(formatString: "MMMM DD, YYYY")
+        }
+      }
+    }
+  }
+}
+`
