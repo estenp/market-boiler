@@ -10,7 +10,9 @@ const TemplateWrapper = ({ children, data }) => (
   <div>
     <Helmet title="Custom Fabricating Industries" />
     <Navbar />
-    <StatusAlert message={data.markdownRemark.html} />
+    {data.markdownRemark &&
+      <StatusAlert message={data.markdownRemark.html} />
+    }
     <div>{children()}</div>
   </div>
 )
