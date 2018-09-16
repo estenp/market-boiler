@@ -7,4 +7,4 @@ tags:
   - ''
 type: alert
 ---
-This is a test alert
+This is a test alert ok
