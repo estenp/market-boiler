@@ -6,7 +6,7 @@ import logo from '../img/logo.svg'
 
 
 
-const Navbar = ({data}) => ([
+const Navbar = ({data}) => (
   <nav className="navbar is-transparent">
     <div className="container">
       <div className="navbar-brand">
@@ -38,43 +38,8 @@ const Navbar = ({data}) => ([
         </a>
       </div> */}
     </div>
-  </nav>,
-  <StatusAlert message="data.alertMessage" />
-])
-
-StatusAlert.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      message: PropTypes.string,
-    })
-  ),
-}
+  </nav>
+)
 
 export default Navbar
 
-export const newestStatusAlertQuery = graphql`
-query Navbar {
-  allMarkdownRemark(
-    sort: { order: DESC, fields: [frontmatter___date] },
-    filter: { 
-      frontmatter: { templateKey: { eq: "blog-post" }},
-      frontmatter: {type: {eq: "alert"}}
-    }
-  ) {
-    edges {
-      node {
-        excerpt(pruneLength: 400)
-        id
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          templateKey
-          date(formatString: "MMMM DD, YYYY")
-        }
-      }
-    }
-  }
-}
-`
