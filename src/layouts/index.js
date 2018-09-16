@@ -10,12 +10,11 @@ const TemplateWrapper = ({ children, data }) => (
   <div>
     <Helmet title="Custom Fabricating Industries" />
     <Navbar />
-    {data.markdownRemark &&
-      <StatusAlert message={data.markdownRemark.html} />
-    }
+    {!!data.markdownRemark && <StatusAlert message={data.markdownRemark.html} />}
     <div>{children()}</div>
   </div>
 )
+
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
