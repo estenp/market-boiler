@@ -5,9 +5,14 @@ import HTMLContent from './Content.js'
 const StatusAlert = (props) => (
   <div className="status-alert">
     <div className="container">
-        <div dangerouslySetInnerHTML={{ __html: props.message }} />
+        <div className="level">
+            <div className="level-left">
+                <div className="level-item" dangerouslySetInnerHTML={{ __html: props.message }} />
+            </div>
+        </div>
+            
         {/* TODO */}
-        {/* <a>Read more...</a> */}
+        {/* <div className="level-right"><a>Read more...</a></div> */}
     </div>
   </div>
 )
