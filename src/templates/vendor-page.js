@@ -42,6 +42,7 @@ query VendorPage($id: String!) {
       title
       vendorList {
           image
+          url
       }
     }
   }

@@ -6,9 +6,9 @@ const FeatureGrid = ({ gridItems }) => (
     {gridItems.map(item => (
       <div key={item.image} className="column is-6">
         <section className="section">
-          <p className="has-text-centered">
+          <a className="has-text-centered" href={item.url}>
             <img alt={item.image} src={item.image} />
-          </p>
+          </a>
           <p>{item.text}</p>
         </section>
       </div>
@@ -20,7 +20,7 @@ FeatureGrid.propTypes = {
   gridItems: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
-      text: PropTypes.string,
+      url: PropTypes.string,
     })
   ),
 }
