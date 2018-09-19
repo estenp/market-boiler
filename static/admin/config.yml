@@ -50,4 +50,4 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
           - {label: Title, name: title, widget: string}
-          - {label: Vendor List, name: vendorList, widget: list, fields: [{label: Image, name: image, widget: image}]}
+          - {label: Vendor List, name: vendorList, widget: list, fields: [{label: Image, name: image, widget: image}, {label: URL, name: url, widget: text}]}
