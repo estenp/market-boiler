@@ -6,21 +6,28 @@ import Content from '../components/Content'
 export const VendorPage = ({ data }) => {
 
   return (
-    <section className="section section--gradient">
-      <div className="container">
+    
+      
         <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title">
-                {data.markdownRemark.frontmatter.title}
-              </h2>
+          <div className="column">
+            <section className="section">
+                <div className="container">
+                <h2 className="title">
+                    {data.markdownRemark.frontmatter.title}
+                </h2>
+                </div>
+            </section>
               <Content className="content" content={data.markdownRemark.html} />
-              <Features gridItems={data.markdownRemark.frontmatter.vendorList} />
-            </div>
+              <section className="hero is-light">
+                <div className="hero-body">  
+                    <Features gridItems={data.markdownRemark.frontmatter.vendorList} />
+                </div>
+              </section>
+
           </div>
         </div>
-      </div>
-    </section>
+
+
   )
 }
 
