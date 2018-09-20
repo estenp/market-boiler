@@ -5,6 +5,8 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Content, { HTMLContent } from '../components/Content'
 
+//building both blog post template and the and the component that uses it, because the template could need to display HTML content?
+
 export const BlogPostTemplate = ({
   content,
   contentComponent,
@@ -13,6 +15,9 @@ export const BlogPostTemplate = ({
   title,
   helmet,
 }) => {
+  // appears to be saying, if a component is passed in to render content use that, otherwise use the main Content component
+  // in the BlogPost component, it's passing in HTMLContent as the prefered content component. Not sure where it's defined
+  // but I assume it processes the data in order to escape the markup so you can post code in your blog
   const PostContent = contentComponent || Content
 
   return (

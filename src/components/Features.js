@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const FeatureGrid = ({ gridItems }) => (
-  <div className="columns is-multiline">
+  <div className="columns is-multiline feature-grid">
     {gridItems.map(item => (
-      <div key={item.image} className="column is-6">
+      <div key={item.image} className="column is-2 is-one-sixth-widescren is-one-sixth-desktop">
         <section className="section">
-          <p className="has-text-centered">
-            <img alt="" src={item.image} />
-          </p>
+          <a className="has-text-centered" href={item.url}>
+            <img alt={item.image} src={item.image} />
+          </a>
           <p>{item.text}</p>
         </section>
       </div>
@@ -20,7 +20,7 @@ FeatureGrid.propTypes = {
   gridItems: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
-      text: PropTypes.string,
+      url: PropTypes.string,
     })
   ),
 }

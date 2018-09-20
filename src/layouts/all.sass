@@ -1,4 +1,5 @@
 @import "~bulma/sass/utilities/initial-variables"
+@import url('https://fonts.googleapis.com/css?family=Abel|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu')
 
 // Config vars
 $kaldi-red: #FD461E
@@ -40,3 +41,42 @@ $primary-invert: $kaldi-red-invert
   margin-top: 0 !important
 
 @import "~bulma"
+
+//animating 'logo' text to expand acronym. need to change to class rather than hover
+.navbar
+  font-family: 'Abel', serif
+  border-bottom: solid 1px #ddd
+
+.navbar-brand .navbar-item
+  font-size: 30px
+
+  span
+    width: auto
+    padding-right: 5px
+    transition: width .4s linear
+    opacity: 1;
+    
+
+  &:hover
+    span
+      width: 0
+      opacity: 0
+      overflow: hidden
+      
+
+.status-alert
+  width: 100%
+  background-color: #ff3860
+  color: #eee
+  padding-top: 5px
+  padding-bottom: 5px
+
+
+
+
+.hero.is-light
+  background-color: #29292930;
+
+.feature-grid section
+  padding-top: 20px;
+  padding-bottom: 20px;
