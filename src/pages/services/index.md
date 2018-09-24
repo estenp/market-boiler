@@ -1,9 +1,7 @@
 ---
-templateKey: 'service-page'
-path: /services
+templateKey: service-page
 title: Our Services
 ---
-
 * Roller Shades: motorized and manual
 * Cubicle Curtains
 * Mini Blinds
@@ -11,3 +9,4 @@ title: Our Services
 * Wood Blinds
 * Custom Draperies
 * Shutters
+* And More!
