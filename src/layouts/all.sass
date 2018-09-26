@@ -42,10 +42,14 @@ $primary-invert: $kaldi-red-invert
 
 @import "~bulma"
 
+html
+  background-color: #fdfdf8
+
 //animating 'logo' text to expand acronym. need to change to class rather than hover
 .navbar
   font-family: 'Abel', serif
   border-bottom: solid 1px #ddd
+  background-color: #fdfdf8
 
 .navbar-brand .navbar-item
   font-size: 30px
@@ -66,16 +70,33 @@ $primary-invert: $kaldi-red-invert
 
 .status-alert
   width: 100%
-  background-color: #ff3860
+  background-color: #dc5b5b
   color: #eee
   padding-top: 5px
   padding-bottom: 5px
 
-
+.main-container
+  height: 100%
+  width: 100%
 
 
 .hero.is-light
   background-color: #7ec5f3;
+
+//html, body, #___gatsby, #___gatsby>div
+//  height: 100%
+
+
+.hero-background-image
+  background-image: url(/img/hunterRoller.jpg)
+  width: 100%
+  height: 500px
+  background-position: bottom
+  background-repeat: no-repeat
+  margin-top: 75px
+
+.hero-image-text
+  
 
 .feature-grid section
   padding-top: 20px;

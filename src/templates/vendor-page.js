@@ -14,9 +14,11 @@ export const VendorPage = ({ data }) => {
                 <div className="container">
                     <div className="columns">
                         <div className="column is-10 is-offset-1">
+                            <section className="section">
                             <h2 className="title">
                                 {data.markdownRemark.frontmatter.title}
                             </h2>
+                            </section>
                         </div>
                     </div>
                 </div>
