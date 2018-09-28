@@ -49,7 +49,7 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
           - {label: Title, name: title, widget: string}
-          - {label: Vendor List, name: vendorList, widget: list, fields: [{label: Image, name: image, widget: image}, {label: URL, name: url, widget: text}]}
+          - {label: Vendor List, name: vendorList, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Links To URL, name: url, widget: text}]}
 
       - file: "src/pages/services/index.md"
         label: "Services Page"
@@ -58,3 +58,12 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
           - {label: Title, name: title, widget: string}
           - {label: "Body", name: "body", widget: "markdown"}
+      
+      - file: "src/pages/examples/index.md"
+        label: "Examples Page"
+        name: "examples"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
+          - {label: Title, name: title, widget: string}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Images", name: "images", widget: "list", fields: [{label: Image, name: image, widget: image}]}

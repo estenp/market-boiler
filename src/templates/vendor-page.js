@@ -6,8 +6,6 @@ import Content from '../components/Content'
 export const VendorPage = ({ data }) => {
 
   return (
-    
-      
         <div className="columns">
           <div className="column">
             <section className="section">
@@ -29,7 +27,6 @@ export const VendorPage = ({ data }) => {
                     <Features gridItems={data.markdownRemark.frontmatter.vendorList} />
                 </div>
               </section>
-
           </div>
         </div>
 
