@@ -1,32 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Gallery = ({ data }) => (
+const ImageGallery = ({ data }) => (
   <div className="columns">
-    {data.map(price => (
-      <div key={price.plan} className="column">
-        <section className="section">
-          <h4 className="has-text-centered has-text-weight-semibold">
-            {price.plan}
-          </h4>
-          <h2 className="is-size-1 has-text-weight-bold has-text-primary has-text-centered">
-            ${price.price}
-          </h2>
-          <p className="has-text-weight-semibold">{price.description}</p>
-          <ul>
-            {price.items.map(item => (
-              <li key={item} className="is-size-5">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </section>
+    {data.map(image => (
+      <div key={image.imgUrl} className="column is-one-quarter-desktop is-one-half-tablet">
+        <Image src={image.imgUrl} />
       </div>
     ))}
   </div>
 )
 
-Gallery.propTypes = {
+ImageGallery.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       plan: PropTypes.string,
@@ -37,4 +22,4 @@ Gallery.propTypes = {
   ),
 }
 
-export default Gallery
+export default ImageGallery

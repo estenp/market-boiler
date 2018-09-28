@@ -10,8 +10,8 @@ export default class IndexPage extends React.Component {
     return (
       <div className="hero-background-image">
         <section className="section">
-            <div className="container hero-image-text has-text-white is-size-4">
-                Welcome
+            <div className="container hero-image-text has-text-grey is-centered is-size-4">
+                <h1>Welcome</h1>
             </div>
         </section>
       </div>
