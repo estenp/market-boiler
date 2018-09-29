@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ImageGallery = ({ data }) => (
+const ImageGallery = ({ imageUrls }) => (
   <div className="columns">
-    {data.map(image => (
+    {imageUrls.map(image => (
       <div key={image.imgUrl} className="column is-one-quarter-desktop is-one-half-tablet">
         <Image src={image.imgUrl} />
       </div>
@@ -12,12 +12,9 @@ const ImageGallery = ({ data }) => (
 )
 
 ImageGallery.propTypes = {
-  data: PropTypes.arrayOf(
+  imageUrls: PropTypes.arrayOf(
     PropTypes.shape({
-      plan: PropTypes.string,
-      price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      description: PropTypes.string,
-      items: PropTypes.array,
+      image: PropTypes.string
     })
   ),
 }
