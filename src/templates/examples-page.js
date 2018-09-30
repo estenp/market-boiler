@@ -16,15 +16,15 @@ const ExamplesPage = ({ data }) => {
                             <h2 className="title">
                                 {data.markdownRemark.frontmatter.title}
                             </h2>
+                            <HTMLContent className="content" content={data.markdownRemark.html} />
                             </section>
                         </div>
                     </div>
                 </div>
             </section>
-            <Content className="content" content={data.markdownRemark.html} />
             <section>
                 <div className="hero-body">  
-                    <ImageGallery images={data.markdownRemark.frontmatter.images} />
+                    <ImageGallery imageUrls={data.markdownRemark.frontmatter.images} />
                 </div>
             </section>
           </div>
@@ -44,9 +44,8 @@ export const examplesPageQuery = graphql`
       html
       frontmatter {
         title
-        path
         images {
-            image
+            imageUrl
         }
       }
     }

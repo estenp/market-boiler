@@ -25,3 +25,5 @@ vendorList:
     - image: /img/cfslogo.svg
       url: 'http://www.cfstinson.com/Finishes/Samples.jsp?lid=1001'
 ---
+
+We are supplied by the best in the industry.

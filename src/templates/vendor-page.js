@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Features from '../components/Features'
-import Content from '../components/Content'
+import Content, { HTMLContent } from '../components/Content'
 
 export const VendorPage = ({ data }) => {
-
   return (
         <div className="columns">
           <div className="column">
@@ -16,17 +15,17 @@ export const VendorPage = ({ data }) => {
                             <h2 className="title">
                                 {data.markdownRemark.frontmatter.title}
                             </h2>
+                            <HTMLContent className="content" content={data.markdownRemark.html} />
                             </section>
                         </div>
                     </div>
                 </div>
             </section>
-              <Content className="content" content={data.markdownRemark.html} />
-              <section className="hero is-light">
-                <div className="hero-body">  
-                    <Features gridItems={data.markdownRemark.frontmatter.vendorList} />
-                </div>
-              </section>
+            <section className="hero is-light">
+            <div className="hero-body">  
+                <Features gridItems={data.markdownRemark.frontmatter.vendorList} />
+            </div>
+            </section>
           </div>
         </div>
 
