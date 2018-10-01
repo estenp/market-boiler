@@ -1,5 +1,5 @@
 @import "~bulma/sass/utilities/initial-variables"
-@import url('https://fonts.googleapis.com/css?family=Abel|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu')
+@import url('https://fonts.googleapis.com/css?family=Abel|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu|Playfair+Display+SC')
 
 // Config vars
 $kaldi-red: #FD461E
@@ -7,6 +7,11 @@ $kaldi-red-invert: #fff
 
 $primary: $kaldi-red
 $primary-invert: $kaldi-red-invert
+
+h1, h2.title
+  font-family: 'Playfair Display SC';
+  font-weight: 400
+  text-transform: uppercase
 
 .content .taglist
   list-style: none
@@ -51,7 +56,7 @@ html
 
 //animating 'logo' text to expand acronym. need to change to class rather than hover
 .navbar
-  font-family: 'Abel', serif
+  font-family: 'Roboto Condensed', serif
   border-bottom: solid 1px #ddd
   background-color: #fdfdf8
 
