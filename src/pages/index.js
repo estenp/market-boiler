@@ -15,7 +15,7 @@ export default class IndexPage extends React.Component {
                         <h1>Welcome to Custom Fabricating Industries!</h1>
                     </div>
                     <div className="column">
-                        <p>Maybe an image?</p>
+                        <img src="/img/draperVenetian.jpg" height="100%" width="100%" />
                     </div>
                 </div>
             </div>
