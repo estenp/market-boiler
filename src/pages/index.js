@@ -12,10 +12,12 @@ export default class IndexPage extends React.Component {
             <div className="container hero-image-text has-text-grey-dark is-centered is-size-4">
                 <div className="columns">
                     <div className="column welcome-pane">
-                        <h1>Welcome to Custom Fabricating Industries!</h1>
+                        <h1>data.welcomeText</h1>
+                        <hr />
+                        <p>data.aboutText</p>
                     </div>
                     <div className="column">
-                        <img src="/img/draperVenetian.jpg" height="100%" width="100%" />
+                        <img src="/img/draperVenetian.jpg" />
                     </div>
                 </div>
             </div>
@@ -33,24 +35,12 @@ IndexPage.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            templateKey
-            date(formatString: "MMMM DD, YYYY")
-          }
-        }
+  query IndexQuery($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      frontmatter {
+        title
+        aboutText
+        welcomeText
       }
     }
   }
