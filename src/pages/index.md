@@ -1,6 +1,5 @@
 ---
-templateKey: index
 title: CFI Shades
 welcomeText: Welcome to Custom Fabricating Industries
-aboutText: Yes
+aboutText: CFI has been providing exceptional services for over a decade.
 ---
