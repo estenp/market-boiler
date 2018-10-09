@@ -35,8 +35,8 @@ IndexPage.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query IndexQuery($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+  query IndexQuery {
+    markdownRemark {
       frontmatter {
         title
         aboutText
