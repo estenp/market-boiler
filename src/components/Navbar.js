@@ -18,9 +18,9 @@ const Navbar = ({data}) => (
         </Link>
       </div>
       <div className="navbar-end">
-        <Link className="navbar-item" to="/about">
+        {/* <Link className="navbar-item" to="/about">
           About
-        </Link>
+        </Link> */}
         <Link className="navbar-item" to="/vendors">
           Vendors
         </Link>

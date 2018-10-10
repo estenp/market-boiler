@@ -1,20 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
 
 export default class IndexPage extends React.Component {
   render() {
     const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
 
     return (
       <div className="hero-background-image full-height-plus-children">
-            <div className="container hero-image-text has-text-grey-dark is-centered is-size-4">
+            <div className="container hero-image-text has-text-grey-dark is-centered">
                 <div className="columns">
                     <div className="column welcome-pane">
-                        <h1>data.welcomeText</h1>
+                        <h1>{data.markdownRemark.frontmatter.welcomeText}</h1>
                         <hr />
-                        <p>data.aboutText</p>
+                        <p>{data.markdownRemark.frontmatter.aboutText}</p>
                     </div>
                     <div className="column">
                         <img src="/img/draperVenetian.jpg" />
@@ -27,11 +25,11 @@ export default class IndexPage extends React.Component {
 }
 
 IndexPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
+    data: PropTypes.shape({
+        markdownRemark: PropTypes.shape({
+            frontmatter: PropTypes.object,
+        }),
     }),
-  }),
 }
 
 export const pageQuery = graphql`
