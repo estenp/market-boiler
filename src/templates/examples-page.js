@@ -4,7 +4,6 @@ import Content, { HTMLContent } from '../components/Content'
 import ImageGallery from '../components/ImageGallery';
 
 const ExamplesPage = ({ data }) => {
-    console.log(data.markdownRemark.frontmatter.images);
     return (
         <div className="columns">
           <div className="column">

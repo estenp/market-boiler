@@ -13,9 +13,11 @@ const customStyles = {
     }
 };
 
-class ImageGallery extends React.Component {
-	constructor(imageUrls) {
-		super(imageUrls);
+Modal.setAppElement('#___gatsby')
+
+export default class ImageGallery extends React.Component {
+	constructor(props) {
+		super(props);
 	
 		this.state = {
 		  modalIsOpen: false
@@ -26,8 +28,11 @@ class ImageGallery extends React.Component {
 		this.closeModal = this.closeModal.bind(this);
 	  }
 	
-	  openModal() {
-		this.setState({modalIsOpen: true});
+	  openModal(id) {
+            this.setState({modalIsOpen: {
+                [id]: true
+            }
+        });
 	  }
 	
 	  afterOpenModal() {
@@ -35,35 +40,44 @@ class ImageGallery extends React.Component {
 		this.subtitle.style.color = '#f00';
 	  }
 	
-	  closeModal() {
-		this.setState({modalIsOpen: false});
-	  }
+	  closeModal(id) {
+		this.setState({modalIsOpen: {
+                [id]: false
+            }
+        });
+        console.log(this.props);
+      }
+      
 	render() {
+        return (
 		<div className="columns wrap">
-			{imageUrls.map((image, index) => (
+			{this.props.imageUrls.map((image, index) => {
 				<div key={index} className="column is-one-quarter-desktop is-one-half-tablet">
-					<a href='javascript:void(0)' onClick={this.openModal}><img src={image.imageUrl} /></a>
+					<a href='javascript:void(0)' onClick={() => this.openModal(index)}>
+                        <img src={image.imageUrl} />
+                    </a>
+
 					<Modal
-					isOpen={this.state.modalIsOpen}
+					isOpen={this.state.modalIsOpen.index}
 					onAfterOpen={this.afterOpenModal}
-					onRequestClose={this.closeModal}
+					onRequestClose={this.closeModal(index)}
 					style={customStyles}
 					contentLabel="Example Modal"
 					>
 						<img src={image.imageUrl} />
 					</Modal>
 				</div>
-			))}
+            })}
 		</div>
+        )
 	}
 }
 
 ImageGallery.propTypes = {
-  imageUrls: PropTypes.arrayOf(
+  props: PropTypes.arrayOf(
     PropTypes.shape({
       imageUrl: PropTypes.string
     })
   ),
 }
 
-export default ImageGallery
