@@ -32,6 +32,8 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
     posts.forEach(edge => {
       const id = edge.node.id
+      // Esten added: if templateKey exists create a page for the file
+      // Used so Gatsby doesn't attempt to create a new page for my index.md file for home page content
       if (edge.node.frontmatter.templateKey) {
         createPage({
           path: edge.node.fields.slug,

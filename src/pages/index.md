@@ -1,6 +1,8 @@
 ---
 title: CFI Shades
 welcomeText: Welcome to Custom Fabricating Industries
-aboutText: Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+aboutText: > Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mattis malesuada risus sit amet varius. In vel odio in nunc pretium molestie eu eu dolor. Proin consequat sagittis urna, ornare euismod metus feugiat sit amet. Nunc ullamcorper nulla ut lacus tristique, ut pretium ante aliquam. Sed scelerisque tempus lorem, convallis malesuada turpis commodo a. Nullam non dolor iaculis, posuere sapien sit amet, lobortis nisi. Aenean bibendum sapien nisl. Morbi dui lorem, mattis vel elementum in, sagittis non diam. Etiam bibendum a sem eu ultricies. Nunc faucibus eros tempus massa euismod interdum. Aliquam non hendrerit ligula. In vel dignissim sapien. Proin orci elit, pulvinar vel ante eget, sollicitudin finibus enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec in nisl quis risus condimentum euismod eu vel lacus.
+
+> Cras condimentum pharetra ullamcorper. Integer dapibus elit et nunc tincidunt, non euismod purus hendrerit. Cras egestas efficitur efficitur. In rutrum mi enim, egestas fermentum sapien volutpat eu. In leo neque, iaculis in pretium eget, tristique in turpis. Donec fringilla dolor ac erat efficitur, in varius nunc rhoncus. Etiam iaculis, turpis id mollis pulvinar, mauris risus dignissim risus, vitae mollis leo mauris sit amet magna. Donec eleifend rhoncus erat, id ornare sapien pretium vel. Phasellus mollis ligula sapien. Proin quis hendrerit metus. Fusce dapibus erat nisl, at ullamcorper purus pulvinar nec. Duis dignissim ante massa, in porttitor enim tempor sed. 
 
 ---
