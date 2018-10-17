@@ -1,5 +1,5 @@
 @import "~bulma/sass/utilities/initial-variables"
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web|Abel|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu|Playfair+Display+SC')
+@import url('https://fonts.googleapis.com/css?family=Muli:300|Abel|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu|Playfair+Display+SC')
 
 // Config vars
 $kaldi-red: #FD461E
@@ -56,12 +56,12 @@ html
 
 //animating 'logo' text to expand acronym. need to change to class rather than hover
 .navbar
-  font-family: 'Titillium Web', serif
-  border-bottom: solid 1px #ddd
+  font-family: 'Muli', serif
+  border-bottom: solid 2px #7ec5f3
   background-color: #fbfbfb
 
 .navbar-brand .navbar-item
-  font-size: 30px
+  font-size: 22px
 
   span
     width: auto
@@ -76,6 +76,9 @@ html
       opacity: 0
       overflow: hidden*/
       
+
+a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active
+  color: #4a4a4a
 
 .status-alert
   width: 100%
@@ -134,7 +137,7 @@ hr
   height: 90%
 
 .hero-image-text .welcome-pane
-  border-right: solid 2px #7b7b7b
+  border-right: solid 2px #7ec5f3
 
 .full-height-plus-children div
   height: 100%
