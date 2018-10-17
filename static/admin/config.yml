@@ -73,4 +73,4 @@ collections:
         name: "index"
         fields:
           - {label: Welcome Text, name: welcomeText, widget: string}
-          - {label: About Text, name: aboutText, widget: string}
+          - {label: About Text, name: aboutText, widget: text}
