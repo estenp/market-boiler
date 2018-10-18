@@ -8,6 +8,12 @@ $kaldi-red-invert: #fff
 $primary: $kaldi-red
 $primary-invert: $kaldi-red-invert
 
+html
+  background: none !important
+
+body
+  background-color: #fbfbfb
+
 h1, h2.title
   font-family: 'Playfair Display';
   font-weight: 400
@@ -49,10 +55,6 @@ h1, h2.title
 
 .columns.wrap
   flex-wrap: wrap;
-
-
-html
-  background-color: #fbfbfb
 
 //animating 'logo' text to expand acronym. need to change to class rather than hover
 .navbar
@@ -110,7 +112,7 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
   align-items: center
 
 .hero-background-image img
-  height: 100%
+  max-height: 100%
   width: auto
 
 .hero-image-text h1
@@ -138,6 +140,14 @@ hr
 
 .hero-image-text .welcome-pane
   border-right: solid 2px #7ec5f3
+
+@media screen and (max-width: 768px)
+  //.navbar-item
+  //  text-align: center;
+  .hero-background-image
+    height: auto
+  .hero-image-text .welcome-pane
+    border-right: none
 
 .full-height-plus-children div
   height: 100%
