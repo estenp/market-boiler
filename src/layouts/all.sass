@@ -2,11 +2,13 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:300|Open+Sans|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu|Playfair+Display')
 
 // Config vars
-$kaldi-red: #FD461E
-$kaldi-red-invert: #fff
 
-$primary: $kaldi-red
-$primary-invert: $kaldi-red-invert
+
+$blue: #7ec5f3
+$light-blue: #bde0f7
+$orange: #ffa500
+$primary: $orange
+
 
 html
   background: none !important
@@ -59,7 +61,7 @@ h1, h2.title
 //animating 'logo' text to expand acronym. need to change to class rather than hover
 .navbar
   font-family: 'Muli', serif
-  border-bottom: double 7px #7ec5f3
+  border-bottom: double 7px $primary
   background-color: #fbfbfb
 
 .navbar-brand .navbar-item
@@ -95,13 +97,13 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
 
 
 .hero.is-light
-  background-color: #7ec5f3;
+  background-color: $light-blue;
 
 .border-top-bottom
   padding-top: 3px;
-  border-top: solid 3px #7ec5f3;
+  border-top: solid 3px $light-blue;
   padding-bottom: 3px;
-  border-bottom: solid 3px #7ec5f3;
+  border-bottom: solid 3px $light-blue;
 
 //html, body, #___gatsby, #___gatsby>div
 //  height: 100%
@@ -145,7 +147,7 @@ hr
   height: 90%
 
 .hero-image-text .welcome-pane
-  border-right: solid 2px #7ec5f3
+  border-right: solid 2px $primary
   h1
     text-align: center
   //#ffa500
