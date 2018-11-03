@@ -14,8 +14,7 @@ export default class IndexPage extends React.Component {
                         <hr />
                         <p>{data.allMarkdownRemark.edges[0].node.frontmatter.aboutText}</p>
                     </div>
-                    <div className="column">
-                        <img src="/img/draperVenetian.jpg" />
+                    <div className="column image-pane">
                     </div>
                 </div>
             </div>
