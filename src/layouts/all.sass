@@ -1,15 +1,23 @@
 @import "~bulma/sass/utilities/initial-variables"
-@import url('https://fonts.googleapis.com/css?family=Abel|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu|Playfair+Display+SC')
+@import url('https://fonts.googleapis.com/css?family=Muli:300|Slabo+27px|Open+Sans|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu|Playfair+Display')
 
 // Config vars
-$kaldi-red: #FD461E
-$kaldi-red-invert: #fff
 
-$primary: $kaldi-red
-$primary-invert: $kaldi-red-invert
+$dark-blue: #2391d8
+$blue: #7ec5f3
+$light-blue: #bde0f7
+$orange: #FFB80C
+$primary: $orange
+
+
+html
+  background: none !important
+
+body
+  background-color: #fbfbfb
 
 h1, h2.title
-  font-family: 'Playfair Display SC';
+  font-family: 'Playfair Display';
   font-weight: 400
   text-transform: uppercase
 
@@ -50,18 +58,15 @@ h1, h2.title
 .columns.wrap
   flex-wrap: wrap;
 
-
-html
-  background-color: #fdfdf8
-
 //animating 'logo' text to expand acronym. need to change to class rather than hover
 .navbar
-  font-family: 'Roboto Condensed', serif
-  border-bottom: solid 1px #ddd
-  background-color: #fdfdf8
+  font-family: 'Muli', serif
+  border-bottom: double 7px $primary
+  background-color: #fbfbfb
 
 .navbar-brand .navbar-item
-  font-size: 30px
+  font-size: 40px
+  font-family: 'Muli';
 
   span
     width: auto
@@ -77,6 +82,9 @@ html
       overflow: hidden*/
       
 
+a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active
+  color: #4a4a4a
+
 .status-alert
   width: 100%
   background-color: #dc5b5b
@@ -90,7 +98,13 @@ html
 
 
 .hero.is-light
-  background-color: #7ec5f3;
+  background-color: $light-blue;
+
+.border-top-bottom
+  padding-top: 3px;
+  border-top: solid 3px $light-blue;
+  padding-bottom: 3px;
+  border-bottom: solid 3px $light-blue;
 
 //html, body, #___gatsby, #___gatsby>div
 //  height: 100%
@@ -107,7 +121,7 @@ html
   align-items: center
 
 .hero-background-image img
-  height: 100%
+  max-height: 100%
   width: auto
 
 .hero-image-text h1
@@ -133,8 +147,29 @@ hr
   margin-top: 0
   height: 90%
 
-.hero-image-text .welcome-pane
-  border-right: solid 2px #7b7b7b
+.side-by-side .text-pane
+  border-right: solid 2px $primary
+  h1
+    text-align: center
+  //#ffa500
+
+.side-by-side .image-pane
+  background-size: cover;
+  background-position: center center;
+
+  &#homepage-image
+    background-image: url(/img/ulineMotorized.jpg);
+
+#service-page-image
+  padding-left: 50px
+
+@media screen and (max-width: 768px)
+  //.navbar-item
+  //  text-align: center;
+  .hero-background-image
+    height: auto
+  .hero-image-text .welcome-pane
+    border-right: none
 
 .full-height-plus-children div
   height: 100%

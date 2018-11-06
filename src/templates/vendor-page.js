@@ -21,11 +21,13 @@ export const VendorPage = ({ data }) => {
                     </div>
                 </div>
             </section>
-            <section className="hero is-light">
-            <div className="hero-body">  
-                <Features gridItems={data.markdownRemark.frontmatter.vendorList} />
+            <div className="border-top-bottom">
+                <section className="hero is-light">
+                <div className="hero-body">  
+                    <Features gridItems={data.markdownRemark.frontmatter.vendorList} />
+                </div>
+                </section>
             </div>
-            </section>
           </div>
         </div>
 
