@@ -52,7 +52,7 @@ export default class ImageGallery extends React.Component {
         return (
 		<div className="columns wrap">
 			{this.props.imageUrls.map((image, index) => {
-				<div key={index} className="column is-one-quarter-desktop is-one-half-tablet">
+				<div key={index} className="column is-one-quarter-desktop is-half-tablet">
 					<a href='javascript:void(0)' onClick={() => this.openModal(index)}>
                         <img src={image.imageUrl} />
                     </a>

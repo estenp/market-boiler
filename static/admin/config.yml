@@ -66,11 +66,11 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "examples-page"}
           - {label: Title, name: title, widget: string}
           - {label: "Body", name: "body", widget: "markdown"}
-          - {label: "Images", name: "images", widget: "list", fields: [{label: Image, name: image, widget: image}]}
+          - {label: "Images", name: "images", widget: "list", fields: [{label: Image, name: image, widget: image}, {label: Tag, name: tag, widget: string}]}
 
       - file: "src/pages/index.md"
         label: "Home Page"
         name: "index"
         fields:
           - {label: Welcome Text, name: welcomeText, widget: string}
-          - {label: About Text, name: aboutText, widget: string}
+          - {label: About Text, name: aboutText, widget: text}

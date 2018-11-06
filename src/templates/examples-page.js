@@ -45,6 +45,7 @@ export const examplesPageQuery = graphql`
         title
         images {
             imageUrl
+            tag
         }
       }
     }
