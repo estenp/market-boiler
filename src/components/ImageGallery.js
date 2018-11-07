@@ -18,9 +18,12 @@ Modal.setAppElement('#___gatsby')
 export default class ImageGallery extends React.Component {
 	constructor(props) {
 		super(props);
-	
+    
+        // this was setting one property for state to false
+        // added an object instanciation
+        // still have infinite loop in map
 		this.state = {
-		  modalIsOpen: false
+		  modalIsOpen: {}
 		};
 	
 		this.openModal = this.openModal.bind(this);
@@ -29,10 +32,11 @@ export default class ImageGallery extends React.Component {
 	  }
 	
 	  openModal(id) {
-            this.setState({modalIsOpen: {
-                [id]: true
-            }
-        });
+            this.setState({
+                modalIsOpen: {
+                    [id]: true
+                }
+            });
 	  }
 	
 	  afterOpenModal() {
@@ -41,31 +45,36 @@ export default class ImageGallery extends React.Component {
 	  }
 	
 	  closeModal(id) {
-		this.setState({modalIsOpen: {
-                [id]: false
+		this.setState((state, id) => {
+            state.modalIsOpen[id] = false
             }
-        });
-        console.log(this.props);
+        );
+        //console.log(this.props);
+      }
+
+      getModalStatus(id) {
+        return this.state.modalIsOpen[id];
       }
       
 	render() {
         return (
 		<div className="columns wrap">
 			{this.props.imageUrls.map((image, index) => {
+                console.log(image, index);
 				<div key={index} className="column is-one-quarter-desktop is-half-tablet">
 					<a href='javascript:void(0)' onClick={() => this.openModal(index)}>
                         <img src={image.imageUrl} />
                     </a>
 
-					<Modal
-					isOpen={this.state.modalIsOpen.index}
+					{/* <Modal
+					isOpen={this.getModalStatus(index)}
 					onAfterOpen={this.afterOpenModal}
 					onRequestClose={this.closeModal(index)}
 					style={customStyles}
 					contentLabel="Example Modal"
 					>
 						<img src={image.imageUrl} />
-					</Modal>
+					</Modal> */}
 				</div>
             })}
 		</div>
