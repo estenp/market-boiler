@@ -23,7 +23,7 @@ const ExamplesPage = ({ data }) => {
             </section>
             <section>
                 <div className="hero-body">  
-                    <ImageGallery imageUrls={data.markdownRemark.frontmatter.images} />
+                    <ImageGallery images={data.markdownRemark.frontmatter.images} />
                 </div>
             </section>
           </div>

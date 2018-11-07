@@ -59,22 +59,21 @@ export default class ImageGallery extends React.Component {
 	render() {
         return (
 		<div className="columns wrap">
-			{this.props.imageUrls.map((image, index) => {
-                console.log(image, index);
+			{this.props.images.map((image, index) => {
 				<div key={index} className="column is-one-quarter-desktop is-half-tablet">
 					<a href='javascript:void(0)' onClick={() => this.openModal(index)}>
                         <img src={image.imageUrl} />
                     </a>
 
-					{/* <Modal
-					isOpen={this.getModalStatus(index)}
-					onAfterOpen={this.afterOpenModal}
-					onRequestClose={this.closeModal(index)}
+					<Modal
+					isOpen={() => this.getModalStatus(index)}
+					onAfterOpen={() => this.afterOpenModal}
+					onRequestClose={() => this.closeModal(index)}
 					style={customStyles}
 					contentLabel="Example Modal"
 					>
 						<img src={image.imageUrl} />
-					</Modal> */}
+					</Modal>
 				</div>
             })}
 		</div>
@@ -85,7 +84,7 @@ export default class ImageGallery extends React.Component {
 ImageGallery.propTypes = {
   props: PropTypes.arrayOf(
     PropTypes.shape({
-      imageUrl: PropTypes.string
+      images: PropTypes.string
     })
   ),
 }
