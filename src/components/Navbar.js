@@ -14,7 +14,7 @@ const Navbar = ({data}) => (
           {/* <figure className="image">
             <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
           </figure> */}
-          C F I
+          CFI
         </Link>
       </div>
       <div className="navbar-end">
