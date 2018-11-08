@@ -10,7 +10,7 @@ export default class IndexPage extends React.Component {
             <div className="container hero-image-text has-text-grey-dark is-centered">
                 <div className="columns">
                     <div className="column welcome-pane">
-                        <h1>{data.allMarkdownRemark.edges[0].node.frontmatter.welcomeText}</h1>
+                        <h1 className="centered">{data.allMarkdownRemark.edges[0].node.frontmatter.welcomeText}</h1>
                         <hr />
                         <p>{data.allMarkdownRemark.edges[0].node.frontmatter.aboutText}</p>
                     </div>
