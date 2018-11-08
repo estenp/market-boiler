@@ -14,7 +14,14 @@ export const ServicePageTemplate = ({ title, content, contentComponent }) => {
               <h2 className="title">
                 {title}
               </h2>
-              <PageContent className="content" content={content} />
+              <div className="side-by-side columns">
+                <div className="column text-pane">
+                    <PageContent className="content" content={content} />
+                </div>
+                <div id="service-page-image" className="column image-pane">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/mp4pgOTz7wU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+              </div>
             </div>
           </div>
         </div>
