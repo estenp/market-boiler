@@ -4,7 +4,6 @@ import Content, { HTMLContent } from '../components/Content'
 import ImageGallery from '../components/ImageGallery';
 
 const ExamplesPage = ({ data }) => {
-    console.log(data.markdownRemark.frontmatter.images);
     return (
         <div className="columns">
           <div className="column">
@@ -24,7 +23,7 @@ const ExamplesPage = ({ data }) => {
             </section>
             <section>
                 <div className="hero-body">  
-                    <ImageGallery imageUrls={data.markdownRemark.frontmatter.images} />
+                    <ImageGallery images={data.markdownRemark.frontmatter.images} />
                 </div>
             </section>
           </div>
