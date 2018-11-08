@@ -8,14 +8,19 @@ export default class IndexPage extends React.Component {
     return (
       <div className="hero-background-image full-height-plus-children">
             <div className="container hero-image-text has-text-grey-dark is-centered">
+
                 <div className="columns">
                     <div className="column welcome-pane">
                         <h1 className="centered">{data.allMarkdownRemark.edges[0].node.frontmatter.welcomeText}</h1>
+
+                <div className="side-by-side columns">
+                    <div className="column text-pane">
+                        <h1>{data.allMarkdownRemark.edges[0].node.frontmatter.welcomeText}</h1>
+
                         <hr />
                         <p>{data.allMarkdownRemark.edges[0].node.frontmatter.aboutText}</p>
                     </div>
-                    <div className="column">
-                        <img src="/img/draperVenetian.jpg" />
+                    <div id="homepage-image" className="column image-pane">
                     </div>
                 </div>
             </div>
