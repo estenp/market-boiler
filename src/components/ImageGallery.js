@@ -32,52 +32,55 @@ export default class ImageGallery extends React.Component {
 	  }
 	
 	  openModal(id) {
-            this.setState({
-                modalIsOpen: {
-                    [id]: true
-                }
-            });
+      this.setState({
+          modalIsOpen: {
+              [id]: true
+          }
+      });
 	  }
 	
 	  afterOpenModal() {
-		// references are now sync'd and can be accessed.
-		this.subtitle.style.color = '#f00';
-	  }
+      // references are now sync'd and can be accessed.
+      this.subtitle.style.color = '#f00';
+    }
+
 	
 	  closeModal(id) {
-		this.setState((state, id) => {
-            state.modalIsOpen[id] = false
-            }
-        );
-        //console.log(this.props);
+		    this.setState({
+          modalIsOpen: {
+            [id]: false
+          }
+        });
       }
 
-      getModalStatus(id) {
-        return this.state.modalIsOpen[id];
-      }
       
 	render() {
-        return (
-		<div className="columns wrap">
-			{this.props.images.map((image, index) => (
-				<div key={index} className="column is-one-quarter-desktop is-half-tablet">
-					<a href='javascript:void(0)' onClick={() => this.openModal(index)}>
-                        <img src={image.imageUrl} />
-                    </a>
+    return (
+      <div className="columns wrap">
+        {this.props.images.map((image, index) => (
+          <div key={index} className="column is-one-quarter-desktop is-half-tablet">
 
-					<Modal
-					isOpen={() => this.getModalStatus(index)}
-					onAfterOpen={() => this.afterOpenModal}
-					onRequestClose={() => this.closeModal(index)}
-					style={customStyles}
-					contentLabel="Example Modal"
-					>
-						<img src={image.imageUrl} />
-					</Modal>
-				</div>
-            ))}
-		</div>
-        )
+              <a href='javascript:void(0)' onClick={() => this.openModal(index)}>
+                  <img src={image.imageUrl} />
+              </a>
+
+              <Modal
+              isOpen={this.state.modalIsOpen[index]}
+              onAfterOpen={() => this.afterOpenModal}
+              onRequestClose={() => this.closeModal(index)}
+              style={customStyles}
+              contentLabel="Example Modal"
+              shouldCloseOnOverlayClick={true}
+              shouldCloseOnEsc={true}
+              role="dialog"
+              >
+                <a className="close-icon" onClick={() => this.closeModal(index)}> X </a>
+                <img src={image.imageUrl} />
+              </Modal>
+            </div>
+          ))}
+      </div>
+    )
 	}
 }
 
