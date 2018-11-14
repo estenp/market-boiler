@@ -1,6 +1,15 @@
 @import "~bulma/sass/utilities/initial-variables"
 @import url('https://fonts.googleapis.com/css?family=Muli:300|Slabo+27px|Open+Sans|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu|Playfair+Display')
 
+
+//overrides for IE support
+
+.column
+  flex-basis: auto
+
+
+
+
 // Config vars
 
 $dark-blue: #2391d8
@@ -158,10 +167,11 @@ hr
 
 .side-by-side .image-pane
   background-size: cover;
-  background-position: center center;
+  background-position: center center
+  width: 100%
 
   &#homepage-image
-    background-image: url(/img/ulineMotorized.jpg);
+    background-image: url(/img/ulineMotorized.jpg)
 
 #service-page-image
   padding-left: 50px
