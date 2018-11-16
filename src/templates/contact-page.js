@@ -19,7 +19,7 @@ export const ContactPageTemplate = ({ title, content, contentComponent }) => {
                 </div>
             </section>
             <section>
-                <form name="contact" method="POST" action="/vendors/" netlify-honeypot="bot-field" data-netlify="true">
+                <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
                     <p className="hidden">
                         <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
                     </p>
@@ -52,7 +52,7 @@ export const ContactPageTemplate = ({ title, content, contentComponent }) => {
                         </div>
                     </div>
                     <div data-netlify-recaptcha></div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" className="button is-primary">Submit</button>
                 </form>
                 
             </section>
