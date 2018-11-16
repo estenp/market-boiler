@@ -30,6 +30,9 @@ const Navbar = ({data}) => (
         <Link className="navbar-item" to="/examples">
           Examples
         </Link>
+        <Link className="navbar-item" to="/contact">
+          Contact Us
+        </Link>
       </div>
       {/* <div className="navbar-end">
         <a
