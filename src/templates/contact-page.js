@@ -23,6 +23,7 @@ export const ContactPageTemplate = ({ title, content, contentComponent }) => {
                     <p className="hidden">
                         <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
                     </p>
+                    <input type="hidden" name="form-name" value="contact" />
                     <div className="field">
                         <label className="label">Name: </label>
                         <div className="control">
