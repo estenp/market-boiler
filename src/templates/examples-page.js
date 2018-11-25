@@ -21,6 +21,19 @@ const ExamplesPage = ({ data }) => {
                     </div>
                 </div>
             </section>
+            <section className="section video-section">
+                <div className="columns">
+                    <div className="column is-one-quarter">
+                        <video height="500" width="300" controls>
+                            <source src="/img/IMG_3277.mov" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div className="column is-one-quarter">
+                    <iframe height="100%" width="100%" src="https://www.youtube.com/embed/mp4pgOTz7wU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+            <hr />
             <section>
                 <div className="hero-body">  
                     <ImageGallery images={data.markdownRemark.frontmatter.images} />
