@@ -5,7 +5,7 @@ import ImageGallery from '../components/ImageGallery';
 
 const ExamplesPage = ({ data }) => {
     return (
-        <div className="columns">
+        <div className="columns examples-page-container">
           <div className="column">
             <section className="section">
                 <div className="container">
@@ -29,7 +29,7 @@ const ExamplesPage = ({ data }) => {
                         </video>
                     </div>
                     <div className="column is-one-quarter">
-                    <iframe height="100%" width="100%" src="https://www.youtube.com/embed/mp4pgOTz7wU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe height="550" width="100%" src="https://www.youtube.com/embed/mp4pgOTz7wU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </section>

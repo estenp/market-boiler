@@ -9,8 +9,12 @@ images:
     tag: roller
   - imageUrl: /img/hunterRollerSonnette.jpg
     tag: roller
-  - imageUrl: /img/hunterSoftShades.jpg
-    tag: soft
+  - imageUrl: /img/mechoOffice.jpg
+    tag: cubicle
+  - imageUrl: /img/mechoBoardRoom.jpg
+    tag: cubicle
+  - imageUrl: /img/mechoHospitality.jpg
+    tag: cubicle
   - imageUrl: /img/swfAlum.jpg
     tag: mini
   - imageUrl: /img/swfVertical.jpg
