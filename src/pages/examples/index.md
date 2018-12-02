@@ -26,4 +26,4 @@ images:
     
 ---
 
-Here are some great examples of our work!
+Here are some examples of products we can provide!
