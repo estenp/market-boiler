@@ -20,9 +20,6 @@ export default class ImageGallery extends React.Component {
 	constructor(props) {
 		super(props);
     
-        // this was setting one property for state to false
-        // added an object instanciation
-        // still have infinite loop in map
 		this.state = {
 		  modalIsOpen: {}
 		};
