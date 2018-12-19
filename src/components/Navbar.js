@@ -13,7 +13,7 @@ const Navbar = ({ data }) => (
             <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
           </figure> */}
                     <div className="logo">
-                        <img src="img/cfilogo.svg" />
+                        <img src="img/cfilogobluelight.svg" />
                     </div>
                 </Link>
             </div>
