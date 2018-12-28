@@ -58,6 +58,7 @@ export const ContactPageTemplate = ({ title, content, contentComponent }) => {
                                             id="email"
                                             name="email"
                                             title="Must be a valid email format."
+                                            placeholder="joe@gmail.com"
                                             pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
                                             size="30"
                                             required
@@ -65,8 +66,6 @@ export const ContactPageTemplate = ({ title, content, contentComponent }) => {
                                     </div>
                                     <p className="help">
                                         Must be a valid email format.
-                                        <br />
-                                        E.g. xxx@xx.xxx
                                     </p>
                                 </div>
                                 <div className="field">
