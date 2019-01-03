@@ -21,16 +21,14 @@ export default ({ children }) => (
             }
         `}
         render={data => (
-            <Layout>
-                <div>
-                    <Helmet title="Custom Fabricating Industries" />
-                    <Navbar />
-                    {!!data && !!data.markdownRemark && (
-                        <StatusAlert message={data.markdownRemark.html} />
-                    )}
-                    <div className="main-container">{children}</div>
-                </div>
-            </Layout>
+            <div>
+                <Helmet title="Custom Fabricating Industries" />
+                <Navbar />
+                {!!data && !!data.markdownRemark && (
+                    <StatusAlert message={data.markdownRemark.html} />
+                )}
+                <div className="main-container">{children}</div>
+            </div>
         )}
     />
 );
