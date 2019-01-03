@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Content, { HTMLContent } from "../components/Content";
-
+import { graphql } from "gatsby";
 export const ContactPageTemplate = ({ title, content, contentComponent }) => {
     const PageContent = contentComponent || Content;
 
