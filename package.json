@@ -11,6 +11,7 @@
         "gatsby-link": "^2.0.7",
         "gatsby-plugin-netlify": "^2.0.6",
         "gatsby-plugin-netlify-cms": "^3.0.9",
+        "gatsby-plugin-postcss": "^2.0.2",
         "gatsby-plugin-react-helmet": "^3.0.5",
         "gatsby-plugin-sass": "^2.0.7",
         "gatsby-plugin-sharp": "^2.0.17",
@@ -49,6 +50,7 @@
     },
     "browserslist": [
         ">0.25%",
-        "last 2 version"
+        "last 2 version",
+        "IE > 9"
     ]
 }
