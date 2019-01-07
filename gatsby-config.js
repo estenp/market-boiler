@@ -1,10 +1,27 @@
+var autoprefixer = require('autoprefixer');
+var browserslist = require('browserslist');
 module.exports = {
     siteMetadata: {
         title: "Market Boiler",
     },
     plugins: [
         "gatsby-plugin-react-helmet",
-        "gatsby-plugin-sass",
+        {
+            resolve: `gatsby-plugin-sass`,
+            options: {
+                postCssPlugins: [
+                    autoprefixer({ browsers: browserslist() })
+                ],
+            },
+        },
+        // {
+        //     resolve: `gatsby-plugin-postcss`,
+        //     options: {
+        //         postCssPlugins: [
+        //             autoprefixer({ browsers: browserslist() })
+        //         ],
+        //     },
+        // },
         {
             resolve: "gatsby-source-filesystem",
             options: {
