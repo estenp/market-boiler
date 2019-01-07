@@ -1,6 +1,4 @@
 {
-    "name": "market-boiler",
-    "description": "Boilerplate for simple marketing site.",
     "author": "Esten Patrick",
     "dependencies": {
         "@reach/router": "^1.2.1",

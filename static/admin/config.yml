@@ -15,9 +15,9 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text", required: "false"}
+      - {label: "Description", name: "description", widget: "text", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list", required: "false"}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
       - {label: "Blog Type", name: "type", widget: "select", options: ["news", "alert"], default: "news"}  
 
   - name: "pages"
