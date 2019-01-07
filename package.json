@@ -47,10 +47,5 @@
     "devDependencies": {
         "prettier": "^1.15.3",
         "webpack": "^4.28.3"
-    },
-    "browserslist": [
-        ">0.25%",
-        "last 2 version",
-        "IE > 9"
-    ]
+    }
 }
