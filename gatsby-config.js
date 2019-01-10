@@ -7,12 +7,12 @@ module.exports = {
     plugins: [
         "gatsby-plugin-react-helmet",
         {
-            resolve: `gatsby-plugin-sass`,
+            resolve: `gatsby-plugin-sass`/*,
             options: {
                 postCssPlugins: [
                     autoprefixer({ browsers: browserslist() })
                 ],
-            },
+            },*/
         },
         // {
         //     resolve: `gatsby-plugin-postcss`,
