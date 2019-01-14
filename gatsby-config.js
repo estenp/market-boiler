@@ -7,25 +7,9 @@ module.exports = {
     plugins: [
         "gatsby-plugin-react-helmet",
         {
-            resolve: `gatsby-plugin-postcss`,
-            // options: {
-            //     postCssPlugins: [
-            //         autoprefixer({ browsers: browserslist() })
-            //     ],
-            // },
-        },
-        {
-            resolve: `gatsby-plugin-sass`,
-            // options: {
-            //     postCssPlugins: [
-            //         autoprefixer({ browsers: browserslist() })
-            //     ],
-            // },
-        },
-        {
-            resolve: `gatsby-plugin-emotion`,
+            resolve: `gatsby-plugin-styled-components`,
             options: {
-              // Accepts all options defined by `babel-plugin-emotion` plugin.
+              // Add any options here
             },
         },
         {
