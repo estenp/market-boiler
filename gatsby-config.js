@@ -1,5 +1,3 @@
-var autoprefixer = require('autoprefixer');
-var browserslist = require('browserslist');
 module.exports = {
     siteMetadata: {
         title: "Market Boiler",
