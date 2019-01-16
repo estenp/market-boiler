@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import HTMLContent from './Content.js'
+import HTMLContent from '../Content.js'
 
 const StatusAlert = (props) => (
   <div className="status-alert">
