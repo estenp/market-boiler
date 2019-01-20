@@ -19,7 +19,7 @@ module.exports = {
               // add `postcss-scss` to your project's devDependencies
               // and add the following option here:
               filetypes: {
-                ".sass": { syntax: `postcss-sass` },
+                ".scss": { syntax: `postcss-scss` }
               },
         
               // Exclude global styles from the plugin using a RegExp:

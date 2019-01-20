@@ -1,0 +1,32 @@
+@import "../../global-styles/styles";
+
+.navbar {
+  border-bottom: double 7px $primary;
+  background-color: #fbfbfb;
+}
+.navbar-brand .navbar-item {
+  font-size: 40px;
+  font-family: 'Muli';
+
+  span {
+    width: auto;
+    padding-right: 5px;
+    transition: width .9s linear, opacity .3s linear;
+    opacity: 1;
+  }  
+
+  /*&:hover
+    span
+      width: 0
+      opacity: 0
+      overflow: hidden*/
+}
+
+a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
+  color: #4a4a4a;
+}
+.navbar-item img {
+  max-height: 1.9em;
+  width: 2.8em;
+}
+

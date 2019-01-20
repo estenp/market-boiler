@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "gatsby";
-import styles from "./Navbar.module.sass";
+import "./Navbar.module.scss";
 
 const Navbar = ({ data }) => (
-    <nav className="navbar is-transparent">
+    <nav styleName="navbar" className="navbar is-transparent">
         <div className="container">
             <div className="navbar-brand">
                 <Link to="/" className="navbar-item">
                     <div className="logo">
-                        <img src="img/cfilogobluelight.svg" />
+                        <img src="./img/cfilogobluelight.svg" />
                     </div>
                 </Link>
             </div>

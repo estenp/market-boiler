@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-import "../global-styles/styles.sass";
+import "../global-styles/styles.scss";
 
 export default class IndexPage extends React.Component {
     render() {
