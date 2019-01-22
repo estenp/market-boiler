@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
+import "bulma";
 import "../global-styles/global-styles.module.scss";
 
 export default class IndexPage extends React.Component {

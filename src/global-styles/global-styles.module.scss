@@ -1,6 +1,6 @@
-:global {
-	@import "~bulma/sass/utilities/initial-variables";
-}
+// :global {
+// 	@import "~bulma/sass/utilities/initial-variables";
+// }
 @import url("https://fonts.googleapis.com/css?family=Muli:300|Slabo+27px|Open+Sans|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu|Playfair+Display");
 
 // Config vars
@@ -64,9 +64,7 @@
 	.margin-top-0 {
 		margin-top: 0 !important;
 	}
-}
-@import "~bulma";
-:global {
+
 	.columns.wrap {
 		flex-wrap: wrap;
 	}
