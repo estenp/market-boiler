@@ -1,18 +1,19 @@
 @import "../../global-styles/variables";
 
 .navbar {
+	//composes: "navbar" from "../../global-styles/global-styles.scss";
 	border-bottom: double 7px $primary;
 	background-color: #fbfbfb;
 }
 
 .navbar-brand .navbar-item {
 	font-size: 40px;
-	font-family: 'Muli';
+	font-family: "Muli";
 
 	span {
 		width: auto;
 		padding-right: 5px;
-		transition: width .9s linear, opacity .3s linear;
+		transition: width 0.9s linear, opacity 0.3s linear;
 		opacity: 1;
 	}
 

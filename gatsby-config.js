@@ -4,15 +4,16 @@ module.exports = {
 	},
 	plugins: [
 		"gatsby-plugin-react-helmet",
-		{
-			resolve: `gatsby-plugin-postcss`,
-			options: {
-				postCssPlugins: [
-					require(`postcss-preset-env`)({ stage: 2 }),
-					require(`postcss-modules`)
-				]
-			}
-		},
+		// {
+		// 	resolve: `gatsby-plugin-postcss`,
+		// 	options: {
+		// 		postCssPlugins: [
+		// 			require(`postcss-preset-env`)({
+		// 				stage: 2
+		// 			})
+		// 		]
+		// 	}
+		// },
 		{
 			resolve: `gatsby-plugin-react-css-modules`,
 			options: {
@@ -25,7 +26,7 @@ module.exports = {
 				},
 
 				// Exclude global styles from the plugin using a RegExp:
-				exclude: `\/global\/`
+				exclude: `\/global-styles\/`
 				// For all the options check babel-plugin-react-css-modules README link provided above
 			}
 		},
