@@ -2,8 +2,8 @@ import React from "react";
 import Helmet from "react-helmet";
 import Layout from "../components/Layout";
 import { StaticQuery, graphql } from "gatsby";
-import Navbar from "../components/Navbar";
-import StatusAlert from "../components/StatusAlert.js";
+import Navbar from "../components/Navbar/Navbar";
+import StatusAlert from "../components/StatusAlert/StatusAlert";
 
 export default ({ children }) => (
     <StaticQuery
