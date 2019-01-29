@@ -4,14 +4,6 @@
 // Config vars
 
 @import "./variables";
-:global {
-	.navbar {
-		background-color: white;
-		min-height: 3.25rem;
-		position: relative;
-		z-index: 30;
-	}
-}
 
 .hidden {
 	display: none !important;
