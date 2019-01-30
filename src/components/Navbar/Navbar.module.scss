@@ -1,7 +1,6 @@
 @import "../../global-styles/variables";
 
 .navbar {
-	//composes: "navbar" from "../../global-styles/global-styles.scss";
 	border-bottom: double 7px $primary;
 	background-color: #fbfbfb;
 }
@@ -16,12 +15,6 @@
 		transition: width 0.9s linear, opacity 0.3s linear;
 		opacity: 1;
 	}
-
-	/*&:hover
-    span
-      width: 0
-      opacity: 0
-      overflow: hidden*/
 }
 
 a.navbar-item:hover,
@@ -32,6 +25,6 @@ a.navbar-item.is-active,
 }
 
 .navbar-item img {
-	max-height: 1.9em;
-	width: 2.8em;
+	width: 5em;
+	max-height: 5em;
 }
