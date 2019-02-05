@@ -3,26 +3,42 @@ import { Link } from "gatsby";
 import "./Navbar.scss";
 
 const Navbar = ({ data }) => (
-	<nav className="navbar is-transparent">
+	<nav styleName="navbar" className="navbar is-transparent">
 		<div className="container">
 			<div className="navbar-brand">
-				<Link to="/" className="navbar-item">
+				<Link to="/" styleName="navbar-item" className="navbar-item">
 					<div className="logo">
-						<img src="./img/cfilogobluelight.svg" />
+						<img src="../img/cfilogobluelight.svg" />
 					</div>
 				</Link>
 			</div>
 			<div className="navbar-end">
-				<Link className="navbar-item" to="/vendors">
+				<Link
+					styleName="navbar-item"
+					className="navbar-item"
+					to="/vendors"
+				>
 					Vendors
 				</Link>
-				<Link className="navbar-item" to="/services">
+				<Link
+					styleName="navbar-item"
+					className="navbar-item"
+					to="/services"
+				>
 					Services
 				</Link>
-				<Link className="navbar-item" to="/examples">
+				<Link
+					styleName="navbar-item"
+					className="navbar-item"
+					to="/examples"
+				>
 					Examples
 				</Link>
-				<Link className="navbar-item" to="/contact">
+				<Link
+					styleName="navbar-item"
+					className="navbar-item"
+					to="/contact"
+				>
 					Contact Us
 				</Link>
 			</div>
