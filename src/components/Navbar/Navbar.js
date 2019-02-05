@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import "./Navbar.scss";
+import "./Navbar.module.scss";
 
 const Navbar = ({ data }) => (
 	<nav styleName="navbar" className="navbar is-transparent">
