@@ -7,29 +7,20 @@ export default class IndexPage extends React.Component {
 	render() {
 		const {data} = this.props;
 		const {edges: posts} = data.blogPost;
-		console.log(posts);
+		const {edges: indexPageData} = data.indexPage;
+
 		return (
 			<Layout>
 				<div className="hero-background-image full-height-plus-children">
 					<div className="container hero-image-text has-text-grey-dark is-centered">
 						<div className="side-by-side columns">
 							<div className="column text-pane">
-								{/* <h1>
-									{
-										data.allMarkdownRemark.edges[0].node
-											.frontmatter.welcomeText
-									}
-								</h1>
+								<h1>{indexPageData[0].node.frontmatter.welcomeText}</h1>
 
 								<hr />
-								<p>
-									{
-										data.allMarkdownRemark.edges[0].node
-											.frontmatter.aboutText
-									}
-								</p> */}
-								<BlogPostShort post={posts[0].node} />
+								<p>{indexPageData[0].node.frontmatter.aboutText}</p>
 							</div>
+							<BlogPostShort post={posts[0].node} />
 							<div id="homepage-image" className="column image-pane" />
 						</div>
 					</div>

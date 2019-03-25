@@ -24,7 +24,13 @@ const BlogPostShort = ({post}) => (
 				<br />
 				<br />
 				<Link className="button is-small" to={post.fields.slug}>
-					Keep Reading →
+					Tell Me More! →
+				</Link>
+				<br />
+				<br />
+				<br />
+				<Link className="is-small" to="/blog-landing/">
+					See all blog posts
 				</Link>
 			</p>
 		</div>
