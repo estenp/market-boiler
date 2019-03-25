@@ -1,19 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import {graphql} from "gatsby";
 import Layout from "../components/Layout";
-
+import BlogPostShort from "../components/BlogPostShort/BlogPostShort";
 export default class IndexPage extends React.Component {
 	render() {
-		const { data } = this.props;
-		console.log(data);
+		const {data} = this.props;
+		const {edges: posts} = data.blogPost;
+		console.log(posts);
 		return (
 			<Layout>
 				<div className="hero-background-image full-height-plus-children">
 					<div className="container hero-image-text has-text-grey-dark is-centered">
 						<div className="side-by-side columns">
 							<div className="column text-pane">
-								<h1>
+								{/* <h1>
 									{
 										data.allMarkdownRemark.edges[0].node
 											.frontmatter.welcomeText
@@ -26,12 +27,10 @@ export default class IndexPage extends React.Component {
 										data.allMarkdownRemark.edges[0].node
 											.frontmatter.aboutText
 									}
-								</p>
+								</p> */}
+								<BlogPostShort post={posts[0].node} />
 							</div>
-							<div
-								id="homepage-image"
-								className="column image-pane"
-							/>
+							<div id="homepage-image" className="column image-pane" />
 						</div>
 					</div>
 				</div>
@@ -50,9 +49,24 @@ IndexPage.propTypes = {
 
 export const pageQuery = graphql`
 	query IndexQuery {
-		allMarkdownRemark(
-			filter: { fileAbsolutePath: { regex: "/src.pages.index.md/" } }
-		) {
+		blogPost: allMarkdownRemark(limit: 1, sort: {order: DESC, fields: [frontmatter___date]}, filter: {frontmatter: {templateKey: {eq: "blog-post"}}}) {
+			edges {
+				node {
+					excerpt(pruneLength: 400)
+					id
+					fields {
+						slug
+					}
+					frontmatter {
+						title
+						templateKey
+						date(formatString: "MMMM DD, YYYY")
+					}
+				}
+			}
+		}
+
+		indexPage: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/src.pages.index.md/"}}) {
 			edges {
 				node {
 					frontmatter {
