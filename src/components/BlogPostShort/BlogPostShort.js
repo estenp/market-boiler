@@ -1,5 +1,4 @@
 import React from "react";
-import {render} from "react-dom";
 import {Link} from "gatsby";
 import PropTypes from "prop-types";
 
