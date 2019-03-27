@@ -1,10 +1,6 @@
 ---
-
 title: CFI Shades
-welcomeText: Welcome to Custom Fabricating Industries
+welcomeText: Welcome to The Dispense Report
 aboutText: >
-    CFI has been serving the Chicagoland area since 1974, specializing in contact and healthcare window treatments and cubicle curtains.  
-
-    We are here to help you with your next project.
-
+    We have all the dankest products in town! You'll love our selection of fire ass stuff!!!
 ---

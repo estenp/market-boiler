@@ -1,44 +1,28 @@
 import React from "react";
-import { Link } from "gatsby";
+import {Link} from "gatsby";
 import "./Navbar.module.scss";
 
-const Navbar = ({ data }) => (
+const Navbar = ({data}) => (
 	<nav styleName="navbar" className="navbar is-transparent">
 		<div className="container">
 			<div className="navbar-brand">
 				<Link to="/" styleName="navbar-item" className="navbar-item">
 					<div className="logo">
-						<img src="../img/cfilogobluelight.svg" />
+						<h1>The Dispense Report</h1>
 					</div>
 				</Link>
 			</div>
-			<div className="navbar-end">
-				<Link
-					styleName="navbar-item"
-					className="navbar-item"
-					to="/vendors"
-				>
+			<div styleName="navbar-end" className="navbar-end">
+				<Link styleName="navbar-item" className="navbar-item" to="/vendors">
 					Vendors
 				</Link>
-				<Link
-					styleName="navbar-item"
-					className="navbar-item"
-					to="/services"
-				>
+				<Link styleName="navbar-item" className="navbar-item" to="/services">
 					Services
 				</Link>
-				<Link
-					styleName="navbar-item"
-					className="navbar-item"
-					to="/examples"
-				>
+				<Link styleName="navbar-item" className="navbar-item" to="/examples">
 					Examples
 				</Link>
-				<Link
-					styleName="navbar-item"
-					className="navbar-item"
-					to="/contact"
-				>
+				<Link styleName="navbar-item" className="navbar-item" to="/contact">
 					Contact Us
 				</Link>
 			</div>

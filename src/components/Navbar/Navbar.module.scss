@@ -3,12 +3,16 @@
 .navbar {
 	border-bottom: double 7px $primary;
 	background-color: #fbfbfb;
+	font-family: $primary-font;
+	font-size: 1.2em;
+	text-transform: capitalize;
+}
+.navbar-end {
+	font-family: $secondary-font;
+	font-size: 0.8em;
 }
 
 .navbar-brand .navbar-item {
-	font-size: 40px;
-	font-family: "Muli";
-
 	span {
 		width: auto;
 		padding-right: 5px;

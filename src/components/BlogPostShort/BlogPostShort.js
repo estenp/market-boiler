@@ -13,9 +13,7 @@ const BlogPostShort = ({post}) => (
 			key={post.id}
 		>
 			<p>
-				<Link className="has-text-primary" to={post.fields.slug}>
-					{post.frontmatter.title}
-				</Link>
+				<Link to={post.fields.slug}>{post.frontmatter.title}</Link>
 				<span> &bull; </span>
 				<small>{post.frontmatter.date}</small>
 			</p>

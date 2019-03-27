@@ -1,9 +1,8 @@
+@import "./variables";
 @import "~bulma";
-@import url("https://fonts.googleapis.com/css?family=Muli:300|Slabo+27px|Open+Sans|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu|Playfair+Display");
+@import url("https://fonts.googleapis.com/css?family=Muli:300|Slabo+27px|Open+Sans|Crimson+Text|Muli|Roboto+Condensed|Roboto+Slab|Ubuntu|Josefin+Sans");
 
 // Config vars
-
-@import "./variables";
 
 .hidden {
 	display: none !important;
@@ -20,7 +19,7 @@ body {
 
 h1,
 h2.title {
-	font-family: "Playfair Display";
+	font-family: $primary-font;
 	font-weight: 400;
 	text-transform: uppercase;
 }
@@ -74,6 +73,10 @@ h2.title {
 
 .hero.is-light {
 	background-color: $light-blue;
+}
+
+.has-text-primary {
+	color: $light-green;
 }
 
 .border-top-bottom {
@@ -206,8 +209,4 @@ hr {
 
 input {
 	width: 500px;
-}
-
-::placeholder {
-	color: red;
 }

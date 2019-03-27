@@ -20,8 +20,8 @@ export default class IndexPage extends React.Component {
 								<hr />
 								<p>{indexPageData[0].node.frontmatter.aboutText}</p>
 							</div>
+
 							<BlogPostShort post={posts[0].node} />
-							<div id="homepage-image" className="column image-pane" />
 						</div>
 					</div>
 				</div>
