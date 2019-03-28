@@ -6,6 +6,49 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+    - name: "products"
+      label: "Products"
+      folder: src/products
+      create: true
+      fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Product"
+            name: "product"
+            widget: "object"
+            fields:
+                - { label: "Product ID", name: "productID", widget: "hidden" }
+                - { label: "Product Name", name: "name", widget: "string" }
+                - {
+                      label: "Units",
+                      name: "units",
+                      widget: "select",
+                      options: ["grams", "ounces"],
+                  }
+                - {
+                      label: "Price",
+                      name: "pricePerUnit",
+                      widget: "number",
+                      valueType: "float",
+                  }
+                - { label: "Quantity", widget: "number", valueType: "float" }
+
+    - name: "order"
+      label: "Order"
+      folder: "src/pages/order"
+      create: true
+      fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Order Date", name: "date", widget: "datetime" }
+          - {
+                label: "Product",
+                name: "product",
+                widget: "relation",
+                collection: "products",
+                searchFields: "name",
+                valueField: "name",
+                displayFields: "name",
+            }
+
     - name: "blog"
       label: "Blog"
       folder: "src/pages/blog"

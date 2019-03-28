@@ -47,18 +47,3 @@ BlogPostShort.propTypes = {
 };
 
 export default BlogPostShort;
-
-// export const pageQuery = graphql`
-// 	query BlogPostShort($id: String!) {
-// 		markdownRemark(id: {eq: $id}) {
-// 			id
-// 			html
-// 			frontmatter {
-// 				date(formatString: "MMMM DD, YYYY")
-// 				title
-// 				description
-// 				tags
-// 			}
-// 		}
-// 	}
-// `;
