@@ -10,12 +10,14 @@ collections:
       label: "Products"
       folder: src/products
       create: true
+      editor:
+          preview: false
       fields:
           - label: "Product"
             name: "product"
             widget: "object"
             fields:
-                - { label: "Product ID", name: "productID", widget: "hidden" }
+                - { label: "Product ID", name: "id", widget: "hidden" }
                 - { label: "Product Name", name: "name", widget: "string" }
                 - {
                       label: "Units",
@@ -29,6 +31,7 @@ collections:
                       widget: "number",
                       valueType: "float",
                   }
+                - { label: "Product Image", name: "image", widget: "image" }
 
     - name: "order"
       label: "Order"
