@@ -46,7 +46,12 @@ collections:
                 valueField: "name",
                 displayFields: "name",
             }
-          - { label: "Quantity", widget: "number", valueType: "float" }
+          - {
+                label: "Quantity",
+                name: "quantity",
+                widget: "number",
+                valueType: "float",
+            }
 
     - name: "blog"
       label: "Blog"
