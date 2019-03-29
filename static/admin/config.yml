@@ -20,16 +20,9 @@ collections:
                 - { label: "ID", name: "id", widget: "hidden" }
                 - { label: "Product Name", name: "name", widget: "string" }
                 - { label: "Product Image", name: "image", widget: "image" }
-                - { label: "Notes", name: "notes", widget: text }
                 - { label: "Description", name: "description", widget: text }
                 - {
-                      label: "Units",
-                      name: "units",
-                      widget: "select",
-                      options: ["grams", "ounces"],
-                  }
-                - {
-                      label: "Price",
+                      label: "Price Per Unit",
                       name: "pricePerUnit",
                       widget: "number",
                       valueType: "float",
@@ -57,6 +50,12 @@ collections:
                 name: "quantity",
                 widget: "number",
                 valueType: "float",
+            }
+          - {
+                label: "Units",
+                name: "units",
+                widget: "select",
+                options: ["grams", "ounces"],
             }
           - { label: "Notes", name: "notes", widget: text }
           - {
