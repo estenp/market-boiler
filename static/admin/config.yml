@@ -17,8 +17,11 @@ collections:
             name: "product"
             widget: "object"
             fields:
-                - { label: "Product ID", name: "id", widget: "hidden" }
+                - { label: "ID", name: "id", widget: "hidden" }
                 - { label: "Product Name", name: "name", widget: "string" }
+                - { label: "Product Image", name: "image", widget: "image" }
+                - { label: "Notes", name: "notes", widget: text }
+                - { label: "Description", name: "description", widget: text }
                 - {
                       label: "Units",
                       name: "units",
@@ -31,14 +34,14 @@ collections:
                       widget: "number",
                       valueType: "float",
                   }
-                - { label: "Product Image", name: "image", widget: "image" }
 
     - name: "order"
       label: "Order"
       folder: "src/pages/order"
       create: true
+      identifier_field: "id"
       fields:
-          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Order ID", name: "id", widget: "hidden" }
           - { label: "Order Date", name: "date", widget: "datetime" }
           - {
                 label: "Product",
@@ -54,6 +57,29 @@ collections:
                 name: "quantity",
                 widget: "number",
                 valueType: "float",
+            }
+          - { label: "Notes", name: "notes", widget: text }
+          - {
+                label: "Customer First Name",
+                name: "customerFirst",
+                widget: "string",
+            }
+          - {
+                label: "Customer Last Name",
+                name: "customerLast",
+                widget: "string",
+            }
+          - {
+                label: "Customer Phone",
+                name: "customerPhone",
+                widget: number,
+                valueType: "int",
+            }
+          - { label: "Customer Email", name: "customerEmail", widget: string }
+          - {
+                label: "Customer Comments",
+                name: "customerComments",
+                widget: text,
             }
 
     - name: "blog"
