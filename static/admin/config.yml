@@ -10,6 +10,8 @@ collections:
       label: "Products"
       folder: src/products
       create: true
+      extension: "json"
+      format: "json"
       editor:
           preview: false
       fields:
@@ -19,6 +21,12 @@ collections:
             fields:
                 - { label: "ID", name: "id", widget: "hidden" }
                 - { label: "Product Name", name: "name", widget: "string" }
+                - {
+                      label: "Product Type",
+                      name: "type",
+                      widget: "select",
+                      options: ["flower", "cigar", "candy"],
+                  }
                 - { label: "Product Image", name: "image", widget: "image" }
                 - { label: "Description", name: "description", widget: text }
                 - {
