@@ -8,7 +8,7 @@ public_folder: /img
 collections:
     - name: "products"
       label: "Products"
-      folder: src/products
+      folder: src/data/products
       create: true
       extension: "json"
       format: "json"
@@ -37,8 +37,8 @@ collections:
                   }
 
     - name: "order"
-      label: "Order"
-      folder: "src/pages/order"
+      label: "OrderS"
+      folder: "src/data/orders"
       create: true
       identifier_field: "id"
       fields:
