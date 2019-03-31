@@ -1,0 +1,10 @@
+{
+  "title": "product1",
+  "product": {
+    "name": "thing",
+    "type": "candy",
+    "image": "/img/gobbler.jpeg",
+    "description": "sdfsdf",
+    "pricePerUnit": 43
+  }
+}
