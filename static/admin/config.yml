@@ -8,6 +8,7 @@ public_folder: /img
 collections:
     - name: "products"
       label: "Products"
+      label_singular: "Product"
       folder: src/data/products
       create: true
       extension: "json"
@@ -15,30 +16,25 @@ collections:
       editor:
           preview: false
       fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - label: "Product"
-            name: "product"
-            widget: "object"
-            fields:
-                - { label: "ID", name: "id", widget: "hidden" }
-                - { label: "Product Name", name: "name", widget: "string" }
-                - {
-                      label: "Product Type",
-                      name: "type",
-                      widget: "select",
-                      options: ["flower", "cigar", "candy"],
-                  }
-                - { label: "Product Image", name: "image", widget: "image" }
-                - { label: "Description", name: "description", widget: text }
-                - {
-                      label: "Price Per Unit",
-                      name: "pricePerUnit",
-                      widget: "number",
-                      valueType: "float",
-                  }
+          - { label: "Product Name", name: "title", widget: "string" }
+          - { label: "ID", name: "id", widget: "hidden" }
+          - {
+                label: "Product Type",
+                name: "type",
+                widget: "select",
+                options: ["flower", "cigar", "candy"],
+            }
+          - { label: "Product Image", name: "image", widget: "image" }
+          - { label: "Description", name: "description", widget: text }
+          - {
+                label: "Price Per Unit",
+                name: "pricePerUnit",
+                widget: "number",
+                valueType: "float",
+            }
 
     - name: "order"
-      label: "OrderS"
+      label: "Orders"
       folder: "src/data/orders"
       create: true
       identifier_field: "id"
