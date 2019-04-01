@@ -1,8 +1,7 @@
 exports.handler = function(event, context, callback) {
 	callback(null, {
-		statusCode,
-		headers,
-		body: "Hello"
+		statusCode: 200,
+		body: JSON.stringify(event)
 	});
 	console.log(event, context);
 };
