@@ -5,6 +5,7 @@
 	"dependencies": {
 		"@reach/router": "^1.2.1",
 		"ajv": "^6.9.1",
+		"axios": "^0.18.0",
 		"babel-plugin-styled-components": "^1.10.0",
 		"bulma": "^0.7.4",
 		"eslint": "^5.14.1",
