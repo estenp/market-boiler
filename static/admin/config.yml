@@ -33,22 +33,28 @@ collections:
                 valueType: "float",
             }
 
-    - name: "order"
+    - name: "orders"
       label: "Orders"
+      label_singular: "Order"
       folder: "src/data/orders"
       create: true
-      identifier_field: "id"
+      extension: "json"
+      format: "json"
+      editor:
+          preview: false
+      #   identifier_field: "id"
       fields:
           - { label: "Order ID", name: "id", widget: "hidden" }
+          - { label: "Order Name", name: "title", widget: "string" }
           - { label: "Order Date", name: "date", widget: "datetime" }
           - {
                 label: "Product",
                 name: "product",
                 widget: "relation",
                 collection: "products",
-                searchFields: "name",
-                valueField: "name",
-                displayFields: "name",
+                searchFields: "title",
+                valueField: "title",
+                displayFields: "title",
             }
           - {
                 label: "Quantity",
