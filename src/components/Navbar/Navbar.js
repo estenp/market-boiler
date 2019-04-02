@@ -13,6 +13,9 @@ const Navbar = ({data}) => (
 				</Link>
 			</div>
 			<div styleName="navbar-end" className="navbar-end">
+				<Link styleName="navbar-item" className="navbar-item" to="/order">
+					Order
+				</Link>
 				<Link styleName="navbar-item" className="navbar-item" to="/vendors">
 					Vendors
 				</Link>
