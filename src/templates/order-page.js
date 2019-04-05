@@ -3,11 +3,14 @@ import PropTypes from "prop-types";
 import Content, { HTMLContent } from "../components/Content";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-export const OrderPageTemplate = ({ title, content, contentComponent }) => {
+export const OrderPageTemplate = ({ title, content, contentComponent, products }) => {
     const PageContent = contentComponent || Content;
 
     return (
         <Layout>
+            {products.map(({ node: product }) => (
+                <div key={product.id} className="card">hey</div>
+            ))}
             <section className="section section--gradient">
                 <div className="container">
                     <div className="columns">
@@ -116,13 +119,16 @@ OrderPageTemplate.propTypes = {
 };
 
 const OrderPage = ({ data }) => {
-    const { markdownRemark: post } = data;
-
+    const orderPageData = data.orderPage;
+    const { edges: products } = data.products;
+    //const { productDetail } = products.childProductsJson;
+    console.log(products)
     return (
         <OrderPageTemplate
             contentComponent={HTMLContent}
-            title={post.frontmatter.title}
-            content={post.html}
+            title={orderPageData.frontmatter.title}
+            content={orderPageData.html}
+            products={products}
         />
     );
 };
@@ -142,21 +148,26 @@ export const OrderPageQuery = graphql`
             }
         }
 
-        products: allMarkdownRemark(limit: 1, sort: {order: DESC, fields: [frontmatter___date]}, filter: {frontmatter: {templateKey: {eq: "blog-post"}}}) {
-			edges {
-				node {
-					excerpt(pruneLength: 400)
-					id
-					fields {
-						slug
-					}
-					frontmatter {
-						title
-						templateKey
-						date(formatString: "MMMM DD, YYYY")
-					}
-				}
-			}
-		}
+        products: allFile(filter: { sourceInstanceName: { eq: "data" } }) {
+            edges {
+              node {
+                extension
+                dir
+                modifiedTime
+                name
+                childProductsJson {
+                  id
+                  product {
+                    name
+                    type
+                    image
+                    description
+                    pricePerUnit
+                  }
+                }
+              }
+            }
+          }
+          
     }
 `;

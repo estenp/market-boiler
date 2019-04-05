@@ -22,7 +22,7 @@ module.exports = {
 				// add `postcss-scss` to your project's devDependencies
 				// and add the following option here:
 				filetypes: {
-					".scss": { syntax: `postcss-scss` }
+					".scss": {syntax: `postcss-scss`}
 				},
 
 				// Exclude global styles from the plugin using a RegExp:
@@ -32,6 +32,7 @@ module.exports = {
 		},
 		"gatsby-plugin-sass",
 
+		`gatsby-transformer-json`,
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
@@ -44,6 +45,14 @@ module.exports = {
 			options: {
 				path: `${__dirname}/src/img`,
 				name: "images"
+			}
+		},
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `data`,
+				path: `${__dirname}/src/data/`,
+				ignore: [`**/\.*`] // ignore files starting with a dot
 			}
 		},
 		"gatsby-plugin-sharp",
