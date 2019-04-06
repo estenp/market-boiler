@@ -5,18 +5,41 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 export const OrderPageTemplate = ({ title, content, contentComponent, products }) => {
     const PageContent = contentComponent || Content;
-
     return (
         <Layout>
-            {products.map(({ node: product }) => (
-                <div key={product.id} className="card">hey</div>
-            ))}
+            
             <section className="section section--gradient">
                 <div className="container">
+                
                     <div className="columns">
                         <div className="column is-10 is-offset-1">
                             <section className="section">
                                 <h2 className="title">{title}</h2>
+                                <div className="columns is-centered">
+                                    {products.map(({ node: productMetadata }) => {
+                                        console.log(productMetadata);
+                                        return (
+                                            <div key={productMetadata.product.id} className="column">
+                                                <div className="card">
+                                                    <div className="card-header">
+                                                        <div className="card-header-title">
+                                                            {productMetadata.product.productDetails.name} <br/>
+                                                            <span className="is-italic has-text-weight-light has-text-light has-text-primary">{productMetadata.product.productDetails.type}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="card-image">
+                                                        <figure className="image is-4by3">
+                                                            <img src={productMetadata.product.productDetails.image} alt="Placeholder image" />
+                                                        </figure>
+                                                    </div>
+                                                    <div className="card-content">
+                                                        <p>{productMetadata.product.productDetails.description}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                                 <div>
                                     <PageContent
                                         className="content"
@@ -122,7 +145,7 @@ const OrderPage = ({ data }) => {
     const orderPageData = data.orderPage;
     const { edges: products } = data.products;
     //const { productDetail } = products.childProductsJson;
-    console.log(products)
+    //console.log(products)
     return (
         <OrderPageTemplate
             contentComponent={HTMLContent}
@@ -155,9 +178,9 @@ export const OrderPageQuery = graphql`
                 dir
                 modifiedTime
                 name
-                childProductsJson {
+                product: childProductsJson {
                   id
-                  product {
+                  productDetails: product {
                     name
                     type
                     image

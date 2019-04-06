@@ -1,14 +1,15 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { StaticQuery, graphql } from "gatsby";
+import {StaticQuery, graphql} from "gatsby";
 import Navbar from "../components/Navbar/Navbar";
 import StatusAlert from "../components/StatusAlert/StatusAlert";
+import PageTransition from "gatsby-plugin-page-transitions";
 
-export default ({ children }) => (
+export default ({children}) => (
 	<StaticQuery
 		query={graphql`
 			query StatusAlert {
-				markdownRemark(frontmatter: { type: { eq: "alert" } }) {
+				markdownRemark(frontmatter: {type: {eq: "alert"}}) {
 					html
 					frontmatter {
 						date(formatString: "MMMM DD, YYYY")
@@ -23,10 +24,10 @@ export default ({ children }) => (
 			<div>
 				<Helmet title="Custom Fabricating Industries" />
 				<Navbar />
-				{!!data && !!data.markdownRemark && (
-					<StatusAlert message={data.markdownRemark.html} />
-				)}
-				<div className="main-container">{children}</div>
+				{!!data && !!data.markdownRemark && <StatusAlert message={data.markdownRemark.html} />}
+				<PageTransition>
+					<div className="main-container">{children}</div>
+				</PageTransition>
 			</div>
 		)}
 	/>
