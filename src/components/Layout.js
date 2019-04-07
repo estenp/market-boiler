@@ -3,7 +3,6 @@ import Helmet from "react-helmet";
 import {StaticQuery, graphql} from "gatsby";
 import Navbar from "../components/Navbar/Navbar";
 import StatusAlert from "../components/StatusAlert/StatusAlert";
-import PageTransition from "gatsby-plugin-page-transitions";
 
 export default ({children}) => (
 	<StaticQuery
@@ -25,9 +24,8 @@ export default ({children}) => (
 				<Helmet title="Custom Fabricating Industries" />
 				<Navbar />
 				{!!data && !!data.markdownRemark && <StatusAlert message={data.markdownRemark.html} />}
-				<PageTransition>
-					<div className="main-container">{children}</div>
-				</PageTransition>
+
+				<div className="main-container">{children}</div>
 			</div>
 		)}
 	/>
