@@ -23,7 +23,7 @@ export const OrderPageTemplate = ({ title, content, contentComponent, products }
                                                 <div className="card">
                                                     <div className="card-header">
                                                         <div className="card-header-title">
-                                                            {productMetadata.product.productDetails.name} <br/>
+                                                            {productMetadata.product.productDetails.title} <br/>
                                                             <span className="is-italic has-text-weight-light has-text-light has-text-primary">{productMetadata.product.productDetails.type}</span>
                                                         </div>
                                                     </div>
