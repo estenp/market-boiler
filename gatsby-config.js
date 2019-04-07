@@ -55,12 +55,6 @@ module.exports = {
 				ignore: [`**/\.*`] // ignore files starting with a dot
 			}
 		},
-		{
-			resolve: "gatsby-plugin-page-transitions",
-			options: {
-				transitionTime: 500
-			}
-		},
 		"gatsby-plugin-sharp",
 		"gatsby-transformer-sharp",
 		{
