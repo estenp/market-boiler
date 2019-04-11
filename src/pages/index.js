@@ -7,6 +7,7 @@ import BlogPostShort from "../components/BlogPostShort/BlogPostShort";
 export default class IndexPage extends React.Component {
 	render() {
 		const {data} = this.props;
+
 		const {edges: posts} = data.blogPost;
 		const {edges: indexPageData} = data.indexPage;
 
