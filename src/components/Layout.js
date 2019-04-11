@@ -21,7 +21,7 @@ export default ({children}) => (
 		`}
 		render={data => (
 			<div>
-				<Helmet title="Custom Fabricating Industries" />
+				<Helmet title="The Dispense Report" />
 				<Navbar />
 				{!!data && !!data.markdownRemark && <StatusAlert message={data.markdownRemark.html} />}
 

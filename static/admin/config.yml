@@ -17,14 +17,18 @@ collections:
           preview: false
       fields:
           - { label: "Product Name", name: "title", widget: "string" }
-          - { label: "ID", name: "id", widget: "hidden" }
           - {
                 label: "Product Type",
                 name: "type",
                 widget: "select",
                 options: ["flower", "cigar", "candy"],
             }
-          - { label: "Product Image", name: "image", widget: "image" }
+          - {
+                label: "Product Image",
+                name: "image",
+                widget: "image",
+                required: "false",
+            }
           - { label: "Description", name: "description", widget: text }
           - {
                 label: "Price Per Unit",
@@ -32,6 +36,7 @@ collections:
                 widget: "number",
                 valueType: "float",
             }
+          - { label: "Unit", name: "availUnits", widget: "list" }
 
     - name: "orders"
       label: "Orders"

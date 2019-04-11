@@ -3,5 +3,6 @@
 	"type": "candy",
 	"image": "/img/gobbler.jpeg",
 	"description": "This stuff is super dank, bro.",
-	"pricePerUnit": 300
+	"pricePerUnit": 300,
+	"availUnits": ["gram", "eight"]
 }

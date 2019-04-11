@@ -3,5 +3,6 @@
 	"type": "cigar",
 	"image": "/img/glacier-wallpaper.jpeg",
 	"description": "A cute product.",
-	"pricePerUnit": 3
+	"pricePerUnit": 3,
+	"availUnits": ["pack of 5", "pack of 10"]
 }
