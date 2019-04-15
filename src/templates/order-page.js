@@ -7,29 +7,42 @@ import Layout from "../components/Layout";
 export class OrderPageTemplate extends React.Component {
 	constructor(props) {
 		super(props);
-		//console.log(props);
+
+		let prodState = {};
+		props.products.forEach(p => {
+			prodState[p.node.product.id] = {
+				quantity: "",
+				unit: ""
+			};
+		});
+
 		this.state = {
-			unit: [],
-			quantity: []
+			products: prodState
 		};
+		console.log(this.state);
+
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-	handleInputChange(event, i) {
+	handleInputChange(i, id, event) {
 		const target = event.target;
-		console.log(event);
 		const value = target.type === "checkbox" ? target.checked : target.value;
 		const name = target.name;
-
-		this.setState({
-			[name]: value
+		console.log(id);
+		this.setState(state => {
+			let cloneState = {...state.products};
+			cloneState[id][name] = value;
+			return {
+				products: cloneState
+			};
 		});
+		console.log(this.state);
 	}
 	render() {
 		const {title, content, contentComponent, products} = this.props;
 		const PageContent = contentComponent || Content;
 
-		console.log(this.state);
+		//console.log(this.state);
 
 		return (
 			<Layout>
@@ -41,6 +54,7 @@ export class OrderPageTemplate extends React.Component {
 									<h2 className="title">{title}</h2>
 									<div className="columns is-centered">
 										{products.map(({node: productMetadata}, i) => {
+											var productID = productMetadata.product.id;
 											return (
 												<div key={productMetadata.product.id} className="column">
 													<div className="card">
@@ -62,7 +76,11 @@ export class OrderPageTemplate extends React.Component {
 															<hr />
 															<div>
 																<label>Unit: </label> <br />
-																<select name="unit" value={this.state.unit[i]} onChange={e => this.handleInputChange(i, e)}>
+																<select
+																	name="unit"
+																	// value={this.state.products[productID].unit}
+																	onChange={this.handleInputChange.bind(this, i, productID)}
+																>
 																	{productMetadata.product.availUnits.map((unit, i) => (
 																		<option key={i} value={unit}>
 																			{unit}
@@ -75,12 +93,16 @@ export class OrderPageTemplate extends React.Component {
 																<input
 																	type="number"
 																	name="quantity"
-																	value={this.state.quantity[i]}
-																	onChange={e => this.handleInputChange(i, e)}
+																	// value={this.state.products[productID].quantity}
+																	onChange={this.handleInputChange.bind(this, i, productID)}
 																/>
 															</div>
 															<div>
-																<button disabled={this.state.quantity[i] !== ""}>Add to Cart</button>
+																<button
+																// disabled={this.state.products[productID].quantity !== ""}
+																>
+																	Add to Cart
+																</button>
 															</div>
 														</div>
 													</div>
