@@ -41,17 +41,17 @@ export class OrderPageTemplate extends React.Component {
 	}
 
 	handleClick(productID) {
-		if (!this.isInCart(productID)) {
-			var cartArr = [...this.state.cart, productID];
-		} else {
-			var cartClone = this.state.cart.slice();
-			var index = this.state.cart.indexOf(productID);
-			console.log(index);
-			var cartArr = cartClone.splice(index, 1);
-			console.log(cartArr);
-		}
-		this.setState({
-			cart: cartArr
+		this.setState(state => {
+			if (!this.isInCart(productID)) {
+				var newCart = [...state.cart, productID];
+			} else {
+				var newCart = state.cart.slice();
+				var index = state.cart.indexOf(productID);
+				newCart.splice(index, 1);
+			}
+			return {
+				cart: newCart
+			};
 		});
 	}
 
@@ -78,7 +78,7 @@ export class OrderPageTemplate extends React.Component {
 										{products.map(({node: productMetadata}, i) => {
 											let productID = productMetadata.product.id;
 											return (
-												<div key={productMetadata.product.id} className="column">
+												<div key={productID} className="column">
 													<div className="card">
 														<div className="card-header">
 															<div className="card-header-title">
