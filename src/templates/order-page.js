@@ -12,33 +12,55 @@ export class OrderPageTemplate extends React.Component {
 		props.products.forEach(p => {
 			prodState[p.node.product.id] = {
 				quantity: "",
-				unit: ""
+				unit: p.node.product.availUnits[0]
 			};
 		});
 
 		this.state = {
-			products: prodState
+			products: prodState,
+			cart: []
 		};
-		console.log(this.state);
 
 		this.handleInputChange = this.handleInputChange.bind(this);
+		this.handleClick = this.handleClick.bind(this);
+		this.isInCart = this.isInCart.bind(this);
 	}
 
-	handleInputChange(i, id, event) {
+	handleInputChange(productID, event) {
 		const target = event.target;
 		const value = target.type === "checkbox" ? target.checked : target.value;
 		const name = target.name;
-		console.log(id);
+
 		this.setState(state => {
 			let cloneState = {...state.products};
-			cloneState[id][name] = value;
+			cloneState[productID][name] = value;
 			return {
 				products: cloneState
 			};
 		});
-		console.log(this.state);
 	}
+
+	handleClick(productID) {
+		if (!this.isInCart(productID)) {
+			var cartArr = [...this.state.cart, productID];
+		} else {
+			var cartClone = this.state.cart.slice();
+			var index = this.state.cart.indexOf(productID);
+			console.log(index);
+			var cartArr = cartClone.splice(index, 1);
+			console.log(cartArr);
+		}
+		this.setState({
+			cart: cartArr
+		});
+	}
+
+	isInCart(productID) {
+		return this.state.cart.indexOf(productID) === -1 ? false : true;
+	}
+
 	render() {
+		console.log(this.state);
 		const {title, content, contentComponent, products} = this.props;
 		const PageContent = contentComponent || Content;
 
@@ -54,7 +76,7 @@ export class OrderPageTemplate extends React.Component {
 									<h2 className="title">{title}</h2>
 									<div className="columns is-centered">
 										{products.map(({node: productMetadata}, i) => {
-											var productID = productMetadata.product.id;
+											let productID = productMetadata.product.id;
 											return (
 												<div key={productMetadata.product.id} className="column">
 													<div className="card">
@@ -78,8 +100,8 @@ export class OrderPageTemplate extends React.Component {
 																<label>Unit: </label> <br />
 																<select
 																	name="unit"
-																	// value={this.state.products[productID].unit}
-																	onChange={this.handleInputChange.bind(this, i, productID)}
+																	value={this.state.products[productID].unit}
+																	onChange={this.handleInputChange.bind(this, productID)}
 																>
 																	{productMetadata.product.availUnits.map((unit, i) => (
 																		<option key={i} value={unit}>
@@ -93,15 +115,16 @@ export class OrderPageTemplate extends React.Component {
 																<input
 																	type="number"
 																	name="quantity"
-																	// value={this.state.products[productID].quantity}
-																	onChange={this.handleInputChange.bind(this, i, productID)}
+																	value={this.state.products[productID].quantity}
+																	onChange={this.handleInputChange.bind(this, productID)}
 																/>
 															</div>
 															<div>
 																<button
-																// disabled={this.state.products[productID].quantity !== ""}
+																	onClick={this.handleClick.bind(this, productID)}
+																	disabled={this.state.products[productID].quantity == ""}
 																>
-																	Add to Cart
+																	{this.isInCart(productID) ? "Remove From Cart" : "Add to Cart"}
 																</button>
 															</div>
 														</div>
