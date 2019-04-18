@@ -4,6 +4,7 @@ import Content, {HTMLContent} from "../components/Content";
 import {graphql} from "gatsby";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard/ProductCard";
+import Cart from "../components/Cart/Cart";
 
 export class OrderPageTemplate extends React.Component {
 	constructor(props) {
@@ -70,6 +71,7 @@ export class OrderPageTemplate extends React.Component {
 		return (
 			<Layout>
 				<section className="section section--gradient">
+					<Cart />
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">
@@ -88,58 +90,6 @@ export class OrderPageTemplate extends React.Component {
 													handleClick={this.handleClick}
 													handleChange={this.handleInputChange}
 												/>
-												// <div key={productID} className="column">
-												// 	<div className="card">
-												// 		<div className="card-header">
-												// 			<div className="card-header-title">
-												// 				{productMetadata.product.title} <br />
-												// 				<span className="is-italic has-text-weight-light has-text-light has-text-primary">
-												// 					{productMetadata.product.type}
-												// 				</span>
-												// 			</div>
-												// 		</div>
-												// 		<div className="card-image">
-												// 			<figure className="image is-4by3">
-												// 				<img src={productMetadata.product.image} alt="Placeholder image" />
-												// 			</figure>
-												// 		</div>
-												// 		<div className="card-content">
-												// 			<p>{productMetadata.product.description}</p>
-												// 			<hr />
-												// 			<div>
-												// 				<label>Unit: </label> <br />
-												// 				<select
-												// 					name="unit"
-												// 					value={this.state.products[productID].unit}
-												// 					onChange={this.handleInputChange.bind(this, productID)}
-												// 				>
-												// 					{productMetadata.product.availUnits.map((unit, i) => (
-												// 						<option key={i} value={unit}>
-												// 							{unit}
-												// 						</option>
-												// 					))}
-												// 				</select>
-												// 			</div>
-												// 			<div>
-												// 				<label>Quantity: </label> <br />
-												// 				<input
-												// 					type="number"
-												// 					name="quantity"
-												// 					value={this.state.products[productID].quantity}
-												// 					onChange={this.handleInputChange.bind(this, productID)}
-												// 				/>
-												// 			</div>
-												// 			<div>
-												// 				<button
-												// 					onClick={this.handleClick.bind(this, productID)}
-												// 					disabled={this.state.products[productID].quantity == ""}
-												// 				>
-												// 					{this.isInCart(productID) ? "Remove From Cart" : "Add to Cart"}
-												// 				</button>
-												// 			</div>
-												// 		</div>
-												// 	</div>
-												// </div>
 											);
 										})}
 									</div>
