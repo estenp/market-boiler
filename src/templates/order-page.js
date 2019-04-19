@@ -62,7 +62,7 @@ export class OrderPageTemplate extends React.Component {
 	}
 
 	render() {
-		console.log(this.state);
+		//console.log(this.state);
 		const {title, content, contentComponent, products} = this.props;
 		const PageContent = contentComponent || Content;
 
@@ -71,7 +71,7 @@ export class OrderPageTemplate extends React.Component {
 		return (
 			<Layout>
 				<section className="section section--gradient">
-					<Cart />
+					<Cart cart={this.state.cart} products={products} />
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">

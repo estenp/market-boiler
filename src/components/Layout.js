@@ -21,7 +21,14 @@ export default ({children}) => (
 		`}
 		render={data => (
 			<div>
-				<Helmet title="The Dispense Report" />
+				<Helmet title="The Dispense Report">
+					<link
+						rel="stylesheet"
+						href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+						integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+						crossorigin="anonymous"
+					/>
+				</Helmet>
 				<Navbar />
 				{!!data && !!data.markdownRemark && <StatusAlert message={data.markdownRemark.html} />}
 
