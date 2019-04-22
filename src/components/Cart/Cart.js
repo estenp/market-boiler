@@ -28,10 +28,10 @@ export default class Cart extends React.Component {
 				<div className="card" styleName="cart">
 					<header className="card-header">
 						<a href="javascript:void(0)" className="card-header-icon has-text-primary" aria-label="shopping-cart-icon">
-							<i className="fas fa-shopping-cart" />
+							<i className="fas fa-shopping-cart" styleName="cart-icon" />
 						</a>
 						<p className="card-header-title">
-							Cart &nbsp;<span>{this.props.cart.length}</span>
+							<span>{this.props.cart.length}</span>
 						</p>
 
 						<a href="javascript:void(0)" className="card-header-icon" aria-label="expand-cart-items" onClick={this.toggleCart}>
@@ -40,11 +40,11 @@ export default class Cart extends React.Component {
 							</span>
 						</a>
 					</header>
-					{this.props.cart.length < 1 && (
+					{/* {this.props.cart.length < 1 && (
 						<div className="card-content">
 							<p>Your cart is empty.</p>
 						</div>
-					)}
+					)} */}
 					{this.props.cart.length > 0 && this.state.cartIsExpanded && (
 						<div className="card-content">
 							<ul>
