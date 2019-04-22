@@ -35,22 +35,22 @@ export default class ProductCard extends React.Component {
 				<div className="card" styleName={this.isInCart(productID) ? "isInCart" : ""}>
 					<div className="card-header">
 						<div className="card-header-title">
-							{this.props.productMetadata.product.title} <br />
-							<span className="is-italic has-text-weight-light has-text-light has-text-primary">{this.props.productMetadata.product.type}</span>
+							{this.props.productData.title} <br />
+							<span className="is-italic has-text-weight-light has-text-light has-text-primary">{this.props.productData.type}</span>
 						</div>
 					</div>
 					<div className="card-image">
 						<figure className="image is-4by3">
-							<img src={this.props.productMetadata.product.image} alt="Placeholder image" />
+							<img src={this.props.productData.image} alt="Placeholder image" />
 						</figure>
 					</div>
 					<div className="card-content">
-						<p>{this.props.productMetadata.product.description}</p>
+						<p>{this.props.productData.description}</p>
 						<hr />
 						<div>
 							<label>Unit: </label> <br />
 							<select name="unit" value={unitValue} onChange={this.props.handleChange.bind(this, productID)}>
-								{this.props.productMetadata.product.availUnits.map((unit, i) => (
+								{this.props.productData.availUnits.map((unit, i) => (
 									<option key={i} value={unit}>
 										{unit}
 									</option>

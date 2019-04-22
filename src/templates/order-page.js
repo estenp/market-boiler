@@ -10,11 +10,17 @@ export class OrderPageTemplate extends React.Component {
 	constructor(props) {
 		super(props);
 
+		this.products = [];
+
+		this.props.products.forEach(p => {
+			this.products.push(p.node.product);
+		});
+
 		let prodState = {};
-		props.products.forEach(p => {
-			prodState[p.node.product.id] = {
+		this.products.forEach(p => {
+			prodState[p.id] = {
 				quantity: "",
-				unit: p.node.product.availUnits[0]
+				unit: p.availUnits[0]
 			};
 		});
 
@@ -26,6 +32,7 @@ export class OrderPageTemplate extends React.Component {
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 		//this.isInCart = this.isInCart.bind(this);
+		console.log(this.state);
 	}
 
 	handleInputChange(productID, event) {
@@ -62,29 +69,27 @@ export class OrderPageTemplate extends React.Component {
 	}
 
 	render() {
-		//console.log(this.state);
-		const {title, content, contentComponent, products} = this.props;
+		const {title, content, contentComponent} = this.props;
 		const PageContent = contentComponent || Content;
-
-		//console.log(this.state);
 
 		return (
 			<Layout>
 				<section className="section section--gradient">
-					<Cart cart={this.state.cart} products={products} />
+					<Cart cart={this.state.cart} products={this.products} />
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">
 								<section className="section">
 									<h2 className="title">{title}</h2>
 									<div className="columns is-centered">
-										{products.map(({node: productMetadata}, i) => {
-											let productID = productMetadata.product.id;
+										{this.products.map(product => {
+											let productID = product.id;
+											console.log(product);
 											return (
 												<ProductCard
 													key={productID}
 													productID={productID}
-													productMetadata={productMetadata}
+													productData={product}
 													productState={this.state.products}
 													cart={this.state.cart}
 													handleClick={this.handleClick}
@@ -166,8 +171,6 @@ OrderPageTemplate.propTypes = {
 const OrderPage = ({data}) => {
 	const orderPageData = data.orderPage;
 	const {edges: products} = data.products;
-	//const { productDetail } = products.childProductsJson;
-	//console.log(products)
 	return <OrderPageTemplate contentComponent={HTMLContent} title={orderPageData.frontmatter.title} content={orderPageData.html} products={products} />;
 };
 

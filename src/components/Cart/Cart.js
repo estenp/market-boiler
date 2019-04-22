@@ -4,7 +4,7 @@ import "./Cart.module.scss";
 export default class Cart extends React.Component {
 	constructor(props) {
 		super(props);
-
+		console.log(props);
 		this.state = {
 			cartIsExpanded: true
 		};
@@ -27,8 +27,11 @@ export default class Cart extends React.Component {
 			<div styleName="cart-container">
 				<div className="card" styleName="cart">
 					<header className="card-header">
+						<a href="javascript:void(0)" className="card-header-icon has-text-primary" aria-label="shopping-cart-icon">
+							<i className="fas fa-shopping-cart" />
+						</a>
 						<p className="card-header-title">
-							Cart &nbsp;&nbsp;<span>{this.props.cart.length}</span>
+							Cart &nbsp;<span>{this.props.cart.length}</span>
 						</p>
 
 						<a href="javascript:void(0)" className="card-header-icon" aria-label="expand-cart-items" onClick={this.toggleCart}>
