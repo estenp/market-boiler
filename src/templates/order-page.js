@@ -51,14 +51,24 @@ export class OrderPageTemplate extends React.Component {
 
 	handleClick(productID) {
 		this.setState(state => {
+			// add to cart
+			var cloneProductState = {...state.products};
 			if (!this.isInCart(productID)) {
 				var newCart = [...state.cart, productID];
-			} else {
+				if (!state.products[productID].quantity) {
+					cloneProductState[productID].quantity = 1;
+				}
+			}
+			// remove from cart
+			else {
 				var newCart = state.cart.slice();
-				var index = state.cart.indexOf(productID);
+				let index = state.cart.indexOf(productID);
 				newCart.splice(index, 1);
 			}
+
+			// return updated state
 			return {
+				products: cloneProductState,
 				cart: newCart
 			};
 		});
