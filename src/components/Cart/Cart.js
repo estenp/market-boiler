@@ -4,7 +4,6 @@ import "./Cart.module.scss";
 export default class Cart extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 		this.state = {
 			cartIsExpanded: true
 		};
@@ -20,17 +19,18 @@ export default class Cart extends React.Component {
 		}
 	}
 
-	getProductNameByID = id => {
-		let name;
+	getProductInfoByID = id => {
+		let prodInfo;
 		this.props.products.forEach(p => {
 			if (p.id === id) {
-				name = p.title;
+				prodInfo = p;
 			}
 		});
-		return {__html: name};
+		return prodInfo;
 	};
 
 	render() {
+		console.log(this.props);
 		return (
 			<div styleName="cart-container">
 				<div className="card" styleName="cart">
@@ -51,13 +51,19 @@ export default class Cart extends React.Component {
 					{this.props.cart.length > 0 && this.state.cartIsExpanded && (
 						<div className="card-content">
 							<ul>
-								{this.props.cart.map(prodID => (
-									<li key={prodID}>
-										<span dangerouslySetInnerHTML={this.getProductNameByID(prodID)} />
-										<br />
-										{/* <span>{}</span> */}
-									</li>
-								))}
+								{this.props.cart.map(prodID => {
+									let prodInfo = this.getProductInfoByID(prodID);
+									//console.log(prodInfo);
+									return (
+										<li key={prodID}>
+											<span className="is-size-6">{prodInfo.title}</span>
+											<br />
+											<span className="is-size-7">
+												{this.props.productState[prodID].quantity} {this.props.productState[prodID].unit}
+											</span>
+										</li>
+									);
+								})}
 							</ul>
 						</div>
 					)}

@@ -10,14 +10,14 @@ export class OrderPageTemplate extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.products = [];
+		this.productsData = [];
 
 		this.props.products.forEach(p => {
-			this.products.push(p.node.product);
+			this.productsData.push(p.node.product);
 		});
 
 		let prodState = {};
-		this.products.forEach(p => {
+		this.productsData.forEach(p => {
 			prodState[p.id] = {
 				quantity: "",
 				unit: p.availUnits[0]
@@ -75,14 +75,14 @@ export class OrderPageTemplate extends React.Component {
 		return (
 			<Layout>
 				<section className="section section--gradient">
-					<Cart cart={this.state.cart} products={this.products} />
+					<Cart cart={this.state.cart} products={this.productsData} productState={this.state.products} />
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">
 								<section className="section">
 									<h2 className="title">{title}</h2>
 									<div className="columns is-centered">
-										{this.products.map(product => {
+										{this.productsData.map(product => {
 											let productID = product.id;
 											//console.log(product);
 											return (
