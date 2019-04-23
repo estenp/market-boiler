@@ -20,7 +20,15 @@ export default class Cart extends React.Component {
 		}
 	}
 
-	getProductNameByID(id) {}
+	getProductNameByID = id => {
+		let name;
+		this.props.products.forEach(p => {
+			if (p.id === id) {
+				name = p.title;
+			}
+		});
+		return {__html: name};
+	};
 
 	render() {
 		return (
@@ -40,16 +48,15 @@ export default class Cart extends React.Component {
 							</span>
 						</a>
 					</header>
-					{/* {this.props.cart.length < 1 && (
-						<div className="card-content">
-							<p>Your cart is empty.</p>
-						</div>
-					)} */}
 					{this.props.cart.length > 0 && this.state.cartIsExpanded && (
 						<div className="card-content">
 							<ul>
-								{this.props.cart.map(prod => (
-									<li key={prod}>{prod}</li>
+								{this.props.cart.map(prodID => (
+									<li key={prodID}>
+										<span dangerouslySetInnerHTML={this.getProductNameByID(prodID)} />
+										<br />
+										{/* <span>{}</span> */}
+									</li>
 								))}
 							</ul>
 						</div>

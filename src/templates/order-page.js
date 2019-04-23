@@ -32,7 +32,7 @@ export class OrderPageTemplate extends React.Component {
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 		//this.isInCart = this.isInCart.bind(this);
-		console.log(this.state);
+		//console.log(this.state);
 	}
 
 	handleInputChange(productID, event) {
@@ -84,7 +84,7 @@ export class OrderPageTemplate extends React.Component {
 									<div className="columns is-centered">
 										{this.products.map(product => {
 											let productID = product.id;
-											console.log(product);
+											//console.log(product);
 											return (
 												<ProductCard
 													key={productID}
