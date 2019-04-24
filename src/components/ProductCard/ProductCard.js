@@ -45,7 +45,9 @@ export default class ProductCard extends React.Component {
 						</figure>
 					</div>
 					<div className="card-content">
-						<p>{this.props.productData.description}</p>
+						<div styleName="product-description">
+							<p>{this.props.productData.description}</p>
+						</div>
 						<hr />
 						<div>
 							<label>Unit: </label> <br />
@@ -57,6 +59,8 @@ export default class ProductCard extends React.Component {
 								))}
 							</select>
 						</div>
+						<br />
+
 						<div>
 							<label>Quantity: </label> <br />
 							<input type="number" name="quantity" value={quantityValue} onChange={this.props.handleChange.bind(this, productID)} />
@@ -66,7 +70,7 @@ export default class ProductCard extends React.Component {
 						<a
 							className={(this.isInCart(productID) ? "is-danger" : "is-primary") + " card-footer-item button"}
 							onClick={this.props.handleClick.bind(this, productID)}
-							disabled={this.isDisabled(productID)}
+							//disabled={this.isDisabled(productID)}
 						>
 							{this.isInCart(productID) ? "Remove From Cart" : "Add to Cart"}
 						</a>

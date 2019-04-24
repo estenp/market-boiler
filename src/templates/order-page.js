@@ -19,7 +19,7 @@ export class OrderPageTemplate extends React.Component {
 		let prodState = {};
 		this.productsData.forEach(p => {
 			prodState[p.id] = {
-				quantity: "",
+				quantity: 1,
 				unit: p.availUnits[0]
 			};
 		});

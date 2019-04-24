@@ -49,23 +49,28 @@ export default class Cart extends React.Component {
 						</a>
 					</header>
 					{this.props.cart.length > 0 && this.state.cartIsExpanded && (
-						<div className="card-content">
-							<ul>
-								{this.props.cart.map(prodID => {
-									let prodInfo = this.getProductInfoByID(prodID);
-									//console.log(prodInfo);
-									return (
-										<li key={prodID}>
-											<span className="is-size-6">{prodInfo.title}</span>
-											<br />
-											<span className="is-size-7">
-												{this.props.productState[prodID].quantity} {this.props.productState[prodID].unit}
-											</span>
-										</li>
-									);
-								})}
-							</ul>
-						</div>
+						<span>
+							<div className="card-content">
+								<ul>
+									{this.props.cart.map(prodID => {
+										let prodInfo = this.getProductInfoByID(prodID);
+										//console.log(prodInfo);
+										return (
+											<li key={prodID}>
+												<span className="is-size-6">{prodInfo.title}</span>
+												<br />
+												<span className="is-size-7">
+													{this.props.productState[prodID].quantity} {this.props.productState[prodID].unit}
+												</span>
+											</li>
+										);
+									})}
+								</ul>
+							</div>
+							<div className="card-footer">
+								<a className="is-info card-footer-item button">Continue</a>
+							</div>
+						</span>
 					)}
 				</div>
 			</div>
