@@ -5,6 +5,7 @@ import {graphql} from "gatsby";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard/ProductCard";
 import Cart from "../components/Cart/Cart";
+import OrderForm from "../components/OrderForm/OrderForm";
 
 export class OrderPageTemplate extends React.Component {
 	constructor(props) {
@@ -26,7 +27,8 @@ export class OrderPageTemplate extends React.Component {
 
 		this.state = {
 			products: prodState,
-			cart: []
+			cart: [],
+			page: 1
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -74,6 +76,12 @@ export class OrderPageTemplate extends React.Component {
 		});
 	}
 
+	handlePaginate(page) {
+		this.state({
+			page: page
+		});
+	}
+
 	isInCart(productID) {
 		return this.state.cart.indexOf(productID) === -1 ? false : true;
 	}
@@ -85,16 +93,16 @@ export class OrderPageTemplate extends React.Component {
 		return (
 			<Layout>
 				<section className="section section--gradient">
-					<Cart cart={this.state.cart} products={this.productsData} productState={this.state.products} />
+					<Cart cart={this.state.cart} products={this.productsData} productState={this.state.products} handlePaginate={this.handlePaginate} />
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">
 								<section className="section">
 									<h2 className="title">{title}</h2>
-									<div className="columns is-centered">
+
+									<div className={(this.state.page === 1 ? "animateIn" : "animateOut") + " columns is-centered"}>
 										{this.productsData.map(product => {
 											let productID = product.id;
-											//console.log(product);
 											return (
 												<ProductCard
 													key={productID}
@@ -108,60 +116,12 @@ export class OrderPageTemplate extends React.Component {
 											);
 										})}
 									</div>
-
+									<section className={this.state.page === 2 ? "animateIn" : "animateOut"}>
+										<OrderForm />
+									</section>
 									<div>
 										<PageContent className="content" content={content} />
 									</div>
-								</section>
-								<section>
-									<form name="order" method="POST" netlify-honeypot="bot-field" data-netlify="true">
-										<p className="hidden">
-											<label>
-												Don’t fill this out if you're human: <input name="bot-field" />
-											</label>
-										</p>
-										<input type="hidden" name="form-name" value="order" />
-										<div className="field">
-											<label className="label">Name: </label>
-											<div className="control">
-												<input className="input" type="text" id="name" name="name" required />
-											</div>
-										</div>
-										<div className="field">
-											<label className="label">Email: </label>
-											<div className="control">
-												<input
-													className="input"
-													type="email"
-													id="email"
-													name="email"
-													title="Must be a valid email format."
-													placeholder="joe@gmail.com"
-													pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-													size="30"
-													required
-												/>
-											</div>
-											<p className="help">Must be a valid email format.</p>
-										</div>
-										<div className="field">
-											<label className="label">Phone: </label>
-											<div className="control">
-												<input className="input" type="tel" id="phone" name="phone" title="10 digit phone number." />
-											</div>
-											<p className="help">E.g. 1234567789</p>
-										</div>
-										<div className="field">
-											<label className="label">Message: </label>
-											<div className="control">
-												<textarea className="textarea" name="message" id="message" />
-											</div>
-										</div>
-										<div data-netlify-recaptcha />
-										<button type="submit" className="button">
-											Submit
-										</button>
-									</form>
 								</section>
 							</div>
 						</div>

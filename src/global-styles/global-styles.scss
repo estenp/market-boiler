@@ -206,3 +206,39 @@ hr {
 	right: -20px;
 	top: -20px;
 }
+
+// animation styling
+
+.animateIn {
+	animation-duration: 0.8s;
+	animation-name: slidein;
+}
+
+@keyframes slidein {
+	from {
+		margin-left: 100%;
+		width: 100%;
+	}
+
+	to {
+		margin-left: 0%;
+		width: 100%;
+	}
+}
+
+.animateOut {
+	animation-duration: 0.8s;
+	animation-name: slideOut;
+}
+
+@keyframes slideout {
+	from {
+		margin-left: 0%;
+		width: 100%;
+	}
+
+	to {
+		margin-left: 100%;
+		width: 100%;
+	}
+}
