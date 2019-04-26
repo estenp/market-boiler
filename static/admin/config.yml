@@ -27,7 +27,7 @@ collections:
                 label: "Product Image",
                 name: "image",
                 widget: "image",
-                required: "false",
+                required: false,
             }
           - { label: "Description", name: "description", widget: text }
           - {
