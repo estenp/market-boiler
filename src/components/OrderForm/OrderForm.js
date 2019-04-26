@@ -17,9 +17,15 @@ export default class OrderForm extends React.Component {
 					</p>
 					<input type="hidden" name="form-name" value="order" />
 					<div className="field">
-						<label className="label">Name: </label>
+						<label className="label">First Name: </label>
 						<div className="control">
-							<input className="input" type="text" id="name" name="name" required />
+							<input className="input" type="text" id="firstName" name="firstName" required />
+						</div>
+					</div>
+					<div className="field">
+						<label className="label">Last Name: </label>
+						<div className="control">
+							<input className="input" type="text" id="lastName" name="lastName" required />
 						</div>
 					</div>
 					<div className="field">
@@ -31,31 +37,31 @@ export default class OrderForm extends React.Component {
 								id="email"
 								name="email"
 								title="Must be a valid email format."
-								placeholder="joe@gmail.com"
 								pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
 								size="30"
+								placeholder="joe@gmail.com"
 								required
 							/>
 						</div>
-						<p className="help">Must be a valid email format.</p>
+						<p className="help">Must be a valid email format</p>
 					</div>
 					<div className="field">
 						<label className="label">Phone: </label>
 						<div className="control">
-							<input className="input" type="tel" id="phone" name="phone" title="10 digit phone number." />
+							<input className="input" type="tel" id="phone" name="phone" title="10 digit phone number." placeholder="3124456745" />
 						</div>
-						<p className="help">E.g. 1234567789</p>
+						<p className="help">Without additional characters</p>
 					</div>
 					<div className="field">
-						<label className="label">Message: </label>
+						<label className="label">Comments: </label>
 						<div className="control">
-							<textarea className="textarea" name="message" id="message" />
+							<textarea className="textarea" name="comments" id="comments" />
 						</div>
 					</div>
 					<div data-netlify-recaptcha />
-					<button type="submit" className="button">
+					{/* <button type="submit" className="button">
 						Submit
-					</button>
+					</button> */}
 				</form>
 			</section>
 		);

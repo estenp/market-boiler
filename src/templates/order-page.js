@@ -32,12 +32,13 @@ export class OrderPageTemplate extends React.Component {
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
-		this.handleClick = this.handleClick.bind(this);
+		this.handleProductCardClick = this.handleProductCardClick.bind(this);
 		//this.isInCart = this.isInCart.bind(this);
 		//console.log(this.state);
 	}
 
 	handleInputChange(productID, event) {
+		console.log("ls");
 		const target = event.target;
 		const value = target.type === "checkbox" ? target.checked : target.value;
 		const name = target.name;
@@ -51,7 +52,22 @@ export class OrderPageTemplate extends React.Component {
 		});
 	}
 
-	handleClick(productID) {
+	handleCartClick = () => {
+		if (this.state.page === 1) {
+			this.handlePaginate(2);
+		}
+	};
+
+	handlePaginate(page) {
+		this.setState({
+			page: page
+		});
+		window.scrollTo(0, 0);
+	}
+
+	handleProductCardClick(productID) {
+		// add click source condition and accept click events from cart?
+
 		this.setState(state => {
 			// add to cart
 			var cloneProductState = {...state.products};
@@ -76,12 +92,6 @@ export class OrderPageTemplate extends React.Component {
 		});
 	}
 
-	handlePaginate(page) {
-		this.state({
-			page: page
-		});
-	}
-
 	isInCart(productID) {
 		return this.state.cart.indexOf(productID) === -1 ? false : true;
 	}
@@ -93,14 +103,20 @@ export class OrderPageTemplate extends React.Component {
 		return (
 			<Layout>
 				<section className="section section--gradient">
-					<Cart cart={this.state.cart} products={this.productsData} productState={this.state.products} handlePaginate={this.handlePaginate} />
+					<Cart
+						cart={this.state.cart}
+						products={this.productsData}
+						productState={this.state.products}
+						currentPage={this.state.page}
+						handleCartClick={this.handleCartClick}
+					/>
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">
 								<section className="section">
 									<h2 className="title">{title}</h2>
 
-									<div className={(this.state.page === 1 ? "animateIn" : "animateOut") + " columns is-centered"}>
+									<div className={(this.state.page === 1 ? "" : "hidden") + " columns is-centered"}>
 										{this.productsData.map(product => {
 											let productID = product.id;
 											return (
@@ -110,13 +126,13 @@ export class OrderPageTemplate extends React.Component {
 													productData={product}
 													productState={this.state.products}
 													cart={this.state.cart}
-													handleClick={this.handleClick}
+													handleClick={this.handleProductCardClick}
 													handleChange={this.handleInputChange}
 												/>
 											);
 										})}
 									</div>
-									<section className={this.state.page === 2 ? "animateIn" : "animateOut"}>
+									<section className={this.state.page === 2 ? "animateIn" : "hidden"}>
 										<OrderForm />
 									</section>
 									<div>

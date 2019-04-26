@@ -30,7 +30,6 @@ export default class Cart extends React.Component {
 	};
 
 	render() {
-		console.log(this.props);
 		return (
 			<div styleName="cart-container">
 				<div className="card" styleName="cart">
@@ -68,7 +67,9 @@ export default class Cart extends React.Component {
 								</ul>
 							</div>
 							<div className="card-footer">
-								<a className="is-info card-footer-item button">Continue</a>
+								<a className="is-info card-footer-item button" onClick={this.props.handleCartClick}>
+									{this.props.currentPage === 1 ? "Continue" : "Finish"} &nbsp;&nbsp; <i className="fas fa-arrow-right" />
+								</a>
 							</div>
 						</span>
 					)}

@@ -4,22 +4,13 @@ import "./ProductCard.module.scss";
 export default class ProductCard extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleChange.bind(this);
-		this.handleClick.bind(this);
+
 		this.isInCart.bind(this);
 		this.isDisabled.bind(this);
 	}
 
 	isDisabled(productID) {
 		return this.props.productState[productID].quantity == "";
-	}
-
-	handleChange(productID, event) {
-		this.props.handleInputChange(productID, event);
-	}
-
-	handleClick(productID) {
-		this.props.handleClick(productID);
 	}
 
 	isInCart(productID) {
