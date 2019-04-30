@@ -34,7 +34,7 @@ export default class Cart extends React.Component {
 			<div styleName="cart-container">
 				<div className="card" styleName="cart">
 					<header className="card-header">
-						<a href="javascript:void(0)" className="card-header-icon has-text-primary" aria-label="shopping-cart-icon">
+						<a href="javascript:void(0)" className="card-header-icon has-text-secondary" aria-label="shopping-cart-icon">
 							<i className="fas fa-shopping-cart" styleName="cart-icon" />
 						</a>
 						<p className="card-header-title">

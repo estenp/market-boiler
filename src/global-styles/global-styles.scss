@@ -72,18 +72,22 @@ h2.title {
 }
 
 .hero.is-light {
-	background-color: $light-blue;
+	background-color: $orange;
 }
 
 .has-text-primary {
-	color: $light-green;
+	color: $primary;
+}
+
+.has-text-secondary {
+	color: $secondary;
 }
 
 .border-top-bottom {
 	padding-top: 3px;
-	border-top: solid 3px $light-blue;
+	border-top: solid 3px $orange;
 	padding-bottom: 3px;
-	border-bottom: solid 3px $light-blue;
+	border-bottom: solid 3px $orange;
 }
 
 //html, body, #___gatsby, #___gatsby>div
