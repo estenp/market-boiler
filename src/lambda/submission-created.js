@@ -12,15 +12,15 @@ exports.handler = (event, context, callback) => {
 	axios({
 		method: "get",
 		//url: `https://api.github.com/repos/${user}/repo/market-boiler/src/data/orders/${event.form_id}`,
-		//url: `https://swapi.co/api/people/1/`,
-		url: `https://api.github.com/repos/${user}/market-boiler/`,
+		url: `https://swapi.co/api/people/1/`,
+		//url: `https://api.github.com/repos/${user}/market-boiler/`,
 		headers: {
 			"Content-Type": "application/x-www-form-urlencoded"
-		},
+		} /* ,
 		auth: {
 			username: user,
 			password: pass
-		}
+		} */
 	})
 		.then(res => {
 			console.log(res);
