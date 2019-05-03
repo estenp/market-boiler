@@ -1,4 +1,5 @@
 const axios = require("axios");
+//const fetch = require("node-fetch");
 //const crypto = require("crypto");
 const token = process.env.netlifyAPIToken;
 const githubToken = process.env.githubAPIToken;
@@ -11,39 +12,40 @@ exports.handler = (event, context, callback) => {
 	axios({
 		method: "get",
 		//url: `https://api.github.com/repos/${user}/repo/market-boiler/src/data/orders/${event.form_id}`,
+		//url: `https://swapi.co/api/people/1/`,
 		url: `https://api.github.com/repos/${user}/market-boiler/`,
 		headers: {
-			"Content-Type": "application/json"
+			"Content-Type": "application/x-www-form-urlencoded"
 		},
 		auth: {
 			username: user,
 			password: pass
 		}
 	})
-		.then(function() {
-			const response = {
+		.then(res => {
+			console.log(res);
+			callback(null, {
 				statusCode: 200,
 				headers: {
 					"Access-Control-Allow-Origin": "*",
-					"Access-Control-Allow-Headers": "Content-Type"
+					"Access-Control-Allow-Headers": "Content-Type",
+					"Access-Control-Allow-Credentials": "true"
 				},
-				body: JSON.stringify({
-					message: "Successfully got repo info!"
-				})
-			};
-			callback(null, response);
+				body: JSON.stringify(res.data)
+			});
 		})
 		.catch(e => {
 			console.log(e);
 			const error = e.response.data;
 			const errorResponse = {
-				statusCode: 500,
+				statusCode: 501,
 				headers: {
 					"Access-Control-Allow-Origin": "*",
-					"Access-Control-Allow-Headers": "Content-Type"
+					"Access-Control-Allow-Headers": "Content-Type",
+					"Access-Control-Allow-Credentials": "true"
 				},
 				body: JSON.stringify({
-					message: error.title
+					message: error
 				})
 			};
 			callback(null, errorResponse);
