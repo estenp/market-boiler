@@ -15,7 +15,7 @@ exports.handler = (event, context, callback) => {
 		url: `https://swapi.co/api/people/1/`,
 		//url: `https://api.github.com/repos/${user}/market-boiler/`,
 		headers: {
-			"Content-Type": "application/x-www-form-urlencoded"
+			"Content-Type": "application/json"
 		} /* ,
 		auth: {
 			username: user,
