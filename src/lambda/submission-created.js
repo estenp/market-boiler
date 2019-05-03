@@ -13,16 +13,19 @@ exports.handler = (event, context, callback) => {
 		//url: `https://api.github.com/repos/${user}/repo/market-boiler/src/data/orders/${event.form_id}`,
 		url: `https://api.github.com/repos/${user}/market-boiler/`,
 		headers: {
-			Authorization: `Bearer ${githubToken}`,
 			"Content-Type": "application/json"
+		},
+		auth: {
+			username: user,
+			password: pass
 		}
 	})
 		.then(function() {
 			const response = {
 				statusCode: 200,
 				headers: {
-					"Access-Control-Allow-Origin": "*", // Required for CORS support to work
-					"Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS
+					"Access-Control-Allow-Origin": "*",
+					"Access-Control-Allow-Headers": "Content-Type"
 				},
 				body: JSON.stringify({
 					message: "Successfully got repo info!"
@@ -31,12 +34,13 @@ exports.handler = (event, context, callback) => {
 			callback(null, response);
 		})
 		.catch(e => {
+			console.log(e);
 			const error = e.response.data;
 			const errorResponse = {
-				statusCode: error.status,
+				statusCode: 500,
 				headers: {
-					"Access-Control-Allow-Origin": "*", // Required for CORS support to work
-					"Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS
+					"Access-Control-Allow-Origin": "*",
+					"Access-Control-Allow-Headers": "Content-Type"
 				},
 				body: JSON.stringify({
 					message: error.title
