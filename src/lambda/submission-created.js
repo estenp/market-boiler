@@ -10,16 +10,24 @@ exports.handler = (event, context, callback) => {
 	console.log(event);
 
 	axios({
-		method: "get",
-		//url: `https://api.github.com/repos/${user}/repo/market-boiler/src/data/orders/${event.form_id}`,
+		method: "put",
+		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body}`,
 		//url: `https://swapi.co/api/people/1/`,
-		url: `https://api.github.com/repos/${user}/market-boiler/`,
+		//url: `https://api.github.com/repos/${user}/market-boiler`,
 		headers: {
 			"Content-Type": "application/json"
 		},
 		auth: {
 			username: user,
 			password: pass
+		},
+		data: {
+			message: "my commit message",
+			committer: {
+				name: "Testin Esten",
+				email: "estenpatrick@gmail.com"
+			},
+			content: "bG9sIGhpIQ=="
 		}
 	})
 		.then(res => {
