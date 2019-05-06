@@ -7,7 +7,7 @@ const user = process.env.githubUser;
 const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
-	console.log(event);
+	console.log(event.body.payload);
 	// let buffer = Buffer.from(event.body, "base64");
 	// let text = buffer.toString("ascii");
 
@@ -36,8 +36,8 @@ exports.handler = (event, context, callback) => {
 		}*/
 	})
 		.then(res => {
-			console.log(event.body);
-			console.log(context);
+			//console.log(event.body);
+			//console.log(context);
 			callback(null, {
 				statusCode: 200,
 				headers: {
