@@ -8,16 +8,12 @@ const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
 	console.log(event);
-	callback(null, {
-		statusCode: 200,
-		headers: {
-			"Access-Control-Allow-Origin": "*",
-			"Access-Control-Allow-Headers": "Content-Type",
-			"Access-Control-Allow-Credentials": "true"
-		},
-		body: JSON.stringify(event)
-	});
-	/* 
+	// let buffer = Buffer.from(event.body, "base64");
+	// let text = buffer.toString("ascii");
+
+	// let objJsonStr = JSON.stringify(event.body);
+	// let objJsonB64 = Buffer.from(objJsonStr).toString("base64");
+
 	axios({
 		method: "put",
 		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body}`,
@@ -36,7 +32,7 @@ exports.handler = (event, context, callback) => {
 				name: "Testin Esten",
 				email: "estenpatrick@gmail.com"
 			},
-			content: "bG9sIGhpIQ=="
+			content: event.body
 		}
 	})
 		.then(res => {
@@ -64,5 +60,5 @@ exports.handler = (event, context, callback) => {
 				body: e
 			};
 			callback(null, errorResponse);
-		}); */
+		});
 };
