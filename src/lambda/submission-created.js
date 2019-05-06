@@ -8,7 +8,16 @@ const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
 	console.log(event);
-
+	callback(null, {
+		statusCode: 200,
+		headers: {
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Headers": "Content-Type",
+			"Access-Control-Allow-Credentials": "true"
+		},
+		body: JSON.stringify(event)
+	});
+	return false;
 	axios({
 		method: "put",
 		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body}`,
