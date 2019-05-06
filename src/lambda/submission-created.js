@@ -16,16 +16,16 @@ exports.handler = (event, context, callback) => {
 
 	axios({
 		method: "put",
-		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body}`,
+		//url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body}.txt`,
 		//url: `https://swapi.co/api/people/1/`,
-		//url: `https://api.github.com/repos/${user}/market-boiler`,
+		url: `https://api.github.com/repos/${user}/market-boiler`,
 		headers: {
 			"Content-Type": "application/json"
 		},
 		auth: {
 			username: user,
 			password: pass
-		},
+		} /* ,
 		data: {
 			message: "my commit message",
 			committer: {
@@ -33,7 +33,7 @@ exports.handler = (event, context, callback) => {
 				email: "estenpatrick@gmail.com"
 			},
 			content: JSON.stringify(event.body)
-		}
+		}*/
 	})
 		.then(res => {
 			console.log(res);
@@ -44,7 +44,7 @@ exports.handler = (event, context, callback) => {
 					"Access-Control-Allow-Headers": "Content-Type",
 					"Access-Control-Allow-Credentials": "true"
 				},
-				body: JSON.stringify(res.data)
+				body: JSON.stringify(event)
 			});
 		})
 		.catch(e => {
