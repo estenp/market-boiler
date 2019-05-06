@@ -17,7 +17,7 @@ exports.handler = (event, context, callback) => {
 		},
 		body: JSON.stringify(event)
 	});
-	return false;
+	/* 
 	axios({
 		method: "put",
 		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body}`,
@@ -64,5 +64,5 @@ exports.handler = (event, context, callback) => {
 				body: e
 			};
 			callback(null, errorResponse);
-		});
+		}); */
 };
