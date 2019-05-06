@@ -15,7 +15,7 @@ exports.handler = (event, context, callback) => {
 	// let objJsonB64 = Buffer.from(objJsonStr).toString("base64");
 
 	axios({
-		method: "put",
+		method: "get",
 		//url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body}.txt`,
 		//url: `https://swapi.co/api/people/1/`,
 		url: `https://api.github.com/repos/${user}/market-boiler`,
