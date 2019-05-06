@@ -32,7 +32,7 @@ exports.handler = (event, context, callback) => {
 				name: "Testin Esten",
 				email: "estenpatrick@gmail.com"
 			},
-			content: event.body
+			content: JSON.stringify(event.body)
 		}
 	})
 		.then(res => {
