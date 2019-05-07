@@ -7,9 +7,9 @@ const user = process.env.githubUser;
 const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
-	//console.log(event.body, context);
 	//let decodedEvent = Buffer.from(event.body, "base64").toString("utf8");
 	//let text = buffer.toString("ascii");
+	console.log(event.body);
 	callback(null, {
 		headers: {
 			"Content-Type": "application/json"
