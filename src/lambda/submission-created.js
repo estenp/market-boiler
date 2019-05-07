@@ -8,14 +8,15 @@ const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
 	//console.log(event.body, context);
-	let buffer = Buffer.from(event.body, "base64");
-	let text = buffer.toString("ascii");
+	//let buffer = Buffer.from(event.body, "base64");
+	//let text = buffer.toString("ascii");
+	console.log(event);
 
 	// let objJsonStr = JSON.stringify(event.body);
 	// let objJsonB64 = Buffer.from(objJsonStr).toString("base64");
-	const {payload} = JSON.parse(text);
-	console.log(payload);
-	return false;
+	//const {payload} = JSON.parse(text);
+	//console.log(payload);
+	return;
 	axios({
 		method: "get",
 		//url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body}.txt`,
