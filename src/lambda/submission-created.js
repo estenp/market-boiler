@@ -8,9 +8,15 @@ const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
 	//console.log(event.body, context);
-	//let buffer = Buffer.from(event.body, "base64");
+	//let decodedEvent = Buffer.from(event.body, "base64").toString("utf8");
 	//let text = buffer.toString("ascii");
-	console.log(event);
+	callback(null, {
+		headers: {
+			"Content-Type": "application/json"
+		},
+		statusCode: 200,
+		body: event.body
+	});
 
 	// let objJsonStr = JSON.stringify(event.body);
 	// let objJsonB64 = Buffer.from(objJsonStr).toString("base64");
