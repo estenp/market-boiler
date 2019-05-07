@@ -7,13 +7,15 @@ const user = process.env.githubUser;
 const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
-	console.log(event.body, context);
-	// let buffer = Buffer.from(event.body, "base64");
-	// let text = buffer.toString("ascii");
+	//console.log(event.body, context);
+	let buffer = Buffer.from(event.body, "base64");
+	let text = buffer.toString("ascii");
 
 	// let objJsonStr = JSON.stringify(event.body);
 	// let objJsonB64 = Buffer.from(objJsonStr).toString("base64");
-
+	const {payload} = JSON.parse(text);
+	console.log(payload);
+	return false;
 	axios({
 		method: "get",
 		//url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body}.txt`,
@@ -45,7 +47,7 @@ exports.handler = (event, context, callback) => {
 					"Access-Control-Allow-Headers": "Content-Type",
 					"Access-Control-Allow-Credentials": "true"
 				},
-				body: JSON.stringify(event)
+				body: JSON.stringify(res.data)
 			});
 		})
 		.catch(e => {
