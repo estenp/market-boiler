@@ -7,10 +7,11 @@ const user = process.env.githubUser;
 const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
-	//let decodedEvent = Buffer.from(event.body, "base64").toString("utf8");
+	let decodedEvent = Buffer.from(event.body, "base64").toString("ascii");
+
 	//let text = buffer.toString("ascii");
-	console.log(`EVENT OBJECT: `);
-	console.log(event);
+	// console.log(`EVENT BODY: `);
+	// console.log(event.payload);
 	/* callback(null, {
 		headers: {
 			"Content-Type": "application/json"
@@ -22,7 +23,7 @@ exports.handler = (event, context, callback) => {
 	// let objJsonStr = JSON.stringify(event.body);
 	// let objJsonB64 = Buffer.from(objJsonStr).toString("base64");
 	//const {payload} = JSON.parse(text);
-	//console.log(payload);
+	console.log(event.body);
 
 	axios({
 		method: "get",
@@ -55,7 +56,7 @@ exports.handler = (event, context, callback) => {
 					"Access-Control-Allow-Headers": "Content-Type",
 					"Access-Control-Allow-Credentials": "true"
 				},
-				body: JSON.stringify(res.data)
+				body: JSON.stringify(event.body.payload)
 			});
 		})
 		.catch(e => {
