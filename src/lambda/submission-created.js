@@ -9,6 +9,7 @@ const pass = process.env.githubPass;
 exports.handler = (event, context, callback) => {
 	//let decodedEvent = Buffer.from(event.body, "base64").toString("utf8");
 	//let text = buffer.toString("ascii");
+	console.log(`EVENT OBJECT: `);
 	console.log(event);
 	/* callback(null, {
 		headers: {
