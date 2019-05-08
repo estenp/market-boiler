@@ -9,7 +9,7 @@ const pass = process.env.githubPass;
 exports.handler = (event, context, callback) => {
 	//let decodedEvent = Buffer.from(event.body, "base64").toString("utf8");
 	//let text = buffer.toString("ascii");
-	console.log(event.body);
+	console.log(event);
 	/* callback(null, {
 		headers: {
 			"Content-Type": "application/json"
@@ -22,7 +22,7 @@ exports.handler = (event, context, callback) => {
 	// let objJsonB64 = Buffer.from(objJsonStr).toString("base64");
 	//const {payload} = JSON.parse(text);
 	//console.log(payload);
-	return;
+
 	axios({
 		method: "get",
 		//url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body}.txt`,
