@@ -95,7 +95,7 @@ export const ContactPageTemplate = ({ title, content, contentComponent }) => {
                                             />
                                         </div>
                                     </div>
-                                    <div data-netlify-recaptcha />
+
                                     <button type="submit" className="button">
                                         Submit
                                     </button>
