@@ -7,7 +7,7 @@ const user = process.env.githubUser;
 const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
-	let decodedEvent = Buffer.from(event.body, "base64").toString("ascii");
+	//let decodedEvent = Buffer.from(event.body, "base64").toString("ascii");
 
 	//let text = buffer.toString("ascii");
 	// console.log(`EVENT BODY: `);
@@ -56,7 +56,7 @@ exports.handler = (event, context, callback) => {
 					"Access-Control-Allow-Headers": "Content-Type",
 					"Access-Control-Allow-Credentials": "true"
 				},
-				body: JSON.stringify(event.body.payload)
+				body: JSON.stringify(event)
 			});
 		})
 		.catch(e => {
