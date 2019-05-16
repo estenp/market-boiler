@@ -60,7 +60,8 @@ collections:
           - { label: "Unit", name: "availUnits", widget: "list" }
 
     - name: "flavors"
-      label: "flavors"
+      label: "Flavors"
+      label_singular: "Flavor"
       create: true
       folder: "src/data/flavors"
       extension: "json"
@@ -72,7 +73,8 @@ collections:
           - { label: "Value", name: "value", widget: "string" }
 
     - name: "effects"
-      label: "effects"
+      label: "Effects"
+      label_singular: "Effect"
       create: true
       folder: "src/data/effects"
       extension: "json"
