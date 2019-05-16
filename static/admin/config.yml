@@ -29,7 +29,28 @@ collections:
                 widget: "image",
                 required: false,
             }
-          - { label: "Description", name: "description", widget: text }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Attributes"
+            name: "attributes"
+            widget: "object"
+            fields:
+                - label: "Flavors"
+                  name: "flavors"
+                  widget: "relation"
+                  collection: "flavors"
+                  searchFields: ["label", "value"]
+                  valueField: "value"
+                  multiple: "true"
+
+                - label: "Effects"
+                  name: "effects"
+                  widget: "relation"
+                  collection: "effects"
+                  searchFields: ["label", "value"]
+                  displayFields: ["label", "level"]
+                  valueField: "value"
+                  multiple: "true"
+
           - {
                 label: "Price Per Unit",
                 name: "pricePerUnit",
@@ -37,6 +58,37 @@ collections:
                 valueType: "float",
             }
           - { label: "Unit", name: "availUnits", widget: "list" }
+
+    - name: "flavors"
+      label: "flavors"
+      create: "true"
+      folder: "src/data/flavors"
+      extension: "json"
+      format: "json"
+      editor:
+          preview: false
+      fields:
+          - { label: "Label", name: "label", widget: "string" }
+          - { label: "Value", name: "value", widget: "string" }
+
+    - name: "effects"
+      label: "effects"
+      create: "true"
+      folder: "src/data/effects"
+      extension: "json"
+      format: "json"
+      editor:
+          preview: false
+      fields:
+          - { label: "Label", name: "label", widget: "string" }
+          - { label: "Value", name: "value", widget: "string" }
+          - {
+                label: "Level",
+                name: "level",
+                widget: "select",
+                options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+                default: "1",
+            }
 
     - name: "orders"
       label: "Orders"
