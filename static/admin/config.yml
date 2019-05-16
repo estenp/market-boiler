@@ -61,7 +61,7 @@ collections:
 
     - name: "flavors"
       label: "flavors"
-      create: "true"
+      create: true
       folder: "src/data/flavors"
       extension: "json"
       format: "json"
@@ -73,7 +73,7 @@ collections:
 
     - name: "effects"
       label: "effects"
-      create: "true"
+      create: true
       folder: "src/data/effects"
       extension: "json"
       format: "json"
