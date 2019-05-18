@@ -10,12 +10,12 @@ import OrderForm from "../components/OrderForm/OrderForm";
 export class OrderPageTemplate extends React.Component {
 	constructor(props) {
 		super(props);
-
 		this.productsData = [];
 
 		this.props.products.forEach(p => {
 			this.productsData.push(p.node.product);
 		});
+		console.log(this.props.products);
 
 		let prodState = {};
 		this.productsData.forEach(p => {
@@ -175,7 +175,7 @@ export const OrderPageQuery = graphql`
 			}
 		}
 
-		products: allFile(filter: {sourceInstanceName: {eq: "data"}}) {
+		products: allFile(filter: {sourceInstanceName: {eq: "products"}}) {
 			edges {
 				node {
 					extension
