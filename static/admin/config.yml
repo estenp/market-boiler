@@ -36,6 +36,12 @@ collections:
             fields:
                 - label: "Flavors"
                   name: "flavors"
+                  widget: "select"
+                  options: ["Indica", "Sativa", "Hybrid"]
+                  valueField: "value"
+
+                - label: "Flavors"
+                  name: "flavors"
                   widget: "relation"
                   collection: "flavors"
                   searchFields: ["label", "value"]

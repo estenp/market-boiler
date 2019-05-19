@@ -21,6 +21,7 @@ export default class ProductCard extends React.Component {
 		var productID = this.props.productID;
 		var unitValue = this.props.productState[productID].unit;
 		var quantityValue = this.props.productState[productID].quantity;
+
 		return (
 			<div key={productID} className="column">
 				<div className="card" styleName={this.isInCart(productID) ? "isInCart" : ""}>
@@ -39,6 +40,7 @@ export default class ProductCard extends React.Component {
 						<div styleName="product-description">
 							<p>{this.props.productData.description}</p>
 						</div>
+
 						<hr />
 						<div>
 							<label>Unit: </label> <br />
