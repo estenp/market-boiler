@@ -4,5 +4,10 @@
 	"image": "/img/gobbler.jpeg",
 	"description": "This stuff is super dank, bro.",
 	"pricePerUnit": 300,
-	"availUnits": ["grams", "1/8's"]
+	"availUnits": ["grams", "1/8's"],
+	"attributes": {
+		"strain": "Indica",
+		"flavors": ["blueberry"],
+		"effects": ["happy"]
+	}
 }

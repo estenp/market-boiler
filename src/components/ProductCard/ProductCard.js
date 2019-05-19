@@ -1,10 +1,11 @@
 import React from "react";
 import "./ProductCard.module.scss";
+import RadarDataChart from "../RadarDataChart/RadarDataChart";
 
 export default class ProductCard extends React.Component {
 	constructor(props) {
 		super(props);
-
+		console.log(props);
 		this.isInCart.bind(this);
 		this.isDisabled.bind(this);
 	}
@@ -40,7 +41,7 @@ export default class ProductCard extends React.Component {
 						<div styleName="product-description">
 							<p>{this.props.productData.description}</p>
 						</div>
-
+						{/* <RadarChart data={props.productData} /> */}
 						<hr />
 						<div>
 							<label>Unit: </label> <br />

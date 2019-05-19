@@ -34,8 +34,8 @@ collections:
             name: "attributes"
             widget: "object"
             fields:
-                - label: "Flavors"
-                  name: "flavors"
+                - label: "Strain"
+                  name: "strain"
                   widget: "select"
                   options: ["Indica", "Sativa", "Hybrid"]
                   valueField: "value"

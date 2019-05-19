@@ -4,5 +4,10 @@
 	"image": "/img/gobbler.jpeg",
 	"description": "Really fire product. Extremely lit.",
 	"pricePerUnit": 43,
-	"availUnits": ["packages of 30"]
+	"availUnits": ["packages of 30"],
+	"attributes": {
+		"strain": "Indica",
+		"flavors": ["blueberry"],
+		"effects": ["happy"]
+	}
 }

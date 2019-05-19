@@ -1,13 +1,15 @@
 import React from "react";
-import "./RadarChart.module.scss";
+import "./RadarDataChart.module.scss";
 import {format} from "d3-format";
 import {RadarChart} from "react-vis";
 
-export default class RadarChart extends React.Component {
+export default class RadarDataChart extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
+	}
 
+	render() {
 		const basicFormat = format(".2r");
 		const wideFormat = format(".3r");
 
@@ -37,9 +39,6 @@ export default class RadarChart extends React.Component {
 				{name: "warranty", domain: [0, 10], getValue: d => d.warranty}
 			]
 		};
-	}
-
-	render() {
 		return (
 			<RadarChart
 				data={chartData.data}
