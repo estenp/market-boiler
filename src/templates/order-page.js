@@ -190,6 +190,11 @@ export const OrderPageQuery = graphql`
 						description
 						pricePerUnit
 						availUnits
+						attributes {
+							strain
+							effects
+							flavors
+						}
 					}
 				}
 			}

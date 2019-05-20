@@ -41,7 +41,7 @@ export default class ProductCard extends React.Component {
 						<div styleName="product-description">
 							<p>{this.props.productData.description}</p>
 						</div>
-						{/* <RadarChart data={props.productData} /> */}
+						<RadarDataChart data={this.props.productData} />
 						<hr />
 						<div>
 							<label>Unit: </label> <br />
