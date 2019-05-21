@@ -48,15 +48,32 @@ collections:
                   valueField: "value"
                   multiple: "true"
 
+                
                 - label: "Effects"
                   name: "effects"
-                  widget: "relation"
-                  collection: "effects"
-                  searchFields: ["label", "value"]
-                  displayFields: ["label", "level"]
-                  valueField: "value"
-                  multiple: "true"
+                  widget: "list"
+                  fields:
+                      - label: "Effect Data"
+                        name: "effectData"
+                        widget: "object"
+                        fields:
+                            - {
+                                label: "Effect",
+                                name: "effect",
+                                widget: "relation",
+                                collection: "effects",
+                                searchFields: ["label", "value"],
+                                displayFields: ["label"],
+                                valueField: "value"
+                            }
 
+                            - {
+                                label: "Level",
+                                name: "level",
+                                widget: "select",
+                                options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+                                default: "1",
+                            }
           - {
                 label: "Price Per Unit",
                 name: "pricePerUnit",
@@ -90,13 +107,6 @@ collections:
       fields:
           - { label: "Label", name: "label", widget: "string" }
           - { label: "Value", name: "value", widget: "string" }
-          - {
-                label: "Level",
-                name: "level",
-                widget: "select",
-                options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-                default: "1",
-            }
 
     - name: "orders"
       label: "Orders"

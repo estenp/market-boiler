@@ -8,47 +8,34 @@ export default class RadarDataChart extends React.Component {
 		super(props);
 		//this.state = {};
 		console.log(props);
-		var chartDataArray;
-		var chartDomainArray;
-
-		// props.productData.attributes.effects.forEach(e => {});
-
-		var chartData = {
-			data: chartDataArray,
-			domain: chartDomainArray
-		};
 	}
 
 	render() {
 		const basicFormat = format(".2r");
 		const wideFormat = format(".3r");
 
+		var chartDataArray = [
+			{
+				name: this.props.data.title
+			}
+		];
+		var chartDomainArray = [];
+
+		this.props.data.attributes.effects.forEach(e => {
+			chartDataArray[0][e.effect] = e.level;
+			var obj = {
+				name: e.effect,
+				domain: [0, 10]
+			};
+			chartDomainArray.push(obj);
+		});
+
 		const chartData = {
-			data: [
-				{
-					name: "Mercedes",
-					mileage: 7,
-					price: 10,
-					safety: 8,
-					performance: 9,
-					interior: 7,
-					warranty: 7
-				}
-			],
-			domain: [
-				{name: "mileage", domain: [0, 10]},
-				{
-					name: "price",
-					domain: [0, 10],
-					tickFormat: t => `$${basicFormat(t)}`,
-					getValue: d => d.price
-				},
-				{name: "safety", domain: [0, 10], getValue: d => d.safety},
-				{name: "performance", domain: [0, 10], getValue: d => d.performance},
-				{name: "interior", domain: [0, 10], getValue: d => d.interior},
-				{name: "warranty", domain: [0, 10], getValue: d => d.warranty}
-			]
+			data: chartDataArray,
+			domain: chartDomainArray
 		};
+
+		//console.log(chartData);
 		return (
 			<RadarChart
 				data={chartData.data}
@@ -57,21 +44,32 @@ export default class RadarDataChart extends React.Component {
 				domains={chartData.domain}
 				style={{
 					axes: {
-						line: {},
-						ticks: {},
+						line: {
+							strokeWidth: 0.5,
+							strokeOpacity: 0.5,
+							fillOpacity: 0.1,
+							stroke: "#ddd",
+							strokeWidth: 2,
+							strokeOpacity: 0.4
+						},
+						ticks: {color: "blue"},
 						text: {display: "none"}
 					},
 					labels: {
-						fontSize: 12
+						fontSize: 14
 					},
 					polygons: {
-						strokeWidth: 0.5,
-						strokeOpacity: 1,
-						fillOpacity: 0.1
+						fillOpacity: 0.1,
+						stroke: "rgb(41, 29, 224)",
+						fill: "rgb(137, 234, 84)",
+						strokeWidth: 2,
+						strokeOpacity: 0.3
 					}
 				}}
-				width={300}
+				width={200}
 				height={200}
+				margin={20}
+				hideInnerMostValues={true}
 			/>
 		);
 	}

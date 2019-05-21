@@ -192,7 +192,10 @@ export const OrderPageQuery = graphql`
 						availUnits
 						attributes {
 							strain
-							effects
+							effects {
+								effect
+								level
+							}
 							flavors
 						}
 					}
