@@ -8,23 +8,6 @@
 	"attributes": {
 		"strain": "Indica",
 		"flavors": ["blueberry"],
-		"effects": [
-			{
-				"effect": "happy",
-				"level": 8
-			},
-			{
-				"effect": "relaxed",
-				"level": 4
-			},
-			{
-				"effect": "sleepy",
-				"level": 3
-			},
-			{
-				"effect": "creative",
-				"level": 8
-			}
-		]
+		"effects": []
 	}
 }
