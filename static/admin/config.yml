@@ -53,27 +53,23 @@ collections:
                   name: "effects"
                   widget: "list"
                   fields:
-                      - label: "Effect Data"
-                        name: "effectData"
-                        widget: "object"
-                        fields:
-                            - {
-                                label: "Effect",
-                                name: "effect",
-                                widget: "relation",
-                                collection: "effects",
-                                searchFields: ["label", "value"],
-                                displayFields: ["label"],
-                                valueField: "value"
-                            }
+                      - {
+                            label: "Effect",
+                            name: "effect",
+                            widget: "relation",
+                            collection: "effects",
+                            searchFields: ["label", "value"],
+                            displayFields: ["label"],
+                            valueField: "value"
+                      }
 
-                            - {
-                                label: "Level",
-                                name: "level",
-                                widget: "select",
-                                options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-                                default: "1",
-                            }
+                      - {
+                            label: "Level",
+                            name: "level",
+                            widget: "select",
+                            options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+                            default: "1",
+                      }
           - {
                 label: "Price Per Unit",
                 name: "pricePerUnit",
