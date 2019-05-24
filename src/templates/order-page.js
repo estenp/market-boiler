@@ -15,7 +15,6 @@ export class OrderPageTemplate extends React.Component {
 		this.props.products.forEach(p => {
 			this.productsData.push(p.node.product);
 		});
-		console.log(this.props.products);
 
 		let prodState = {};
 		this.productsData.forEach(p => {

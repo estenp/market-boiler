@@ -1,11 +1,11 @@
 import React from "react";
 import "./ProductCard.module.scss";
 import RadarDataChart from "../RadarDataChart/RadarDataChart";
+import {Link} from "gatsby";
 
 export default class ProductCard extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 		this.isInCart.bind(this);
 		this.isDisabled.bind(this);
 	}
@@ -26,12 +26,14 @@ export default class ProductCard extends React.Component {
 		return (
 			<div key={productID} className="column">
 				<div className="card" styleName={this.isInCart(productID) ? "isInCart" : ""}>
-					<div className="card-header">
-						<div className="card-header-title">
-							{this.props.productData.title} <br />
-							<span className="is-italic has-text-weight-light has-text-light has-text-primary">{this.props.productData.type}</span>
+					<Link to={`/product/`} state={{locationData: JSON.stringify(this.props)}}>
+						<div className="card-header">
+							<div className="card-header-title">
+								{this.props.productData.title} <br />
+								<span className="is-italic has-text-weight-light has-text-light has-text-primary">{this.props.productData.type}</span>
+							</div>
 						</div>
-					</div>
+					</Link>
 					<div className="card-image">
 						<figure className="image is-4by3">
 							<img src={this.props.productData.image} alt="Placeholder image" />
