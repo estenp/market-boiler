@@ -12,10 +12,12 @@ export class OrderPageTemplate extends React.Component {
 		super(props);
 		this.productsData = [];
 
+		// build all product data object
 		this.props.products.forEach(p => {
 			this.productsData.push(p.node.product);
 		});
 
+		// // // build state for products order form
 		let prodState = {};
 		this.productsData.forEach(p => {
 			prodState[p.id] = {
@@ -29,6 +31,8 @@ export class OrderPageTemplate extends React.Component {
 			cart: [],
 			page: 1
 		};
+
+		// // //
 
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleProductCardClick = this.handleProductCardClick.bind(this);
@@ -117,14 +121,11 @@ export class OrderPageTemplate extends React.Component {
 
 									<div className={(this.state.page === 1 ? "" : "hidden") + " columns is-centered"}>
 										{this.productsData.map(product => {
-											let productID = product.id;
 											return (
 												<ProductCard
-													key={productID}
-													productID={productID}
-													productData={product}
-													productState={this.state.products}
-													cart={this.state.cart}
+													key={product.productID}
+													productDetails={product}
+													state={this.state}
 													handleClick={this.handleProductCardClick}
 													handleChange={this.handleInputChange}
 												/>

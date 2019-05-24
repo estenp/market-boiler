@@ -15,20 +15,21 @@ export class ProductPageTemplate extends React.Component {
 	render() {
 		const {title, content, contentComponent} = this.props;
 		const PageContent = contentComponent || Content;
-		const {cart, productData, productState} = this.props.locationData;
-
+		const {state, productDetails} = this.props.locationData;
+		// console.log(state, productDetails);
 		return (
 			<Layout>
 				<section className="section section--gradient">
-					<Cart cart={cart} products={productsData} productState={productState} currentPage="0" handleCartClick={this.handleCartClick} />
+					{/* <Cart cart={cart} products={productData} productState={productState} currentPage="0" handleCartClick={this.handleCartClick} /> */}
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">
 								<section className="section">
 									<h2 className="title">{title}</h2>
 
-									<div className={(this.state.page === 1 ? "" : "hidden") + " columns is-centered"}>
-										{this.productsData.map(product => {
+									<div className="columns is-centered">
+										{JSON.stringify(productDetails)}
+										{/* {productData.map(product => {
 											let productID = product.id;
 											return (
 												<ProductCard
@@ -41,7 +42,7 @@ export class ProductPageTemplate extends React.Component {
 													handleChange={this.handleInputChange}
 												/>
 											);
-										})}
+										})} */}
 									</div>
 									<div>
 										<PageContent className="content" content={content} />
