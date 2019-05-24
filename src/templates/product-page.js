@@ -15,12 +15,20 @@ export class ProductPageTemplate extends React.Component {
 	render() {
 		const {title, content, contentComponent} = this.props;
 		const PageContent = contentComponent || Content;
-		const {state, productDetails} = this.props.locationData;
+		const {locationState, productDetails} = this.props.locationData;
 		// console.log(state, productDetails);
+
+		// 1. should click handler be contained in Cart and emit changes in state up to parent?
 		return (
 			<Layout>
 				<section className="section section--gradient">
-					{/* <Cart cart={cart} products={productData} productState={productState} currentPage="0" handleCartClick={this.handleCartClick} /> */}
+					{/* <Cart
+						cart={locationState.cart}
+						products={this.productsData}
+						productState={locationState.products}
+						currentPage={locationState.page}
+						handleCartClick={this.handleCartClick}
+					/> */}
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">
