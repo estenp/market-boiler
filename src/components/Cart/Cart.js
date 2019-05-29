@@ -52,7 +52,10 @@ export default class Cart extends React.Component {
 							<div className="card-content">
 								<ul>
 									{this.props.cart.map(prodID => {
-										let prodInfo = this.getProductInfoByID(prodID);
+										// let prodInfo = this.getProductInfoByID(prodID);
+										let prodInfo = {
+											title: prodID
+										};
 										//console.log(prodInfo);
 										return (
 											<li key={prodID}>
@@ -68,7 +71,10 @@ export default class Cart extends React.Component {
 							</div>
 							<div className="card-footer">
 								<a className="is-info card-footer-item button" onClick={this.props.handleCartClick}>
-									{this.props.currentPage === 1 ? "Continue" : "Finish"} &nbsp;&nbsp; <i className="fas fa-arrow-right" />
+									{this.props.currentPage === 1 && "Continue"}
+									{this.props.currentPage === 2 && "Continue Shopping"}
+									{this.props.currentPage === 3 && "Finish"}
+									&nbsp;&nbsp; <i className="fas fa-arrow-right" />
 								</a>
 							</div>
 						</span>

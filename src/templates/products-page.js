@@ -6,6 +6,8 @@ import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard/ProductCard";
 import Cart from "../components/Cart/Cart";
 import OrderForm from "../components/OrderForm/OrderForm";
+import Shop from "../components/Shop/Shop";
+import {Router} from "@reach/router";
 
 export class OrderPageTemplate extends React.Component {
 	constructor(props) {
@@ -41,7 +43,6 @@ export class OrderPageTemplate extends React.Component {
 	}
 
 	handleInputChange(productID, event) {
-		console.log("ls");
 		const target = event.target;
 		const value = target.type === "checkbox" ? target.checked : target.value;
 		const name = target.name;
@@ -118,26 +119,31 @@ export class OrderPageTemplate extends React.Component {
 							<div className="column is-10 is-offset-1">
 								<section className="section">
 									<h2 className="title">{title}</h2>
-
-									<div className={(this.state.page === 1 ? "" : "hidden") + " columns is-centered"}>
-										{this.productsData.map(product => {
-											return (
-												<ProductCard
-													key={product.productID}
-													productDetails={product}
-													state={this.state}
-													handleClick={this.handleProductCardClick}
-													handleChange={this.handleInputChange}
-												/>
-											);
-										})}
-									</div>
-									<section className={this.state.page === 2 ? "animateIn" : "hidden"}>
-										<OrderForm />
-									</section>
 									<div>
 										<PageContent className="content" content={content} />
 									</div>
+									<Router>
+										{/* make new component */}
+										{/* <div path="/order/orderForm/">
+											<div className={(this.state.page === 1 ? "" : "hidden") + " columns is-centered"}>
+												{this.productsData.map(product => {
+													return (
+														<ProductCard
+															key={product.productID}
+															productDetails={product}
+															state={this.state}
+															handleClick={this.handleProductCardClick}
+															handleChange={this.handleInputChange}
+														/>
+													);
+												})}
+											</div>
+											<section className={this.state.page === 2 ? "animateIn" : "hidden"}>
+												<OrderForm />
+											</section>
+										</div> */}
+										<Shop path="/order/shop/" />
+									</Router>
 								</section>
 							</div>
 						</div>

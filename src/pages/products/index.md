@@ -1,5 +1,5 @@
 ---
-templateKey: "order-page"
+templateKey: "products-page"
 path: /order
 title: Online Order
 ---
