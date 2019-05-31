@@ -6,7 +6,7 @@ import {Link} from "gatsby";
 export default class ProductCard extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
+		//console.log(props);
 		this.isDisabled.bind(this);
 	}
 
@@ -22,7 +22,7 @@ export default class ProductCard extends React.Component {
 		return (
 			<div key={productID} className="column">
 				<div className="card" styleName={this.props.isInCart === true ? "isInCart" : ""}>
-					<Link to={`/product/${productID}`}>
+					<Link to={`/products/product-detail/${productID}`}>
 						<div className="card-header">
 							<div className="card-header-title">
 								{this.props.productDetails.title} <br />

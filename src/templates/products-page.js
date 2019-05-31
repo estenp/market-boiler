@@ -39,7 +39,7 @@ export class ProductPageTemplate extends React.Component {
 
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleProductCardClick = this.handleProductCardClick.bind(this);
-		//this.isInCart = this.isInCart.bind(this);
+		this.isInCart = this.isInCart.bind(this);
 		//console.log(this.state);
 	}
 
