@@ -101,6 +101,16 @@ export class ProductPageTemplate extends React.Component {
 		return this.state.cart.indexOf(productID) === -1 ? false : true;
 	}
 
+	getProductInfoByID = id => {
+		let prodInfo;
+		this.productsData.forEach(p => {
+			if (p.id === id) {
+				prodInfo = p;
+			}
+		});
+		return prodInfo;
+	};
+
 	render() {
 		const {title, content, contentComponent} = this.props;
 		const PageContent = contentComponent || Content;
@@ -114,6 +124,7 @@ export class ProductPageTemplate extends React.Component {
 						productState={this.state.products}
 						currentPage={this.state.page}
 						handleCartClick={this.handleCartClick}
+						getProductInfoByID={this.getProductInfoByID}
 					/>
 					<div className="container">
 						<div className="columns">
@@ -124,9 +135,19 @@ export class ProductPageTemplate extends React.Component {
 										<PageContent className="content" content={content} />
 									</div>
 									<Router>
-										<ProductList path="/products/" />
-										<ProductDetail path="/products/product-detail/" />
-										<OrderForm path="/products/order-form/" />
+										<ProductList
+											products={this.productsData}
+											orderState={this.state}
+											handleProductCardClick={this.handleProductCardClick}
+											handleInputChange={this.handleInputChange}
+											path="/products/"
+										/>
+										<ProductDetail
+											products={this.productsData}
+											getProductInfoByID={this.getProductInfoByID}
+											path="/products/product-detail/:productID"
+										/>
+										<OrderForm cart={this.state.cart} path="/products/order-form/" />
 									</Router>
 								</section>
 							</div>

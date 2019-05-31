@@ -71,7 +71,7 @@ module.exports = {
 		},
 		{
 			resolve: `gatsby-plugin-create-client-paths`,
-			options: {prefixes: [`/order/*`]}
+			options: {prefixes: [`/product/*`]}
 		},
 		"gatsby-plugin-netlify" // make sure to keep it last in the array
 	]

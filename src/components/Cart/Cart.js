@@ -19,15 +19,15 @@ export default class Cart extends React.Component {
 		}
 	}
 
-	getProductInfoByID = id => {
-		let prodInfo;
-		this.props.products.forEach(p => {
-			if (p.id === id) {
-				prodInfo = p;
-			}
-		});
-		return prodInfo;
-	};
+	// getProductInfoByID = id => {
+	// 	let prodInfo;
+	// 	this.props.products.forEach(p => {
+	// 		if (p.id === id) {
+	// 			prodInfo = p;
+	// 		}
+	// 	});
+	// 	return prodInfo;
+	// };
 
 	render() {
 		return (
@@ -52,7 +52,7 @@ export default class Cart extends React.Component {
 							<div className="card-content">
 								<ul>
 									{this.props.cart.map(prodID => {
-										// let prodInfo = this.getProductInfoByID(prodID);
+										// let prodInfo = this.props.getProductInfoByID(prodID);
 										let prodInfo = {
 											title: prodID
 										};

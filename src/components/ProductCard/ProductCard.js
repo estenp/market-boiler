@@ -7,27 +7,22 @@ export default class ProductCard extends React.Component {
 	constructor(props) {
 		super(props);
 		console.log(props);
-		this.isInCart.bind(this);
 		this.isDisabled.bind(this);
 	}
 
 	isDisabled(productID) {
-		return this.props.state.products[productID].quantity == "";
-	}
-
-	isInCart(productID) {
-		return this.props.state.cart.indexOf(productID) === -1 ? false : true;
+		return this.props.productState[productID].quantity == "";
 	}
 
 	render() {
 		var productID = this.props.productDetails.id;
-		var unitValue = this.props.state.products[productID].unit;
-		var quantityValue = this.props.state.products[productID].quantity;
+		var unitValue = this.props.productState[productID].unit;
+		var quantityValue = this.props.productState[productID].quantity;
 
 		return (
 			<div key={productID} className="column">
-				<div className="card" styleName={this.isInCart(productID) ? "isInCart" : ""}>
-					<Link to={`/product/`} state={{locationData: JSON.stringify(this.props)}}>
+				<div className="card" styleName={this.props.isInCart === true ? "isInCart" : ""}>
+					<Link to={`/product/${productID}`}>
 						<div className="card-header">
 							<div className="card-header-title">
 								{this.props.productDetails.title} <br />
@@ -65,11 +60,11 @@ export default class ProductCard extends React.Component {
 					</div>
 					<div className="card-footer">
 						<a
-							className={(this.isInCart(productID) ? "is-danger" : "is-primary") + " card-footer-item button"}
+							className={(this.props.isInCart === true ? "is-danger" : "is-primary") + " card-footer-item button"}
 							onClick={this.props.handleClick.bind(this, productID)}
 							//disabled={this.isDisabled(productID)}
 						>
-							{this.isInCart(productID) ? "Remove From Cart" : "Add to Cart"}
+							{this.props.isInCart === true ? "Remove From Cart" : "Add to Cart"}
 						</a>
 					</div>
 				</div>
