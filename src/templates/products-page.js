@@ -5,11 +5,12 @@ import {graphql} from "gatsby";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard/ProductCard";
 import Cart from "../components/Cart/Cart";
-import OrderForm from "../components/OrderForm/OrderForm";
-import Shop from "../components/Shop/Shop";
+import OrderForm from "../components/Order/OrderForm/OrderForm";
+import ProductDetail from "../components/Order/ProductDetail/ProductDetail";
+import ProductList from "../components/Order/ProductList/ProductList";
 import {Router} from "@reach/router";
 
-export class OrderPageTemplate extends React.Component {
+export class ProductPageTemplate extends React.Component {
 	constructor(props) {
 		super(props);
 		this.productsData = [];
@@ -123,26 +124,9 @@ export class OrderPageTemplate extends React.Component {
 										<PageContent className="content" content={content} />
 									</div>
 									<Router>
-										{/* make new component */}
-										{/* <div path="/order/orderForm/">
-											<div className={(this.state.page === 1 ? "" : "hidden") + " columns is-centered"}>
-												{this.productsData.map(product => {
-													return (
-														<ProductCard
-															key={product.productID}
-															productDetails={product}
-															state={this.state}
-															handleClick={this.handleProductCardClick}
-															handleChange={this.handleInputChange}
-														/>
-													);
-												})}
-											</div>
-											<section className={this.state.page === 2 ? "animateIn" : "hidden"}>
-												<OrderForm />
-											</section>
-										</div> */}
-										<Shop path="/order/shop/" />
+										<ProductList path="/products/" />
+										<ProductDetail path="/products/product-detail/" />
+										<OrderForm path="/products/order-form/" />
 									</Router>
 								</section>
 							</div>
@@ -154,27 +138,27 @@ export class OrderPageTemplate extends React.Component {
 	}
 }
 
-OrderPageTemplate.propTypes = {
+ProductPageTemplate.propTypes = {
 	title: PropTypes.string.isRequired,
 	content: PropTypes.string,
 	contentComponent: PropTypes.func
 };
 
-const OrderPage = ({data}) => {
-	const orderPageData = data.orderPage;
+const ProductPage = ({data}) => {
+	const productPageData = data.productPage;
 	const {edges: products} = data.products;
-	return <OrderPageTemplate contentComponent={HTMLContent} title={orderPageData.frontmatter.title} content={orderPageData.html} products={products} />;
+	return <ProductPageTemplate contentComponent={HTMLContent} title={productPageData.frontmatter.title} content={productPageData.html} products={products} />;
 };
 
-OrderPage.propTypes = {
+ProductPage.propTypes = {
 	data: PropTypes.object.isRequired
 };
 
-export default OrderPage;
+export default ProductPage;
 
-export const OrderPageQuery = graphql`
-	query OrderPage($id: String!) {
-		orderPage: markdownRemark(id: {eq: $id}) {
+export const ProductPageQuery = graphql`
+	query ProductPage($id: String!) {
+		productPage: markdownRemark(id: {eq: $id}) {
 			html
 			frontmatter {
 				title

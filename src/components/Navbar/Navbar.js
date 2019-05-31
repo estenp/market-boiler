@@ -13,7 +13,7 @@ const Navbar = ({data}) => (
 				</Link>
 			</div>
 			<div styleName="navbar-end" className="navbar-end">
-				<Link styleName="navbar-item" className="navbar-item" to="/order">
+				<Link styleName="navbar-item" className="navbar-item" to="/products">
 					Order
 				</Link>
 				<Link styleName="navbar-item" className="navbar-item" to="/vendors">
