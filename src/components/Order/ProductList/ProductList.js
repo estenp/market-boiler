@@ -6,10 +6,6 @@ export class ProductList extends React.Component {
 		super(props);
 	}
 
-	isInCart = productID => {
-		return this.props.orderState.cart.indexOf(productID) === -1 ? false : true;
-	};
-
 	render() {
 		return (
 			<div>
@@ -20,7 +16,7 @@ export class ProductList extends React.Component {
 								key={product.id}
 								productDetails={product}
 								productState={this.props.orderState.products}
-								isInCart={this.isInCart(product.id)}
+								isInCart={this.props.isInCart(product.id)}
 								handleClick={this.props.handleProductCardClick}
 								handleChange={this.props.handleInputChange}
 							/>

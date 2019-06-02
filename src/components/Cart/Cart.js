@@ -1,86 +1,93 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import {navigate} from "@reach/router";
 import "./Cart.module.scss";
 
-export default class Cart extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			cartIsExpanded: true
-		};
+const Cart = props => {
+	const [cartIsExpanded, setCartIsExpanded] = useState(true);
 
-		this.toggleCart = this.toggleCart.bind(this);
-	}
+	const [cartButtonState, setCartButtonState] = useState({
+		text: "Continue",
+		buttonClass: "fa-arrow-right",
+		navigateTo: "/products/order-form/"
+	});
 
-	toggleCart() {
-		if (this.props.cart.length > 0) {
-			this.setState({
-				cartIsExpanded: !this.state.cartIsExpanded
+	useEffect(() => {
+		if (props.location.pathname.indexOf("product-detail") > -1) {
+			setCartButtonState({
+				text: "Back to Products",
+				buttonClass: "fa-arrow-left",
+				navigateTo: "/products/"
+			});
+		} else if (props.location.pathname.indexOf("order-form") > -1) {
+			setCartButtonState({
+				text: "Submit Order",
+				buttonClass: ""
+			});
+		} else {
+			setCartButtonState({
+				text: "Continue",
+				buttonClass: "fa-arrow-right",
+				navigateTo: "/products/order-form/"
 			});
 		}
-	}
+	});
 
-	// getProductInfoByID = id => {
-	// 	let prodInfo;
-	// 	this.props.products.forEach(p => {
-	// 		if (p.id === id) {
-	// 			prodInfo = p;
-	// 		}
-	// 	});
-	// 	return prodInfo;
-	// };
+	const toggleCart = () => {
+		if (props.cart.length > 0) {
+			setCartIsExpanded(!cartIsExpanded);
+		}
+	};
 
-	render() {
-		return (
-			<div styleName="cart-container">
-				<div className="card" styleName="cart">
-					<header className="card-header">
-						<a href="javascript:void(0)" className="card-header-icon has-text-secondary" aria-label="shopping-cart-icon">
-							<i className="fas fa-shopping-cart" styleName="cart-icon" />
-						</a>
-						<p className="card-header-title">
-							<span>{this.props.cart.length}</span>
-						</p>
+	const handleButtonClick = () => {
+		navigate(cartButtonState.navigateTo);
+	};
 
-						<a href="javascript:void(0)" className="card-header-icon" aria-label="expand-cart-items" onClick={this.toggleCart}>
-							<span className="icon">
-								<i className={this.state.cartIsExpanded ? "fas fa-angle-up" : "fas fa-angle-down"} aria-hidden="true" />
-							</span>
-						</a>
-					</header>
-					{this.props.cart.length > 0 && this.state.cartIsExpanded && (
-						<span>
-							<div className="card-content">
-								<ul>
-									{this.props.cart.map(prodID => {
-										// let prodInfo = this.props.getProductInfoByID(prodID);
-										let prodInfo = {
-											title: prodID
-										};
-										//console.log(prodInfo);
-										return (
-											<li key={prodID}>
-												<span className="is-size-6">{prodInfo.title}</span>
-												<br />
-												<span className="is-size-7">
-													{this.props.productState[prodID].quantity} {this.props.productState[prodID].unit}
-												</span>
-											</li>
-										);
-									})}
-								</ul>
-							</div>
-							<div className="card-footer">
-								<a className="is-info card-footer-item button" onClick={this.props.handleCartClick}>
-									{this.props.currentPage === 1 && "Continue"}
-									{this.props.currentPage === 2 && "Continue Shopping"}
-									{this.props.currentPage === 3 && "Finish"}
-									&nbsp;&nbsp; <i className="fas fa-arrow-right" />
-								</a>
-							</div>
+	return (
+		<div styleName="cart-container">
+			<div className="card" styleName="cart">
+				<header className="card-header">
+					<a href="javascript:void(0)" className="card-header-icon has-text-secondary" aria-label="shopping-cart-icon">
+						<i className="fas fa-shopping-cart" styleName="cart-icon" />
+					</a>
+					<p className="card-header-title">
+						<span>{props.cart.length}</span>
+					</p>
+
+					<a href="javascript:void(0)" className="card-header-icon" aria-label="expand-cart-items" onClick={toggleCart}>
+						<span className="icon">
+							<i className={cartIsExpanded ? "fas fa-angle-up" : "fas fa-angle-down"} aria-hidden="true" />
 						</span>
-					)}
-				</div>
+					</a>
+				</header>
+				{props.cart.length > 0 && cartIsExpanded && (
+					<span>
+						<div className="card-content">
+							<ul>
+								{props.cart.map(prodID => {
+									return (
+										<li key={prodID}>
+											<span className="is-size-6">{props.getProductInfoByID(prodID).title}</span>
+											<br />
+											<span className="is-size-7">
+												{props.productState[prodID].quantity} {props.productState[prodID].unit}
+											</span>
+										</li>
+									);
+								})}
+							</ul>
+						</div>
+						<div className="card-footer">
+							<a className="is-info card-footer-item button" onClick={handleButtonClick}>
+								<i className={"fas " + cartButtonState.buttonClass} />
+								&nbsp;&nbsp;
+								{cartButtonState.text}
+							</a>
+						</div>
+					</span>
+				)}
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
+
+export default Cart;

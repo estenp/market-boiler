@@ -8,7 +8,7 @@ import Cart from "../components/Cart/Cart";
 import OrderForm from "../components/Order/OrderForm/OrderForm";
 import ProductDetail from "../components/Order/ProductDetail/ProductDetail";
 import ProductList from "../components/Order/ProductList/ProductList";
-import {Router} from "@reach/router";
+import {Router, Location} from "@reach/router";
 
 export class ProductPageTemplate extends React.Component {
 	constructor(props) {
@@ -97,9 +97,9 @@ export class ProductPageTemplate extends React.Component {
 		});
 	}
 
-	isInCart(productID) {
+	isInCart = productID => {
 		return this.state.cart.indexOf(productID) === -1 ? false : true;
-	}
+	};
 
 	getProductInfoByID = id => {
 		let prodInfo;
@@ -118,14 +118,19 @@ export class ProductPageTemplate extends React.Component {
 		return (
 			<Layout>
 				<section className="section section--gradient">
-					<Cart
-						cart={this.state.cart}
-						products={this.productsData}
-						productState={this.state.products}
-						currentPage={this.state.page}
-						handleCartClick={this.handleCartClick}
-						getProductInfoByID={this.getProductInfoByID}
-					/>
+					<Location>
+						{({location}) => (
+							<Cart
+								cart={this.state.cart}
+								products={this.productsData}
+								productState={this.state.products}
+								location={location}
+								currentPage={this.state.page}
+								handleCartClick={this.handleCartClick}
+								getProductInfoByID={this.getProductInfoByID}
+							/>
+						)}
+					</Location>
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">
@@ -134,16 +139,22 @@ export class ProductPageTemplate extends React.Component {
 									<div>
 										<PageContent className="content" content={content} />
 									</div>
+
 									<Router>
 										<ProductList
 											products={this.productsData}
 											orderState={this.state}
 											handleProductCardClick={this.handleProductCardClick}
 											handleInputChange={this.handleInputChange}
+											isInCart={this.isInCart}
 											path="/products/"
 										/>
 										<ProductDetail
 											products={this.productsData}
+											orderState={this.state}
+											isInCart={this.isInCart}
+											handleProductAdd={this.handleProductCardClick}
+											handleInputChange={this.handleInputChange}
 											getProductInfoByID={this.getProductInfoByID}
 											path="/products/product-detail/:productID"
 										/>

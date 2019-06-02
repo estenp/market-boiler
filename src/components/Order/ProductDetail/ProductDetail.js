@@ -11,10 +11,10 @@ export class ProductDetail extends React.Component {
 	}
 
 	render() {
-		const {allProductDetails, shopState, productID} = this.props;
+		const {allProductDetails, orderState, productID} = this.props;
 		//var productID = productDetails.id;
-		var unitValue = this.props.shopState.products[productID].unit;
-		var quantityValue = this.props.shopState.products[productID].quantity;
+		var unitValue = this.props.orderState.products[productID].unit;
+		var quantityValue = this.props.orderState.products[productID].quantity;
 
 		// console.log(state, productDetails);
 
@@ -42,7 +42,7 @@ export class ProductDetail extends React.Component {
 						<hr />
 						<div>
 							<label>Unit: </label> <br />
-							<select name="unit" value={unitValue} onChange={this.handleInputChange.bind(this, productID)}>
+							<select name="unit" value={unitValue} onChange={e => this.props.handleInputChange(productID)}>
 								{this.productDetails.availUnits.map((unit, i) => (
 									<option key={i} value={unit}>
 										{unit}
@@ -54,17 +54,17 @@ export class ProductDetail extends React.Component {
 
 						<div>
 							<label>Quantity: </label> <br />
-							<input type="number" name="quantity" value={quantityValue} onChange={this.handleInputChange.bind(this, productID)} />
+							<input type="number" name="quantity" value={quantityValue} onChange={e => this.props.handleInputChange(productID)} />
 						</div>
 					</div>
 					<div className="card-footer">
-						{/* <a
-                            className={(this.isInCart(productID) ? "is-danger" : "is-primary") + " card-footer-item button"}
-                            onClick={this.handleClick.bind(this, productID)}
-                            //disabled={this.isDisabled(productID)}
-                        >
-                            {this.isInCart(productID) ? "Remove From Cart" : "Add to Cart"}
-                        </a> */}
+						<a
+							className={(this.props.isInCart(productID) ? "is-danger" : "is-primary") + " card-footer-item button"}
+							onClick={e => this.props.handleProductAdd(productID)}
+							//disabled={this.isDisabled(productID)}
+						>
+							{this.props.isInCart(productID) ? "Remove From Cart" : "Add to Cart"}
+						</a>
 					</div>
 				</div>
 			</div>
