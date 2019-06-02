@@ -19,6 +19,31 @@ export default class ProductCard extends React.Component {
 		var unitValue = this.props.productState[productID].unit;
 		var quantityValue = this.props.productState[productID].quantity;
 
+		const radarStyle = {
+			axes: {
+				line: {
+					strokeWidth: 0.5,
+					strokeOpacity: 0.5,
+					fillOpacity: 0.1,
+					stroke: "#ddd",
+					strokeWidth: 2,
+					strokeOpacity: 0.4
+				},
+				ticks: {color: "blue"},
+				text: {display: "none"}
+			},
+			labels: {
+				fontSize: 14
+			},
+			polygons: {
+				fillOpacity: 0.1,
+				stroke: "rgb(41, 29, 224)",
+				fill: "rgb(137, 234, 84)",
+				strokeWidth: 2,
+				strokeOpacity: 0.3
+			}
+		};
+
 		return (
 			<div key={productID} className="column">
 				<div className="card" styleName={this.props.isInCart === true ? "isInCart" : ""}>
@@ -39,7 +64,11 @@ export default class ProductCard extends React.Component {
 						<div styleName="product-description">
 							<p>{this.props.productDetails.description}</p>
 						</div>
-						{this.props.productDetails.attributes.effects.length > 0 && <RadarDataChart data={this.props.productDetails} />}
+						<div className="columns is-centered">
+							{this.props.productDetails.attributes.effects.length > 0 && (
+								<RadarDataChart data={this.props.productDetails} style={radarStyle} width={200} height={200} margin={25} />
+							)}
+						</div>
 						<hr />
 						<div>
 							<label>Unit: </label> <br />

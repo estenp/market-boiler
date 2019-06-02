@@ -7,11 +7,11 @@ export default class RadarDataChart extends React.Component {
 	constructor(props) {
 		super(props);
 		//this.state = {};
-		//console.log(props);
+		console.log(props);
 	}
 
 	render() {
-		const basicFormat = format(".2r");
+		const basicFormat = format(".1r");
 		const wideFormat = format(".3r");
 
 		var chartDataArray = [
@@ -39,36 +39,13 @@ export default class RadarDataChart extends React.Component {
 		return (
 			<RadarChart
 				data={chartData.data}
-				tickFormat={t => wideFormat(t)}
+				tickFormat={t => basicFormat(t)}
 				startingAngle={0}
 				domains={chartData.domain}
-				style={{
-					axes: {
-						line: {
-							strokeWidth: 0.5,
-							strokeOpacity: 0.5,
-							fillOpacity: 0.1,
-							stroke: "#ddd",
-							strokeWidth: 2,
-							strokeOpacity: 0.4
-						},
-						ticks: {color: "blue"},
-						text: {display: "none"}
-					},
-					labels: {
-						fontSize: 14
-					},
-					polygons: {
-						fillOpacity: 0.1,
-						stroke: "rgb(41, 29, 224)",
-						fill: "rgb(137, 234, 84)",
-						strokeWidth: 2,
-						strokeOpacity: 0.3
-					}
-				}}
-				width={200}
-				height={200}
-				margin={20}
+				style={this.props.style}
+				width={this.props.width}
+				height={this.props.height}
+				margin={this.props.margin}
 				hideInnerMostValues={true}
 			/>
 		);
