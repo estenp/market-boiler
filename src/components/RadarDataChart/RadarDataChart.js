@@ -7,7 +7,7 @@ export default class RadarDataChart extends React.Component {
 	constructor(props) {
 		super(props);
 		//this.state = {};
-		console.log(props);
+		//console.log(props);
 	}
 
 	render() {

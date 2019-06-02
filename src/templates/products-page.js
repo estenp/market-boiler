@@ -5,18 +5,22 @@ import {graphql} from "gatsby";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard/ProductCard";
 import Cart from "../components/Cart/Cart";
-import OrderForm from "../components/OrderForm/OrderForm";
+import OrderForm from "../components/Order/OrderForm/OrderForm";
+import ProductDetail from "../components/Order/ProductDetail/ProductDetail";
+import ProductList from "../components/Order/ProductList/ProductList";
+import {Router, Location} from "@reach/router";
 
-export class OrderPageTemplate extends React.Component {
+export class ProductPageTemplate extends React.Component {
 	constructor(props) {
 		super(props);
 		this.productsData = [];
 
+		// build all product data object
 		this.props.products.forEach(p => {
 			this.productsData.push(p.node.product);
 		});
-		console.log(this.props.products);
 
+		// // // build state for products order form
 		let prodState = {};
 		this.productsData.forEach(p => {
 			prodState[p.id] = {
@@ -31,14 +35,15 @@ export class OrderPageTemplate extends React.Component {
 			page: 1
 		};
 
+		// // //
+
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleProductCardClick = this.handleProductCardClick.bind(this);
-		//this.isInCart = this.isInCart.bind(this);
+		this.isInCart = this.isInCart.bind(this);
 		//console.log(this.state);
 	}
 
 	handleInputChange(productID, event) {
-		console.log("ls");
 		const target = event.target;
 		const value = target.type === "checkbox" ? target.checked : target.value;
 		const name = target.name;
@@ -92,9 +97,19 @@ export class OrderPageTemplate extends React.Component {
 		});
 	}
 
-	isInCart(productID) {
+	isInCart = productID => {
 		return this.state.cart.indexOf(productID) === -1 ? false : true;
-	}
+	};
+
+	getProductInfoByID = id => {
+		let prodInfo;
+		this.productsData.forEach(p => {
+			if (p.id === id) {
+				prodInfo = p;
+			}
+		});
+		return prodInfo;
+	};
 
 	render() {
 		const {title, content, contentComponent} = this.props;
@@ -103,41 +118,48 @@ export class OrderPageTemplate extends React.Component {
 		return (
 			<Layout>
 				<section className="section section--gradient">
-					<Cart
-						cart={this.state.cart}
-						products={this.productsData}
-						productState={this.state.products}
-						currentPage={this.state.page}
-						handleCartClick={this.handleCartClick}
-					/>
+					<Location>
+						{({location}) => (
+							<Cart
+								cart={this.state.cart}
+								products={this.productsData}
+								productState={this.state.products}
+								location={location}
+								currentPage={this.state.page}
+								handleCartClick={this.handleCartClick}
+								getProductInfoByID={this.getProductInfoByID}
+							/>
+						)}
+					</Location>
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">
 								<section className="section">
 									<h2 className="title">{title}</h2>
-
-									<div className={(this.state.page === 1 ? "" : "hidden") + " columns is-centered"}>
-										{this.productsData.map(product => {
-											let productID = product.id;
-											return (
-												<ProductCard
-													key={productID}
-													productID={productID}
-													productData={product}
-													productState={this.state.products}
-													cart={this.state.cart}
-													handleClick={this.handleProductCardClick}
-													handleChange={this.handleInputChange}
-												/>
-											);
-										})}
-									</div>
-									<section className={this.state.page === 2 ? "animateIn" : "hidden"}>
-										<OrderForm />
-									</section>
 									<div>
 										<PageContent className="content" content={content} />
 									</div>
+
+									<Router>
+										<ProductList
+											products={this.productsData}
+											orderState={this.state}
+											handleProductCardClick={this.handleProductCardClick}
+											handleInputChange={this.handleInputChange}
+											isInCart={this.isInCart}
+											path="/products/"
+										/>
+										<ProductDetail
+											products={this.productsData}
+											orderState={this.state}
+											isInCart={this.isInCart}
+											handleProductAdd={this.handleProductCardClick}
+											handleInputChange={this.handleInputChange}
+											getProductInfoByID={this.getProductInfoByID}
+											path="/products/product-detail/:productID"
+										/>
+										<OrderForm cart={this.state.cart} path="/products/order-form/" />
+									</Router>
 								</section>
 							</div>
 						</div>
@@ -148,27 +170,27 @@ export class OrderPageTemplate extends React.Component {
 	}
 }
 
-OrderPageTemplate.propTypes = {
+ProductPageTemplate.propTypes = {
 	title: PropTypes.string.isRequired,
 	content: PropTypes.string,
 	contentComponent: PropTypes.func
 };
 
-const OrderPage = ({data}) => {
-	const orderPageData = data.orderPage;
+const ProductPage = ({data}) => {
+	const productPageData = data.productPage;
 	const {edges: products} = data.products;
-	return <OrderPageTemplate contentComponent={HTMLContent} title={orderPageData.frontmatter.title} content={orderPageData.html} products={products} />;
+	return <ProductPageTemplate contentComponent={HTMLContent} title={productPageData.frontmatter.title} content={productPageData.html} products={products} />;
 };
 
-OrderPage.propTypes = {
+ProductPage.propTypes = {
 	data: PropTypes.object.isRequired
 };
 
-export default OrderPage;
+export default ProductPage;
 
-export const OrderPageQuery = graphql`
-	query OrderPage($id: String!) {
-		orderPage: markdownRemark(id: {eq: $id}) {
+export const ProductPageQuery = graphql`
+	query ProductPage($id: String!) {
+		productPage: markdownRemark(id: {eq: $id}) {
 			html
 			frontmatter {
 				title
