@@ -2,6 +2,7 @@ import React from "react";
 import "./ProductCard.module.scss";
 import RadarDataChart from "../RadarDataChart/RadarDataChart";
 import {Link} from "gatsby";
+//import Img from "gatsby-image";
 
 export default class ProductCard extends React.Component {
 	constructor(props) {
@@ -56,8 +57,8 @@ export default class ProductCard extends React.Component {
 						</div>
 					</Link>
 					<div className="card-image">
-						<figure className="image is-4by3">
-							<img src={this.props.productDetails.image} alt="Placeholder image" />
+						<figure className="image is-square">
+							<img className="is-rounded" src={this.props.productDetails.image} alt="Placeholder image" />
 						</figure>
 					</div>
 					<div className="card-content">
