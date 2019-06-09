@@ -16,6 +16,10 @@
 			{
 				"effect": "sleepy",
 				"level": 7
+			},
+			{
+				"effect": "creative",
+				"level": 4
 			}
 		]
 	}

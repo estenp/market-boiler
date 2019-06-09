@@ -55,6 +55,22 @@ module.exports = {
 				ignore: [`**/\.*`] // ignore files starting with a dot
 			}
 		},
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `flavors`,
+				path: `${__dirname}/src/data/flavors`,
+				ignore: [`**/\.*`] // ignore files starting with a dot
+			}
+		},
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `effects`,
+				path: `${__dirname}/src/data/effects`,
+				ignore: [`**/\.*`] // ignore files starting with a dot
+			}
+		},
 		"gatsby-plugin-sharp",
 		"gatsby-transformer-sharp",
 		{

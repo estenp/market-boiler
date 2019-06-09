@@ -7,7 +7,7 @@
 	"availUnits": ["packages of 30"],
 	"attributes": {
 		"strain": "Indica",
-		"flavors": ["blueberry"],
+		"flavors": ["blueberry", "root-beer"],
 		"effects": []
 	}
 }

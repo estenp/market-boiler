@@ -12,7 +12,7 @@ export class ProductList extends React.Component {
 				<div className="columns is-centered is-multiline">
 					{this.props.products.map(product => {
 						return (
-							<div className="column is-one-third-desktop is-full-tablet">
+							<div key={product.id} className="column is-one-third-desktop is-full-tablet">
 								<ProductCard
 									key={product.id}
 									productDetails={product}
