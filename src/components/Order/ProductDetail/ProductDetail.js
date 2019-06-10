@@ -7,7 +7,7 @@ import RadarDataChart from "../../RadarDataChart/RadarDataChart";
 export class ProductDetail extends React.Component {
 	constructor(props) {
 		super(props);
-
+		console.log(props);
 		this.productDetails = this.props.getProductInfoByID(this.props.productID);
 	}
 

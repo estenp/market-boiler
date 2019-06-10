@@ -20,6 +20,7 @@ export class ProductList extends React.Component {
 									isInCart={this.props.isInCart(product.id)}
 									handleClick={this.props.handleProductCardClick}
 									handleChange={this.props.handleInputChange}
+									location={this.props.location}
 								/>
 							</div>
 						);

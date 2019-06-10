@@ -41,9 +41,9 @@ export default class RadarDataChart extends React.Component {
 				}
 			};
 		} else {
-			radarStyle.width = 400;
-			radarStyle.height = 400;
-			radarStyle.margin = 50;
+			radarStyle.width = 300;
+			radarStyle.height = 300;
+			radarStyle.margin = 30;
 			radarStyle.styleObj = {
 				axes: {
 					line: {
@@ -58,9 +58,7 @@ export default class RadarDataChart extends React.Component {
 					text: {opacity: 0.2}
 				},
 				labels: {
-					fontSize: 14,
-					marginBottom: 10,
-					marginTop: 10
+					fontSize: 14
 				},
 				polygons: {
 					fillOpacity: 0.1,
@@ -83,7 +81,7 @@ export default class RadarDataChart extends React.Component {
 		var chartDomainArray = [];
 
 		this.props.data.attributes.effects.forEach(e => {
-			console.log(e);
+			// console.log(e);
 			chartDataArray[0][e.label] = e.level;
 			var obj = {
 				name: e.label,

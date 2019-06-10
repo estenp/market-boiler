@@ -9,6 +9,7 @@ import OrderForm from "../components/Order/OrderForm/OrderForm";
 import ProductDetail from "../components/Order/ProductDetail/ProductDetail";
 import ProductList from "../components/Order/ProductList/ProductList";
 import {Router, Location} from "@reach/router";
+import {Link} from "gatsby";
 
 export class ProductPageTemplate extends React.Component {
 	constructor(props) {
@@ -159,30 +160,49 @@ export class ProductPageTemplate extends React.Component {
 									<div className="content">
 										<PageContent className="content" content={content} />
 									</div>
-
 									<Location>
 										{({location}) => (
-											<Router>
-												<ProductList
-													products={this.productsData}
-													orderState={this.state}
-													handleProductCardClick={this.handleProductCardClick}
-													handleInputChange={this.handleInputChange}
-													isInCart={this.isInCart}
-													path="/products/"
-												/>
-												<ProductDetail
-													products={this.productsData}
-													orderState={this.state}
-													isInCart={this.isInCart}
-													handleProductAdd={this.handleProductCardClick}
-													handleInputChange={this.handleInputChange}
-													getProductInfoByID={this.getProductInfoByID}
-													location={location}
-													path="/products/product-detail/:productID"
-												/>
-												<OrderForm cart={this.state.cart} path="/products/order-form/" />
-											</Router>
+											<div>
+												<nav className="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+													<ul>
+														<li>
+															<Link to="/products">Products</Link>
+														</li>
+														{location.pathname.indexOf("product-detail") > -1 && (
+															<li className="is-active">
+																<Link href="#">Product Detail</Link>
+															</li>
+														)}
+														{location.pathname.indexOf("order-form") > -1 && (
+															<li className="is-active">
+																<Link href="#">Customer Info</Link>
+															</li>
+														)}
+													</ul>
+												</nav>
+
+												<Router>
+													<ProductList
+														products={this.productsData}
+														orderState={this.state}
+														handleProductCardClick={this.handleProductCardClick}
+														handleInputChange={this.handleInputChange}
+														isInCart={this.isInCart}
+														path="/products/"
+													/>
+													<ProductDetail
+														products={this.productsData}
+														orderState={this.state}
+														isInCart={this.isInCart}
+														handleProductAdd={this.handleProductCardClick}
+														handleInputChange={this.handleInputChange}
+														getProductInfoByID={this.getProductInfoByID}
+														location={location}
+														path="/products/product-detail/:productID"
+													/>
+													<OrderForm cart={this.state.cart} path="/products/order-form/" />
+												</Router>
+											</div>
 										)}
 									</Location>
 								</section>
