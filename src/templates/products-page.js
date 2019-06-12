@@ -163,7 +163,7 @@ export class ProductPageTemplate extends React.Component {
 									<Location>
 										{({location}) => (
 											<div>
-												<nav className="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+												<nav className="breadcrumb " aria-label="breadcrumbs">
 													<ul>
 														<li>
 															<Link to="/products">Products</Link>

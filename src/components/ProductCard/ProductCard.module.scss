@@ -10,10 +10,14 @@
 
 .effect-chart {
 	min-height: 200px;
+	border-bottom: solid 1px #ddd;
+	margin-bottom: 20px;
 }
 
 .flavor-section {
 	padding-bottom: 1rem;
+	border-bottom: solid 1px #ddd;
+	margin-bottom: 20px;
 }
 
 .attribute-section-subheader {
@@ -35,4 +39,8 @@
 	.tags {
 		padding: 0 0.75rem 0.75rem 0.75rem;
 	}
+}
+
+.product-image {
+	min-width: 150px;
 }

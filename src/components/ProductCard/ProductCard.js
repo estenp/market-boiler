@@ -1,6 +1,7 @@
 import React from "react";
 import "./ProductCard.module.scss";
 import RadarDataChart from "../RadarDataChart/RadarDataChart";
+import NumberInput from "../NumberInput/NumberInput";
 import {Link} from "gatsby";
 //import Img from "gatsby-image";
 
@@ -46,7 +47,12 @@ export default class ProductCard extends React.Component {
 						</svg> */}
 						<div className="columns is-multiline">
 							<figure className="column image">
-								<img className={!this.detailPage ? "is-rounded" : ""} src={this.props.productDetails.image} alt="Placeholder image" />
+								<img
+									className={!this.detailPage ? "is-rounded" : ""}
+									styleName="product-image"
+									src={this.props.productDetails.image}
+									alt="Placeholder image"
+								/>
 							</figure>
 							<div className="column">
 								{this.props.productDetails.attributes.flavors.length > 0 && (
@@ -67,17 +73,18 @@ export default class ProductCard extends React.Component {
 								)}
 								{this.props.productDetails.attributes.effects.length > 0 && (
 									<div styleName="effect-chart">
-										<h6 className="subtitle is-6 has-text-primary" styleName="attribute-section-subheader">
+										{/* <h6 className="subtitle is-6 has-text-primary" styleName="attribute-section-subheader">
 											Effects
-										</h6>
-										<div className="is-centered">
+										</h6> */}
+
+										<div className="columns is-centered">
 											<RadarDataChart data={this.props.productDetails} detailPage={this.detailPage} />
 										</div>
 									</div>
 								)}
 							</div>
 						</div>
-						<hr />
+
 						<div styleName="product-description">
 							<p>{this.props.productDetails.description}</p>
 						</div>
@@ -95,6 +102,7 @@ export default class ProductCard extends React.Component {
 
 						<div>
 							<label>Quantity: </label> <br />
+							<NumberInput />
 							<input type="number" name="quantity" value={quantityValue} onChange={this.props.handleChange.bind(this, productID)} />
 						</div>
 					</div>
