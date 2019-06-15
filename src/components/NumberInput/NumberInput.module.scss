@@ -1,0 +1,17 @@
+.number-input-container {
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	font-size: 18px;
+}
+
+.input-change-button {
+	border-radius: 5px;
+	flex: 1 1 auto;
+}
+
+.number-input {
+	width: 50px;
+	flex: 2 2 auto;
+	text-align: center;
+}

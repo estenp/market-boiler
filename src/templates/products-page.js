@@ -65,6 +65,7 @@ export class ProductPageTemplate extends React.Component {
 	}
 
 	handleInputChange(productID, event) {
+		console.log(productID, event);
 		const target = event.target;
 		const value = target.type === "checkbox" ? target.checked : target.value;
 		const name = target.name;
@@ -93,7 +94,7 @@ export class ProductPageTemplate extends React.Component {
 
 	handleProductCardClick(productID) {
 		// add click source condition and accept click events from cart?
-
+		console.log(productID);
 		this.setState(state => {
 			// add to cart
 			var cloneProductState = {...state.products};

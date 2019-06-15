@@ -102,8 +102,12 @@ export default class ProductCard extends React.Component {
 
 						<div>
 							<label>Quantity: </label> <br />
-							<NumberInput />
-							<input type="number" name="quantity" value={quantityValue} onChange={this.props.handleChange.bind(this, productID)} />
+							{/* <input type="number" name="quantity" value={quantityValue} onChange={this.props.handleChange.bind(this, productID)} /> */}
+						</div>
+						<div className="columns">
+							<div className="column">
+								<NumberInput quantity={quantityValue} productID={productID} handleChange={this.props.handleChange} />
+							</div>
 						</div>
 					</div>
 					<div className="card-footer">
