@@ -106,7 +106,7 @@ export default class ProductCard extends React.Component {
 						</div>
 						<div className="columns">
 							<div className="column">
-								<NumberInput quantity={quantityValue} productID={productID} handleChange={this.props.handleChange} />
+								<NumberInput quantity={quantityValue} productID={productID} handleChangeFromClick={this.props.updateQuantity} />
 							</div>
 						</div>
 					</div>

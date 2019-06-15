@@ -133,6 +133,16 @@ export class ProductPageTemplate extends React.Component {
 		return prodInfo;
 	};
 
+	updateQuantity = (productID, newQuant) => {
+		this.setState(state => {
+			let cloneState = {...state.products};
+			cloneState[productID].quantity = newQuant;
+			return {
+				products: cloneState
+			};
+		});
+	};
+
 	render() {
 		const {title, content, contentComponent} = this.props;
 		const PageContent = contentComponent || Content;
@@ -188,6 +198,7 @@ export class ProductPageTemplate extends React.Component {
 														orderState={this.state}
 														handleProductCardClick={this.handleProductCardClick}
 														handleInputChange={this.handleInputChange}
+														updateQuantity={this.updateQuantity}
 														isInCart={this.isInCart}
 														path="/products/"
 													/>
