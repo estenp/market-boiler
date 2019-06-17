@@ -88,17 +88,6 @@ export default class ProductCard extends React.Component {
 						<div styleName="product-description">
 							<p>{this.props.productDetails.description}</p>
 						</div>
-						<div>
-							<label>Unit: </label> <br />
-							<select name="unit" value={unitValue} onChange={this.props.handleChange.bind(this, productID)}>
-								{this.props.productDetails.availUnits.map((unit, i) => (
-									<option key={i} value={unit}>
-										{unit}
-									</option>
-								))}
-							</select>
-						</div>
-						<br />
 
 						<div>
 							<label>Quantity: </label> <br />
@@ -107,6 +96,19 @@ export default class ProductCard extends React.Component {
 						<div className="columns">
 							<div className="column">
 								<NumberInput quantity={quantityValue} productID={productID} handleChangeFromClick={this.props.updateQuantity} />
+							</div>
+						</div>
+						<br />
+						<div>
+							<label>Unit: </label> <br />
+							<div className="select">
+								<select name="unit" value={unitValue} onChange={this.props.handleChange.bind(this, productID)}>
+									{this.props.productDetails.availUnits.map((unit, i) => (
+										<option key={i} value={unit}>
+											{unit}
+										</option>
+									))}
+								</select>
 							</div>
 						</div>
 					</div>

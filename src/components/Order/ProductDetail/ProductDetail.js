@@ -20,6 +20,7 @@ export class ProductDetail extends React.Component {
 				isInCart={this.props.isInCart(this.productDetails.id)}
 				handleClick={this.props.handleProductAdd}
 				handleChange={this.props.handleInputChange}
+				updateQuantity={this.props.updateQuantity}
 				location={this.props.location}
 			/>
 		);

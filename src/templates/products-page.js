@@ -208,6 +208,7 @@ export class ProductPageTemplate extends React.Component {
 														isInCart={this.isInCart}
 														handleProductAdd={this.handleProductCardClick}
 														handleInputChange={this.handleInputChange}
+														updateQuantity={this.updateQuantity}
 														getProductInfoByID={this.getProductInfoByID}
 														location={location}
 														path="/products/product-detail/:productID"
