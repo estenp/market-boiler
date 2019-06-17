@@ -8,7 +8,7 @@ const Navbar = ({data}) => (
 			<div className="navbar-brand">
 				<Link to="/" styleName="navbar-item" className="navbar-item">
 					<div className="logo">
-						<h1>The Dispense Report</h1>
+						<h1>DISPENSIO</h1>
 					</div>
 				</Link>
 			</div>

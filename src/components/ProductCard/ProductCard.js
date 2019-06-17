@@ -45,7 +45,7 @@ export default class ProductCard extends React.Component {
 						{/* <svg viewBox="0 0 30 10" xmlns="http://www.w3.org/2000/svg">
 							<line x1="0" y1="7" x2="30" y2="7" stroke="black" stroke-dasharray="4 4 1 1" stroke-dashoffset="4" />
 						</svg> */}
-						<div className="columns is-multiline">
+						<div className="columns is-multiline" styleName="product-attributes-container">
 							<figure className="column image">
 								<img
 									className={!this.detailPage ? "is-rounded" : ""}
