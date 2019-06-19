@@ -94,14 +94,14 @@ export default class ProductCard extends React.Component {
 							{/* <input type="number" name="quantity" value={quantityValue} onChange={this.props.handleChange.bind(this, productID)} /> */}
 						</div>
 						<div className="columns">
-							<div className="column">
+							<div className="column" styleName={this.detailPage ? "quantity-input" : "quantity-input-full"}>
 								<NumberInput quantity={quantityValue} productID={productID} handleChangeFromClick={this.props.updateQuantity} />
 							</div>
 						</div>
 						<br />
 						<div>
 							<label>Unit: </label> <br />
-							<div className="select">
+							<div className="select" styleName={!this.detailPage ? "unit-select-full" : ""}>
 								<select name="unit" value={unitValue} onChange={this.props.handleChange.bind(this, productID)}>
 									{this.props.productDetails.availUnits.map((unit, i) => (
 										<option key={i} value={unit}>
@@ -113,13 +113,13 @@ export default class ProductCard extends React.Component {
 						</div>
 					</div>
 					<div className="card-footer">
-						<a
+						<button
 							className={(this.props.isInCart === true ? "is-danger" : "is-primary") + " card-footer-item button"}
 							onClick={this.props.handleClick.bind(this, productID)}
 							//disabled={this.isDisabled(productID)}
 						>
 							{this.props.isInCart === true ? "Remove From Cart" : "Add to Cart"}
-						</a>
+						</button>
 					</div>
 				</div>
 			</div>

@@ -77,11 +77,11 @@ const Cart = props => {
 							</ul>
 						</div>
 						<div className="card-footer">
-							<a className="is-info card-footer-item button" onClick={handleButtonClick}>
+							<button className="is-info card-footer-item button" onClick={handleButtonClick}>
 								<i className={"fas " + cartButtonState.buttonClass} />
 								&nbsp;&nbsp;
 								{cartButtonState.text}
-							</a>
+							</button>
 						</div>
 					</span>
 				)}
