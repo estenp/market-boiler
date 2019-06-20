@@ -4,5 +4,64 @@
 }
 
 .product-description {
-	min-height: 75px;
+	height: 85px;
+	overflow: hidden;
+	font-size: 1.2rem;
+}
+
+.product-attributes-container {
+	border-bottom: solid 1px #ddd;
+	margin-bottom: 20px;
+}
+
+.effect-chart {
+	//min-height: 200px;
+
+	margin-bottom: 20px;
+	//padding-bottom: 20px;
+}
+
+.flavor-section {
+	padding-bottom: 1rem;
+	border-bottom: solid 1px #ddd;
+	margin-bottom: 20px;
+}
+
+.attribute-section-subheader {
+	border-bottom: solid 1px #7bc687;
+}
+
+.subheader-gradient-border {
+	border-width: 3px;
+	border-style: solid;
+	border-image: linear-gradient(to left, red, rgba(0, 0, 0, 0)) 1 100%;
+}
+
+.card-header {
+	flex-wrap: wrap;
+	br {
+		width: 100%;
+		content: "";
+	}
+	.tags {
+		padding: 0 0.75rem 0.75rem 0.75rem;
+	}
+}
+
+.product-image {
+	min-width: 150px;
+}
+
+.unit-select-full {
+	width: 100%;
+	select {
+		width: 100%;
+	}
+}
+
+.quantity-input {
+	width: 30%;
+}
+.quantity-input-full {
+	width: 100%;
 }

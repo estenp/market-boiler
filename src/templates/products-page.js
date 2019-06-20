@@ -9,15 +9,36 @@ import OrderForm from "../components/Order/OrderForm/OrderForm";
 import ProductDetail from "../components/Order/ProductDetail/ProductDetail";
 import ProductList from "../components/Order/ProductList/ProductList";
 import {Router, Location} from "@reach/router";
+import {Link} from "gatsby";
 
 export class ProductPageTemplate extends React.Component {
 	constructor(props) {
 		super(props);
-		this.productsData = [];
 
+		const flavorsDict = {};
+		const effectsDict = {};
+		this.props.flavors.forEach(({node: f}) => {
+			flavorsDict[f.value] = f.label;
+		});
+		this.props.effects.forEach(({node: e}) => {
+			effectsDict[e.value] = e.label;
+		});
+
+		this.productsData = [];
 		// build all product data object
 		this.props.products.forEach(p => {
-			this.productsData.push(p.node.product);
+			if (p.node.attributes.flavors.length > 0) {
+				p.node.attributes.flavors.forEach((f, i) => {
+					p.node.attributes.flavors[i] = flavorsDict[f];
+				});
+			}
+			if (p.node.attributes.effects.length > 0) {
+				p.node.attributes.effects.forEach((e, i) => {
+					p.node.attributes.effects[i]["label"] = effectsDict[e.effect];
+				});
+			}
+			this.productsData.push(p.node);
+			// console.log(this.productsData);
 		});
 
 		// // // build state for products order form
@@ -44,6 +65,7 @@ export class ProductPageTemplate extends React.Component {
 	}
 
 	handleInputChange(productID, event) {
+		console.log(productID, event);
 		const target = event.target;
 		const value = target.type === "checkbox" ? target.checked : target.value;
 		const name = target.name;
@@ -72,7 +94,7 @@ export class ProductPageTemplate extends React.Component {
 
 	handleProductCardClick(productID) {
 		// add click source condition and accept click events from cart?
-
+		console.log(productID);
 		this.setState(state => {
 			// add to cart
 			var cloneProductState = {...state.products};
@@ -111,6 +133,16 @@ export class ProductPageTemplate extends React.Component {
 		return prodInfo;
 	};
 
+	updateQuantity = (productID, newQuant) => {
+		this.setState(state => {
+			let cloneState = {...state.products};
+			cloneState[productID].quantity = newQuant;
+			return {
+				products: cloneState
+			};
+		});
+	};
+
 	render() {
 		const {title, content, contentComponent} = this.props;
 		const PageContent = contentComponent || Content;
@@ -136,30 +168,56 @@ export class ProductPageTemplate extends React.Component {
 							<div className="column is-10 is-offset-1">
 								<section className="section">
 									<h2 className="title">{title}</h2>
-									<div>
+									<div className="content">
 										<PageContent className="content" content={content} />
 									</div>
+									<Location>
+										{({location}) => (
+											<div>
+												<nav className="breadcrumb " aria-label="breadcrumbs">
+													<ul>
+														<li>
+															<Link to="/products">Products</Link>
+														</li>
+														{location.pathname.indexOf("product-detail") > -1 && (
+															<li className="is-active">
+																<Link href="#">Product Detail</Link>
+															</li>
+														)}
+														{location.pathname.indexOf("order-form") > -1 && (
+															<li className="is-active">
+																<Link href="#">Customer Info</Link>
+															</li>
+														)}
+													</ul>
+												</nav>
 
-									<Router>
-										<ProductList
-											products={this.productsData}
-											orderState={this.state}
-											handleProductCardClick={this.handleProductCardClick}
-											handleInputChange={this.handleInputChange}
-											isInCart={this.isInCart}
-											path="/products/"
-										/>
-										<ProductDetail
-											products={this.productsData}
-											orderState={this.state}
-											isInCart={this.isInCart}
-											handleProductAdd={this.handleProductCardClick}
-											handleInputChange={this.handleInputChange}
-											getProductInfoByID={this.getProductInfoByID}
-											path="/products/product-detail/:productID"
-										/>
-										<OrderForm cart={this.state.cart} path="/products/order-form/" />
-									</Router>
+												<Router>
+													<ProductList
+														products={this.productsData}
+														orderState={this.state}
+														handleProductCardClick={this.handleProductCardClick}
+														handleInputChange={this.handleInputChange}
+														updateQuantity={this.updateQuantity}
+														isInCart={this.isInCart}
+														path="/products/"
+													/>
+													<ProductDetail
+														products={this.productsData}
+														orderState={this.state}
+														isInCart={this.isInCart}
+														handleProductAdd={this.handleProductCardClick}
+														handleInputChange={this.handleInputChange}
+														updateQuantity={this.updateQuantity}
+														getProductInfoByID={this.getProductInfoByID}
+														location={location}
+														path="/products/product-detail/:productID"
+													/>
+													<OrderForm cart={this.state.cart} path="/products/order-form/" />
+												</Router>
+											</div>
+										)}
+									</Location>
 								</section>
 							</div>
 						</div>
@@ -179,7 +237,18 @@ ProductPageTemplate.propTypes = {
 const ProductPage = ({data}) => {
 	const productPageData = data.productPage;
 	const {edges: products} = data.products;
-	return <ProductPageTemplate contentComponent={HTMLContent} title={productPageData.frontmatter.title} content={productPageData.html} products={products} />;
+	const {edges: flavors} = data.flavors;
+	const {edges: effects} = data.effects;
+	return (
+		<ProductPageTemplate
+			contentComponent={HTMLContent}
+			title={productPageData.frontmatter.title}
+			content={productPageData.html}
+			products={products}
+			flavors={flavors}
+			effects={effects}
+		/>
+	);
 };
 
 ProductPage.propTypes = {
@@ -197,30 +266,44 @@ export const ProductPageQuery = graphql`
 			}
 		}
 
-		products: allFile(filter: {sourceInstanceName: {eq: "products"}}) {
+		products: allProductsJson {
 			edges {
 				node {
-					extension
-					dir
-					modifiedTime
-					name
-					product: childProductsJson {
-						id
-						title
-						type
-						image
-						description
-						pricePerUnit
-						availUnits
-						attributes {
-							strain
-							effects {
-								effect
-								level
-							}
-							flavors
+					id
+					title
+					type
+					image
+					description
+					pricePerUnit
+					availUnits
+					attributes {
+						strain
+						effects {
+							effect
+							level
 						}
+						flavors
 					}
+				}
+			}
+		}
+
+		flavors: allFlavorsJson {
+			edges {
+				node {
+					id
+					label
+					value
+				}
+			}
+		}
+
+		effects: allEffectsJson {
+			edges {
+				node {
+					id
+					label
+					value
 				}
 			}
 		}

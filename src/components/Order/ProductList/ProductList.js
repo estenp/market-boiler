@@ -9,17 +9,21 @@ export class ProductList extends React.Component {
 	render() {
 		return (
 			<div>
-				<div className="columns is-centered">
+				<div className="columns is-centered is-multiline">
 					{this.props.products.map(product => {
 						return (
-							<ProductCard
-								key={product.id}
-								productDetails={product}
-								productState={this.props.orderState.products}
-								isInCart={this.props.isInCart(product.id)}
-								handleClick={this.props.handleProductCardClick}
-								handleChange={this.props.handleInputChange}
-							/>
+							<div key={product.id} className="column is-one-third-desktop is-full-tablet">
+								<ProductCard
+									key={product.id}
+									productDetails={product}
+									productState={this.props.orderState.products}
+									isInCart={this.props.isInCart(product.id)}
+									handleClick={this.props.handleProductCardClick}
+									handleChange={this.props.handleInputChange}
+									updateQuantity={this.props.updateQuantity}
+									location={this.props.location}
+								/>
+							</div>
 						);
 					})}
 				</div>

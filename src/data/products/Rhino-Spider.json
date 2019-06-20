@@ -7,7 +7,7 @@
 	"availUnits": ["grams", "1/8's"],
 	"attributes": {
 		"strain": "Indica",
-		"flavors": ["blueberry"],
+		"flavors": ["blueberry", "mint"],
 		"effects": [
 			{
 				"effect": "happy",

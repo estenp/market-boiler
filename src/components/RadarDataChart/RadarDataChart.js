@@ -7,11 +7,70 @@ export default class RadarDataChart extends React.Component {
 	constructor(props) {
 		super(props);
 		//this.state = {};
-		//console.log(props);
+		// console.log(props);
 	}
 
 	render() {
-		const basicFormat = format(".2r");
+		let radarStyle = new Object();
+		if (!this.props.detailPage) {
+			radarStyle.width = 200;
+			radarStyle.height = 200;
+			radarStyle.margin = 25;
+			radarStyle.styleObj = {
+				axes: {
+					line: {
+						strokeWidth: 0.5,
+						strokeOpacity: 0.5,
+						fillOpacity: 0.1,
+						stroke: "#ddd",
+						strokeWidth: 2,
+						strokeOpacity: 0.4
+					},
+					ticks: {color: "blue"},
+					text: {display: "none"}
+				},
+				labels: {
+					fontSize: 14
+				},
+				polygons: {
+					fillOpacity: 0.1,
+					stroke: "rgb(41, 29, 224)",
+					fill: "rgb(137, 234, 84)",
+					strokeWidth: 2,
+					strokeOpacity: 0.3
+				}
+			};
+		} else {
+			radarStyle.width = 300;
+			radarStyle.height = 300;
+			radarStyle.margin = 30;
+			radarStyle.styleObj = {
+				axes: {
+					line: {
+						strokeWidth: 0.5,
+						strokeOpacity: 0.5,
+						fillOpacity: 0.1,
+						stroke: "#ddd",
+						strokeWidth: 2,
+						strokeOpacity: 0.4
+					},
+					ticks: {color: "blue"},
+					text: {opacity: 0.2}
+				},
+				labels: {
+					fontSize: 14
+				},
+				polygons: {
+					fillOpacity: 0.1,
+					stroke: "rgb(41, 29, 224)",
+					fill: "rgb(137, 234, 84)",
+					strokeWidth: 2,
+					strokeOpacity: 0.3
+				}
+			};
+		}
+
+		const basicFormat = format(".1r");
 		const wideFormat = format(".3r");
 
 		var chartDataArray = [
@@ -22,9 +81,10 @@ export default class RadarDataChart extends React.Component {
 		var chartDomainArray = [];
 
 		this.props.data.attributes.effects.forEach(e => {
-			chartDataArray[0][e.effect] = e.level;
+			// console.log(e);
+			chartDataArray[0][e.label] = e.level;
 			var obj = {
-				name: e.effect,
+				name: e.label,
 				domain: [0, 10]
 			};
 			chartDomainArray.push(obj);
@@ -39,36 +99,13 @@ export default class RadarDataChart extends React.Component {
 		return (
 			<RadarChart
 				data={chartData.data}
-				tickFormat={t => wideFormat(t)}
+				tickFormat={t => basicFormat(t)}
 				startingAngle={0}
 				domains={chartData.domain}
-				style={{
-					axes: {
-						line: {
-							strokeWidth: 0.5,
-							strokeOpacity: 0.5,
-							fillOpacity: 0.1,
-							stroke: "#ddd",
-							strokeWidth: 2,
-							strokeOpacity: 0.4
-						},
-						ticks: {color: "blue"},
-						text: {display: "none"}
-					},
-					labels: {
-						fontSize: 14
-					},
-					polygons: {
-						fillOpacity: 0.1,
-						stroke: "rgb(41, 29, 224)",
-						fill: "rgb(137, 234, 84)",
-						strokeWidth: 2,
-						strokeOpacity: 0.3
-					}
-				}}
-				width={200}
-				height={200}
-				margin={20}
+				style={radarStyle.styleObj}
+				width={radarStyle.width}
+				height={radarStyle.height}
+				margin={radarStyle.margin}
 				hideInnerMostValues={true}
 			/>
 		);

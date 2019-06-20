@@ -83,6 +83,11 @@ h2.title {
 	color: $secondary;
 }
 
+// overriding card-footer-item when using a button rather than anchor for accessiblity
+button.button.card-footer-item {
+	padding: 0;
+}
+
 .border-top-bottom {
 	padding-top: 3px;
 	border-top: solid 3px $orange;
