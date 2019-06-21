@@ -7,15 +7,16 @@ const user = process.env.githubUser;
 const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
-	console.log(event.body);
+	//console.log(event.body);
 	// let buffer = Buffer.from(event.body, "base64");
 	// let text = buffer.toString("ascii");
 
 	const eventBodyStr = JSON.stringify(event.body);
+	console.log(eventBodyStr);
 	// let objJsonB64 = Buffer.from(objJsonStr).toString("base64");
 
 	axios({
-		method: "put",
+		method: "PUT",
 		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body}`,
 		//url: `https://swapi.co/api/people/1/`,
 		//url: `https://api.github.com/repos/${user}/market-boiler`,
@@ -32,7 +33,7 @@ exports.handler = (event, context, callback) => {
 				name: "Testin Esten",
 				email: "estenpatrick@gmail.com"
 			},
-			content: eventBodyStr
+			content: "test man testing time"
 		}
 	})
 		.then(res => {
