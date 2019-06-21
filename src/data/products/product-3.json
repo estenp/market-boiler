@@ -1,26 +1,31 @@
 {
-	"title": "product 3",
-	"type": "cigar",
-	"image": "/img/glacier-wallpaper.jpeg",
-	"description": "A cute product.",
-	"pricePerUnit": 3,
-	"availUnits": ["packs of 5", "packs of 10"],
-	"attributes": {
-		"strain": "Indica",
-		"flavors": ["blueberry"],
-		"effects": [
-			{
-				"effect": "relaxed",
-				"level": 9
-			},
-			{
-				"effect": "sleepy",
-				"level": 7
-			},
-			{
-				"effect": "creative",
-				"level": 4
-			}
-		]
-	}
+  "title": "OG Maco",
+  "type": "cigar",
+  "image": "/img/glacier-wallpaper.jpeg",
+  "description": "A cute product.",
+  "attributes": {
+    "strain": "Hybrid",
+    "flavors": [
+      "blueberry"
+    ],
+    "effects": [
+      {
+        "effect": "relaxed",
+        "level": 9
+      },
+      {
+        "effect": "sleepy",
+        "level": 7
+      },
+      {
+        "effect": "creative",
+        "level": 4
+      }
+    ]
+  },
+  "pricePerUnit": 3,
+  "availUnits": [
+    "packs of 5",
+    "packs of 10"
+  ]
 }
