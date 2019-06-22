@@ -39,7 +39,7 @@ exports.handler = (event, context, callback) => {
 		}
 	})
 		.then(res => {
-			console.log(res);
+			console.log(event);
 			callback(null, {
 				statusCode: 200,
 				headers: {
