@@ -10,12 +10,12 @@ exports.handler = (event, context, callback) => {
 	//console.log(event.body);
 	// let buffer = Buffer.from(event.body, "base64");
 	// let text = buffer.toString("ascii");
-	console.log("this is the event body: ", event.body);
+	console.log(event.body);
 	var eventBodyStr = JSON.stringify(event.body);
 	//const eventBodyStr = "this is content';";
 	var eventBodyB64 = Buffer.from(eventBodyStr).toString("base64");
-	console.log("this is event body string: ", eventBodyStr);
-	console.log("this is event body string: ", eventBodyB64);
+	console.log(eventBodyStr);
+	console.log(eventBodyB64);
 
 	axios({
 		method: "PUT",
