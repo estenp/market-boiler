@@ -18,7 +18,7 @@ exports.handler = (event, context, callback) => {
 
 	axios({
 		method: "PUT",
-		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${JSON.stringify(event.body.number)`,
+		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${JSON.stringify(event.body.number)}`,
 		//url: `https://swapi.co/api/people/1/`,
 		//url: `https://api.github.com/repos/${user}/market-boiler`,
 		headers: {
