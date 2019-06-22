@@ -11,9 +11,9 @@ exports.handler = (event, context, callback) => {
 	// let buffer = Buffer.from(event.body, "base64");
 	// let text = buffer.toString("ascii");
 	console.log("this is the event body: ", event.body);
-	const eventBodyStr = JSON.stringify(event.body);
+	var eventBodyStr = JSON.stringify(event.body);
 	//const eventBodyStr = "this is content';";
-	let eventBodyB64 = Buffer.from(eventBodyStr).toString("base64");
+	var eventBodyB64 = Buffer.from(eventBodyStr).toString("base64");
 	console.log("this is event body string: ", eventBodyStr);
 	console.log("this is event body string: ", eventBodyB64);
 
@@ -35,7 +35,7 @@ exports.handler = (event, context, callback) => {
 				name: "Testin Esten",
 				email: "estenpatrick@gmail.com"
 			},
-			content: "bXkgbmV3IGZpbGUgY29udGVudHM="
+			content: eventBodyB64
 		}
 	})
 		.then(res => {
