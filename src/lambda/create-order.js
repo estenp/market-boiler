@@ -7,18 +7,11 @@ const user = process.env.githubUser;
 const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
-	//console.log(event.body);
-	// let buffer = Buffer.from(event.body, "base64");
-	// let text = buffer.toString("ascii");
-	console.log(event.body);
-	//var eventBodyStr = JSON.stringify(event.body);
 	var eventBodyB64 = Buffer.from(event.body).toString("base64");
 
 	axios({
 		method: "PUT",
 		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${Date.now()}`,
-		//url: `https://swapi.co/api/people/1/`,
-		//url: `https://api.github.com/repos/${user}/market-boiler`,
 		headers: {
 			"Content-Type": "application/json"
 		},
