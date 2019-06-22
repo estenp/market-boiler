@@ -11,7 +11,7 @@ exports.handler = (event, context, callback) => {
 	// let buffer = Buffer.from(event.body, "base64");
 	// let text = buffer.toString("ascii");
 	console.log(event.body);
-	var eventBodyStr = JSON.stringify(event.body);
+	//var eventBodyStr = JSON.stringify(event.body);
 	var eventBodyB64 = Buffer.from(event.body).toString("base64");
 
 	axios({
