@@ -10,14 +10,15 @@ exports.handler = (event, context, callback) => {
 	//console.log(event.body);
 	// let buffer = Buffer.from(event.body, "base64");
 	// let text = buffer.toString("ascii");
-
-	const eventBodyStr = JSON.stringify(event.body);
+	console.log("this is the event body: ", event.body);
+	//const eventBodyStr = JSON.stringify(event.body);
+	//const eventBodyStr = "this is content';";
 	// console.log(eventBodyStr);
-	let eventBodyB64 = Buffer.from(eventBodyStr).toString("base64");
+	//let eventBodyB64 = Buffer.from(eventBodyStr).toString("base64");
 
 	axios({
 		method: "PUT",
-		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${event.body.number}`,
+		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${JSON.stringify(event.body.number)`,
 		//url: `https://swapi.co/api/people/1/`,
 		//url: `https://api.github.com/repos/${user}/market-boiler`,
 		headers: {
@@ -33,7 +34,7 @@ exports.handler = (event, context, callback) => {
 				name: "Testin Esten",
 				email: "estenpatrick@gmail.com"
 			},
-			content: eventBodyB64
+			content: "bXkgbmV3IGZpbGUgY29udGVudHM="
 		}
 	})
 		.then(res => {
