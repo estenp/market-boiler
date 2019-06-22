@@ -34,7 +34,7 @@ exports.handler = (event, context, callback) => {
 					"Access-Control-Allow-Headers": "Content-Type",
 					"Access-Control-Allow-Credentials": "true"
 				},
-				body: JSON.stringify("successful")
+				body: "successful"
 			});
 		})
 		.catch(e => {
