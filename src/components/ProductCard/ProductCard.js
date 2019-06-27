@@ -14,10 +14,11 @@ export default class ProductCard extends React.Component {
 		}
 
 		this.isDisabled.bind(this);
+		//console.log(props.productDetails.attributes.flavors);
 	}
 
 	isDisabled(productID) {
-		return this.props.productState[productID].quantity == "";
+		return this.props.productState[productID].quantity === "";
 	}
 
 	render() {
@@ -51,7 +52,7 @@ export default class ProductCard extends React.Component {
 									className={!this.detailPage ? "is-rounded" : ""}
 									styleName="product-image"
 									src={this.props.productDetails.image}
-									alt="Placeholder image"
+									alt="Placeholder"
 								/>
 							</figure>
 							<div className="column">
