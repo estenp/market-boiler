@@ -11,7 +11,7 @@ const NumberInput = props => {
 				className="button"
 				styleName="input-change-button"
 				id="decrement"
-				onClick={() => props.handleChangeFromClick(props.productID, quantity > 1 ? quantity - 1 : 0)}
+				onClick={() => props.handleChangeFromClick(props.productID, quantity > 1 ? quantity - 1 : 1)}
 			>
 				{/* <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 						  <line x1="0" y1="80" x2="100" y2="80" stroke="black" />
