@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import "./NumberInput.module.scss";
 
 const NumberInput = props => {
-	console.log(props);
 	let quantity = props.quantity ? props.quantity : 1;
 	const [currentQuant, setCurrentQuant] = useState(quantity);
 
