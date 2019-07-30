@@ -80,6 +80,7 @@ export class ProductPageTemplate extends React.Component {
 	}
 
 	handleCartClick = () => {
+		console.log(this.state.page);
 		if (this.state.page === 1) {
 			this.handlePaginate(2);
 		}
@@ -181,12 +182,12 @@ export class ProductPageTemplate extends React.Component {
 														</li>
 														{location.pathname.indexOf("product-detail") > -1 && (
 															<li className="is-active">
-																<Link href="#">Product Detail</Link>
+																<Link to="#">Product Detail</Link>
 															</li>
 														)}
 														{location.pathname.indexOf("order-form") > -1 && (
 															<li className="is-active">
-																<Link href="#">Customer Info</Link>
+																<Link to="#">Customer Info</Link>
 															</li>
 														)}
 													</ul>
@@ -213,7 +214,7 @@ export class ProductPageTemplate extends React.Component {
 														location={location}
 														path="/products/product-detail/:productID"
 													/>
-													<OrderForm cart={this.state.cart} path="/products/order-form/" />
+													<OrderForm submit={this.submitOrder} cart={this.state.cart} path="/products/order-form/" />
 												</Router>
 											</div>
 										)}

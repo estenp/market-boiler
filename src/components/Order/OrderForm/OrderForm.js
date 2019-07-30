@@ -5,11 +5,16 @@ export default class OrderForm extends React.Component {
 	constructor(props) {
 		super(props);
 	}
+	componentDidUpdate() {
+		if (this.props.location.state.submitMe === true) {
+			this.refs.orderForm.submit();
+		}
+	}
 
 	render() {
 		return (
 			<section>
-				<form name="order" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+				<form ref="orderForm" name="order" method="POST" netlify-honeypot="bot-field" data-netlify="true">
 					<p className="hidden">
 						<label>
 							Don’t fill this out if you're human: <input name="bot-field" />

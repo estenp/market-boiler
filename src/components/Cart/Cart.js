@@ -21,7 +21,8 @@ const Cart = props => {
 		} else if (props.location.pathname.indexOf("order-form") > -1) {
 			setCartButtonState({
 				text: "Submit Order",
-				buttonClass: ""
+				buttonClass: "",
+				navigateTo: "/products/order-form/"
 			});
 		} else {
 			setCartButtonState({
@@ -39,7 +40,7 @@ const Cart = props => {
 	};
 
 	const handleButtonClick = () => {
-		navigate(cartButtonState.navigateTo);
+		navigate(cartButtonState.navigateTo, {state: {submitMe: true}});
 	};
 
 	return (
