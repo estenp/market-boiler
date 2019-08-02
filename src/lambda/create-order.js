@@ -1,11 +1,27 @@
 const axios = require("axios");
+const querystring = require("querystring");
 
 const user = process.env.githubUser;
 const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
+	const params = querystring.parse(event.body);
+
+	// let orderJSON = {
+	// 	id: event.body.id,
+	// 	customerEmail: event.body.data.email,
+	// 	customerFirst: event.body.data.firstName,
+	// 	customerLast: event.body.data.lastName,
+	// 	customerPhone: event.body.data.phone,
+	// 	customerComments: event.body.data.comments,
+	// 	product: event.body.data.product,
+	// 	product: event.body.data.quantity,
+	// 	product: event.body.data.units,
+	// 	date: event.body.order_date
+	// };
 	var eventBodyB64 = Buffer.from(event.body).toString("base64");
 
+	console.log(params);
 	axios({
 		method: "PUT",
 		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${Date.now()}`,
