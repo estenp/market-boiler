@@ -4,6 +4,7 @@ import "./OrderForm.module.scss";
 export default class OrderForm extends React.Component {
 	constructor(props) {
 		super(props);
+		//console.log(props);
 	}
 	componentDidUpdate() {
 		if (this.props.location.state.submitMe === true) {
@@ -63,10 +64,17 @@ export default class OrderForm extends React.Component {
 							<textarea className="textarea" name="comments" id="comments" />
 						</div>
 					</div>
+					{this.props.cart.map(id => (
+						<div key="product{id}">
+							<input name="productID" type="hidden" value={id} />
+							<input name="quantity{id}" type="hidden" value={this.props.orderState[id].quantity} />
+							<input name="units{id}" type="hidden" value={this.props.orderState[id].units} />
+						</div>
+					))}
 					<div data-netlify-recaptcha />
-					{/* <button type="submit" className="button">
+					<button type="submit" className="button">
 						Submit
-					</button> */}
+					</button>
 				</form>
 			</section>
 		);

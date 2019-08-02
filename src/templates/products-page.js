@@ -214,7 +214,12 @@ export class ProductPageTemplate extends React.Component {
 														location={location}
 														path="/products/product-detail/:productID"
 													/>
-													<OrderForm submit={this.submitOrder} cart={this.state.cart} path="/products/order-form/" />
+													<OrderForm
+														submit={this.submitOrder}
+														cart={this.state.cart}
+														orderState={this.state}
+														path="/products/order-form/"
+													/>
 												</Router>
 											</div>
 										)}
