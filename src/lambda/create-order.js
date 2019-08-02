@@ -6,7 +6,7 @@ const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
 	const params = querystring.parse(event.body);
-
+	console.log("param", params);
 	// let orderJSON = {
 	// 	id: event.body.id,
 	// 	customerEmail: event.body.data.email,
@@ -53,7 +53,7 @@ exports.handler = (event, context, callback) => {
 			});
 		})
 		.catch(e => {
-			console.log(e);
+			console.log("error", e);
 			const error = e.response.data;
 			const errorResponse = {
 				statusCode: 501,
