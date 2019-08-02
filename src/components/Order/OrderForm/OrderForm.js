@@ -67,8 +67,8 @@ export default class OrderForm extends React.Component {
 					{this.props.cart.map(id => (
 						<div key="product{id}">
 							<input name="productID" type="hidden" value={id} />
-							<input name="quantity{id}" type="hidden" value={this.props.orderState.products[id].quantity} />
-							<input name="units{id}" type="hidden" value={this.props.orderState.products[id].units} />
+							<input name={"quantity" + id} type="hidden" value={this.props.orderState.products[id].quantity} />
+							<input name={"units" + id} type="hidden" value={this.props.orderState.products[id].unit} />
 						</div>
 					))}
 					<div data-netlify-recaptcha />
