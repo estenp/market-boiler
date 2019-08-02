@@ -4,7 +4,30 @@ import "./OrderForm.module.scss";
 export default class OrderForm extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
+		//console.log(props, typeof props.orderState.products);
+
+		let cart = JSON.stringify(
+			props.orderState.cart.map(p => {
+				return {
+					[p]: {
+						quantity: props.orderState.products[p].quantity,
+						unit: props.orderState.products[p].unit
+					}
+				};
+			})
+		);
+
+		// let productEntries = Object.entries(props.orderState.products);
+		// let cartInfo = productEntries.filter(id => {
+		// 	return props.orderState.cart.indexOf(id[0]) > -1;
+		// });
+
+		// cartInfo.reduce((filteredObj, i) => {
+		// 	return {
+		// 		i[0]
+		// 	}
+		// }, {});
+		//console.log(cart);
 	}
 	componentDidUpdate() {
 		if (this.props.location.state.submitMe === true) {
@@ -64,13 +87,14 @@ export default class OrderForm extends React.Component {
 							<textarea className="textarea" name="comments" id="comments" />
 						</div>
 					</div>
-					{this.props.cart.map(id => (
+					{/* {this.props.cart.map(id => (
 						<div key="product{id}">
 							<input name="productID" type="hidden" value={id} />
 							<input name={"quantity" + id} type="hidden" value={this.props.orderState.products[id].quantity} />
 							<input name={"units" + id} type="hidden" value={this.props.orderState.products[id].unit} />
 						</div>
-					))}
+					))} */}
+					<input type="hidden" name="cart" value={this.cart} />
 					<div data-netlify-recaptcha />
 					<button type="submit" className="button">
 						Submit
