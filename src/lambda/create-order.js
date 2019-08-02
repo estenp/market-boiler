@@ -19,9 +19,8 @@ exports.handler = (event, context, callback) => {
 	// 	product: event.body.data.units,
 	// 	date: event.body.order_date
 	// };
-	var eventBodyB64 = Buffer.from(event.body).toString("base64");
+	var eventBodyB64 = Buffer.from(params).toString("base64");
 
-	console.log(params);
 	axios({
 		method: "PUT",
 		url: `https://api.github.com/repos/${user}/market-boiler/contents/src/data/orders/${Date.now()}`,
@@ -42,7 +41,7 @@ exports.handler = (event, context, callback) => {
 		}
 	})
 		.then(res => {
-			console.log(event.body);
+			console.log("params", params);
 			callback(null, {
 				statusCode: 200,
 				headers: {
@@ -54,7 +53,7 @@ exports.handler = (event, context, callback) => {
 			});
 		})
 		.catch(e => {
-			console.log(e);
+			//console.log(e);
 			const error = e.response.data;
 			const errorResponse = {
 				statusCode: 501,
