@@ -27,7 +27,7 @@ export default class OrderForm extends React.Component {
 		// 		i[0]
 		// 	}
 		// }, {});
-		//console.log(cart);
+		console.log(cart);
 	}
 	componentDidUpdate() {
 		if (this.props.location.state.submitMe === true) {
@@ -87,14 +87,14 @@ export default class OrderForm extends React.Component {
 							<textarea className="textarea" name="comments" id="comments" />
 						</div>
 					</div>
-					{/* {this.props.cart.map(id => (
-						<div key="product{id}">
-							<input name="productID" type="hidden" value={id} />
+					{this.props.orderState.cart.map(id => (
+						<div key={"product" + id}>
+							<input name={"productID" + id} type="hidden" value={id} />
 							<input name={"quantity" + id} type="hidden" value={this.props.orderState.products[id].quantity} />
 							<input name={"units" + id} type="hidden" value={this.props.orderState.products[id].unit} />
 						</div>
-					))} */}
-					<input type="hidden" name="cart" value={this.cart} />
+					))}
+					{/* <input type="hidden" name="cart" value={this.cart} /> */}
 					<div data-netlify-recaptcha />
 					<button type="submit" className="button">
 						Submit
