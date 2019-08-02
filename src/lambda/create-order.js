@@ -41,7 +41,7 @@ exports.handler = (event, context, callback) => {
 		}
 	})
 		.then(res => {
-			console.log("params", params);
+			console.log(params);
 			callback(null, {
 				statusCode: 200,
 				headers: {
@@ -53,7 +53,7 @@ exports.handler = (event, context, callback) => {
 			});
 		})
 		.catch(e => {
-			//console.log(e);
+			console.log(e);
 			const error = e.response.data;
 			const errorResponse = {
 				statusCode: 501,
