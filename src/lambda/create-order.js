@@ -6,7 +6,8 @@ const pass = process.env.githubPass;
 
 exports.handler = (event, context, callback) => {
 	const params = querystring.parse(event.body);
-	console.log("param", params);
+	console.log(params, JSON.stringify(params));
+	const paramStr = JSON.stringify(params);
 	// let orderJSON = {
 	// 	id: event.body.id,
 	// 	customerEmail: event.body.data.email,
@@ -19,7 +20,7 @@ exports.handler = (event, context, callback) => {
 	// 	product: event.body.data.units,
 	// 	date: event.body.order_date
 	// };
-	var eventBodyB64 = Buffer.from(params).toString("base64");
+	var eventBodyB64 = Buffer.from(paramStr).toString("base64");
 
 	axios({
 		method: "PUT",
@@ -41,7 +42,7 @@ exports.handler = (event, context, callback) => {
 		}
 	})
 		.then(res => {
-			console.log(params);
+			//console.log(params);
 			callback(null, {
 				statusCode: 200,
 				headers: {
@@ -53,7 +54,7 @@ exports.handler = (event, context, callback) => {
 			});
 		})
 		.catch(e => {
-			console.log("error", e);
+			//console.log("error", e);
 			const error = e.response.data;
 			const errorResponse = {
 				statusCode: 501,
