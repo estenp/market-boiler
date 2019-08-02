@@ -38,7 +38,14 @@ export default class OrderForm extends React.Component {
 	render() {
 		return (
 			<section>
-				<form ref="orderForm" name="order" method="POST" action="/lambda/create-order.js" netlify-honeypot="bot-field" data-netlify="true">
+				<form
+					ref="orderForm"
+					name="order"
+					method="POST"
+					action="https://dispensio.netlify.com/.netlify/functions/create-order"
+					netlify-honeypot="bot-field"
+					data-netlify="true"
+				>
 					<p className="hidden">
 						<label>
 							Don’t fill this out if you're human: <input name="bot-field" />
