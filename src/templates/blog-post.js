@@ -21,21 +21,27 @@ export const BlogPostTemplate = ({content, contentComponent, description, tags, 
 				<div className="container content">
 					<div className="columns">
 						<div className="column is-10 is-offset-1">
-							<h2 className="title ">{title}</h2>
-							<p>{description}</p>
-							<PostContent content={content} />
-							{tags && tags.length ? (
-								<div style={{marginTop: `4rem`}}>
-									<h4>Tags</h4>
-									<ul className="taglist">
-										{tags.map(tag => (
-											<li key={tag + `tag`}>
-												<Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-											</li>
-										))}
-									</ul>
-								</div>
-							) : null}
+							<article>
+								<header>
+									<h2 className="title is-5">{title}</h2>
+									<h3 className="subtitle is-6">{description}</h3>
+								</header>
+								<PostContent content={content} />
+								{tags && tags.length && (
+									<div style={{marginTop: `4rem`}}>
+										<h4>Tags</h4>
+										<ul className="taglist">
+											{tags.map(tag => (
+												<li key={tag + `tag`}>
+													<Link to={`/tags/${kebabCase(tag)}/`}>
+														<span className="tag is-primary">{tag}</span>
+													</Link>
+												</li>
+											))}
+										</ul>
+									</div>
+								)}
+							</article>
 						</div>
 					</div>
 				</div>
