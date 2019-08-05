@@ -4,22 +4,44 @@ const querystring = require("querystring");
 const user = process.env.githubUser;
 const pass = process.env.githubPass;
 
+// this isn't supporting `const` within the function block??
 exports.handler = (event, context, callback) => {
-	const params = querystring.parse(event.body);
-	console.log(params, JSON.stringify(params));
-	const paramStr = JSON.stringify(params);
-	// let orderJSON = {
-	// 	id: event.body.id,
-	// 	customerEmail: event.body.data.email,
-	// 	customerFirst: event.body.data.firstName,
-	// 	customerLast: event.body.data.lastName,
-	// 	customerPhone: event.body.data.phone,
-	// 	customerComments: event.body.data.comments,
-	// 	product: event.body.data.product,
-	// 	product: event.body.data.quantity,
-	// 	product: event.body.data.units,
-	// 	date: event.body.order_date
-	// };
+	var params = querystring.parse(event.body);
+	console.log(event.body, params);
+	const timestamp = Date.now();
+	let productDetails;
+	//const IDs = Array.isArray(params.productID) ? [...params.productID] : [params.productID];
+
+	if (Array.isArray(params.productID)) {
+		productDetails = params.productID.map((v, i) => {
+			return {
+				productID: v,
+				quantity: params.quantity[i],
+				unit: params.unit[i]
+			};
+		});
+	} else {
+		productDetails = [
+			{
+				productID: params.productID,
+				quantity: params.quantity,
+				unit: params.unit
+			}
+		];
+	}
+
+	var orderJSON = {
+		id: timestamp,
+		customerEmail: params.email,
+		customerFirst: params.firstName,
+		customerLast: params.lastName,
+		customerPhone: params.phone,
+		customerComments: params.comments,
+		details: productDetails,
+		date: timestamp
+	};
+	console.log(orderJSON);
+	var paramStr = JSON.stringify(params);
 	var eventBodyB64 = Buffer.from(paramStr).toString("base64");
 
 	axios({
@@ -54,9 +76,9 @@ exports.handler = (event, context, callback) => {
 			});
 		})
 		.catch(e => {
-			//console.log("error", e);
-			const error = e.response.data;
-			const errorResponse = {
+			console.log("error", e);
+			//const error = e.response.data;
+			var errorResponse = {
 				statusCode: 501,
 				headers: {
 					"Access-Control-Allow-Origin": "*",

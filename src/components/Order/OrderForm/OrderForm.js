@@ -42,7 +42,7 @@ export default class OrderForm extends React.Component {
 					ref="orderForm"
 					name="order"
 					method="POST"
-					action="https://dispensio.netlify.com/.netlify/functions/create-order"
+					action="http://localhost:9000/.netlify/functions/create-order"
 					netlify-honeypot="bot-field"
 					data-netlify="true"
 				>
@@ -96,12 +96,12 @@ export default class OrderForm extends React.Component {
 					</div>
 					{this.props.orderState.cart.map(id => (
 						<div key={"product" + id}>
-							<input name={"productID" + id} type="hidden" value={id} />
-							<input name={"quantity" + id} type="hidden" value={this.props.orderState.products[id].quantity} />
-							<input name={"units" + id} type="hidden" value={this.props.orderState.products[id].unit} />
+							<input name="productID" type="hidden" value={id} />
+							<input name="quantity" type="hidden" value={this.props.orderState.products[id].quantity} />
+							<input name="unit" type="hidden" value={this.props.orderState.products[id].unit} />
 						</div>
 					))}
-					{/* <input type="hidden" name="cart" value={this.cart} /> */}
+
 					<div data-netlify-recaptcha />
 					<button type="submit" className="button">
 						Submit
