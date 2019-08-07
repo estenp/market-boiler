@@ -14,7 +14,7 @@ import {Link} from "gatsby";
 export class ProductPageTemplate extends React.Component {
 	constructor(props) {
 		super(props);
-
+		//console.log("product page props", props);
 		const flavorsDict = {};
 		const effectsDict = {};
 		this.props.flavors.forEach(({node: f}) => {

@@ -10,7 +10,7 @@ const BlogPostShort = ({post}) => (
 			style={{
 				border: "1px solid #eaecee",
 				//padding: "2em 4em"
-				boxShadow: "0px 5px 10px lightgrey"
+				boxShadow: "0px 5px 8px #f3f3f3"
 			}}
 			key={post.id}
 		>

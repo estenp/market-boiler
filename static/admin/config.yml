@@ -1,297 +1,320 @@
 backend:
-    name: git-gateway
-    branch: master
+  name: git-gateway
+  branch: master
 
 media_folder: static/img
 public_folder: /img
 
 collections:
-    - name: "products"
-      label: "Products"
-      label_singular: "Product"
-      folder: src/data/products
-      create: true
-      extension: "json"
-      format: "json"
-      editor:
-          preview: false
-      fields:
-          - { label: "Product Name", name: "title", widget: "string" }
-          - {
-                label: "Product Type",
-                name: "type",
-                widget: "select",
-                options: ["flower", "cigar", "candy"],
-            }
-          - {
-                label: "Product Image",
-                name: "image",
-                widget: "image",
-                required: false,
-            }
-          - { label: "Description", name: "description", widget: "text" }
-          - label: "Attributes"
-            name: "attributes"
-            widget: "object"
+  - name: "products"
+    label: "Products"
+    label_singular: "Product"
+    folder: src/data/products
+    create: true
+    extension: "json"
+    format: "json"
+    editor:
+      preview: false
+    slug: "{{slug}}_{{year}}{{month}}{{day}}{{minute}}{{second}}"
+    fields:
+      - {
+          label: "Product ID",
+          name: "id",
+          widget: "hidden",
+          default: "{{slug}}_{{year}}{{month}}{{day}}{{minute}}{{second}}",
+        }
+      - { label: "Product Name", name: "title", widget: "string" }
+      - {
+          label: "Product Type",
+          name: "type",
+          widget: "select",
+          options: ["flower", "cigar", "candy"],
+        }
+      - {
+          label: "Product Image",
+          name: "image",
+          widget: "image",
+          required: false,
+        }
+      - { label: "Description", name: "description", widget: "text" }
+      - label: "Attributes"
+        name: "attributes"
+        widget: "object"
+        fields:
+          - label: "Strain"
+            name: "strain"
+            widget: "select"
+            options: [" ", "Indica", "Sativa", "Hybrid"]
+            valueField: "value"
+
+          - label: "Flavors"
+            name: "flavors"
+            widget: "relation"
+            collection: "flavors"
+            searchFields: ["label", "value"]
+            valueField: "value"
+            multiple: "true"
+
+          - label: "Effects"
+            name: "effects"
+            widget: "list"
             fields:
-                - label: "Strain"
-                  name: "strain"
-                  widget: "select"
-                  options: [" ", "Indica", "Sativa", "Hybrid"]
-                  valueField: "value"
+              - label: "Effect"
+                name: "effect"
+                widget: "relation"
+                collection: "effects"
+                searchFields: ["label", "value"]
+                displayFields: ["label"]
+                valueField: "value"
 
-                - label: "Flavors"
-                  name: "flavors"
-                  widget: "relation"
-                  collection: "flavors"
-                  searchFields: ["label", "value"]
-                  valueField: "value"
-                  multiple: "true"
+              - label: "Level"
+                name: "level"
+                widget: "select"
+                default:
+                  - { label: "1", value: 1 }
+                options:
+                  - { label: "1", value: 1 }
+                  - { label: "2", value: 2 }
+                  - { label: "3", value: 3 }
+                  - { label: "4", value: 4 }
+                  - { label: "5", value: 5 }
+                  - { label: "6", value: 6 }
+                  - { label: "7", value: 7 }
+                  - { label: "8", value: 8 }
+                  - { label: "9", value: 9 }
+                  - { label: "10", value: 10 }
 
-                
-                - label: "Effects"
-                  name: "effects"
-                  widget: "list"
-                  fields:
-                      - {
-                            label: "Effect",
-                            name: "effect",
-                            widget: "relation",
-                            collection: "effects",
-                            searchFields: ["label", "value"],
-                            displayFields: ["label"],
-                            valueField: "value"
-                      }
+      - {
+          label: "Price Per Unit",
+          name: "pricePerUnit",
+          widget: "number",
+          valueType: "float",
+        }
+      - { label: "Unit", name: "availUnits", widget: "list" }
 
-                      - label: "Level"
-                        name: "level"
-                        widget: "select"
-                        default:
-                            - { label: "1", value: 1 }
-                        options: 
-                            - { label: "1", value: 1 }
-                            - { label: "2", value: 2 } 
-                            - { label: "3", value: 3 } 
-                            - { label: "4", value: 4 }
-                            - { label: "5", value: 5 } 
-                            - { label: "6", value: 6 } 
-                            - { label: "7", value: 7 } 
-                            - { label: "8", value: 8 }
-                            - { label: "9", value: 9 }
-                            - { label: "10", value: 10 }
-                      
-          - {
-                label: "Price Per Unit",
-                name: "pricePerUnit",
-                widget: "number",
-                valueType: "float",
-            }
-          - { label: "Unit", name: "availUnits", widget: "list" }
+  - name: "flavors"
+    label: "Flavors"
+    label_singular: "Flavor"
+    create: true
+    folder: "src/data/flavors"
+    extension: "json"
+    format: "json"
+    editor:
+      preview: false
+    fields:
+      - { label: "Label", name: "label", widget: "string" }
+      - { label: "Value", name: "value", widget: "string" }
 
-    - name: "flavors"
-      label: "Flavors"
-      label_singular: "Flavor"
-      create: true
-      folder: "src/data/flavors"
-      extension: "json"
-      format: "json"
-      editor:
-          preview: false
-      fields:
-          - { label: "Label", name: "label", widget: "string" }
-          - { label: "Value", name: "value", widget: "string" }
+  - name: "effects"
+    label: "Effects"
+    label_singular: "Effect"
+    create: true
+    folder: "src/data/effects"
+    extension: "json"
+    format: "json"
+    editor:
+      preview: false
+    fields:
+      - { label: "Label", name: "label", widget: "string" }
+      - { label: "Value", name: "value", widget: "string" }
 
-    - name: "effects"
-      label: "Effects"
-      label_singular: "Effect"
-      create: true
-      folder: "src/data/effects"
-      extension: "json"
-      format: "json"
-      editor:
-          preview: false
-      fields:
-          - { label: "Label", name: "label", widget: "string" }
-          - { label: "Value", name: "value", widget: "string" }
+  - name: "orders"
+    label: "Orders"
+    label_singular: "Order"
+    folder: "src/data/orders"
+    create: true
+    extension: "json"
+    format: "json"
+    editor:
+      preview: false
+    #identifier_field: "id"
 
-    - name: "orders"
-      label: "Orders"
-      label_singular: "Order"
-      folder: "src/data/orders"
-      create: true
-      extension: "json"
-      format: "json"
-      editor:
-          preview: false
-      #   identifier_field: "id"
-      fields:
-          - { label: "Order ID", name: "id", widget: "hidden" }
-          - { label: "Order Name", name: "title", widget: "string" }
-          - { label: "Order Date", name: "date", widget: "datetime" }
-          - {
-                label: "Product",
-                name: "product",
-                widget: "relation",
-                collection: "products",
-                searchFields: "title",
-                valueField: "title",
-                displayFields: "title",
-            }
-          - {
-                label: "Quantity",
-                name: "quantity",
-                widget: "number",
-                valueType: "float",
-            }
-          - {
-                label: "Units",
-                name: "units",
-                widget: "select",
-                options: ["grams", "ounces"],
-            }
-          - { label: "Notes", name: "notes", widget: text }
-          - {
-                label: "Customer First Name",
-                name: "customerFirst",
-                widget: "string",
-            }
-          - {
-                label: "Customer Last Name",
-                name: "customerLast",
-                widget: "string",
-            }
-          - {
-                label: "Customer Phone",
-                name: "customerPhone",
-                widget: number,
-                valueType: "int",
-            }
-          - { label: "Customer Email", name: "customerEmail", widget: string }
-          - {
-                label: "Customer Comments",
-                name: "customerComments",
-                widget: text,
-            }
+    fields:
+      # - { label: "Order ID", name: "id", widget: "hidden" }
+      - { label: "Order Name", name: "title", widget: "string" }
+      - { label: "Order Date", name: "date", widget: "datetime" }
+      - {
+          label: "Product",
+          name: "product",
+          widget: "relation",
+          collection: "products",
+          searchFields: "title",
+          valueField: "title",
+          displayFields: "title",
+        }
+      - {
+          label: "Quantity",
+          name: "quantity",
+          widget: "number",
+          valueType: "float",
+        }
+      - {
+          label: "Units",
+          name: "units",
+          widget: "select",
+          options: ["grams", "ounces"],
+        }
+      # THIS SHOULD BE A LIST OF OBJECTS: {PRODUCTID, QUANTITY, UNIT}
+      # - { label: "Product Details", name: "productDetails", widget: "object", fields:
+      #   [
+      #     {
+      #         label: "Product",
+      #         name: "product",
+      #         widget: "relation",
+      #         collection: "products",
+      #         searchFields: "title",
+      #         valueField: "id",
+      #         displayFields: "title"
+      #     },
+      #     {
+      #       label: "Quantity",
+      #       name: "quantity",
+      #       widget: "number",
+      #       valueType: "float"
+      #     },
+      #     {
+      #       label: "Units",
+      #       name: "units",
+      #       widget: "select",
+      #       options: ["grams", "ounces"]
+      #     }
+      #   ]
+      # }
+      - { label: "Notes", name: "notes", widget: text }
+      - {
+          label: "Customer First Name",
+          name: "customerFirst",
+          widget: "string",
+        }
+      - { label: "Customer Last Name", name: "customerLast", widget: "string" }
+      - {
+          label: "Customer Phone",
+          name: "customerPhone",
+          widget: number,
+          valueType: "int",
+        }
+      - { label: "Customer Email", name: "customerEmail", widget: string }
+      - { label: "Customer Comments", name: "customerComments", widget: text }
 
-    - name: "blog"
-      label: "Blog"
-      folder: "src/pages/blog"
-      create: true
-      slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-      fields:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/pages/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "blog-post",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "text",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - {
+          label: "Blog Type",
+          name: "type",
+          widget: "select",
+          options: ["news", "alert"],
+          default: "news",
+        }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/pages/about/index.md"
+        label: "About"
+        name: "about"
+        fields:
           - {
-                label: "Template Key",
-                name: "templateKey",
-                widget: "hidden",
-                default: "blog-post",
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "about-page",
             }
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Publish Date", name: "date", widget: "datetime" }
-          - {
-                label: "Description",
-                name: "description",
-                widget: "text",
-                required: false,
-            }
           - { label: "Body", name: "body", widget: "markdown" }
-          - { label: "Tags", name: "tags", widget: "list", required: false }
+      #- file: "src/pages/products/index.md"
+      #  label: "Products Page"
+      #  name: "products"
+      #  fields:
+      #    - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
+      #    - {label: Title, name: title, widget: string}
+      #    - {label: Image, name: image, widget: image}
+      #    - {label: Heading, name: heading, widget: string}
+      #    - {label: Description, name: description, widget: string}
+      ##    - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
+      #   - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
+      #   - {label: Full_image, name: full_image, widget: image}
+      #   - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
+      - file: "src/pages/vendors/index.md"
+        label: "Vendors Page"
+        name: "vendors"
+        fields:
           - {
-                label: "Blog Type",
-                name: "type",
-                widget: "select",
-                options: ["news", "alert"],
-                default: "news",
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "product-page",
+            }
+          - { label: Title, name: title, widget: string }
+          - {
+              label: Vendor List,
+              name: vendorList,
+              widget: list,
+              fields:
+                [
+                  { label: Image, name: image, widget: image },
+                  { label: Links To URL, name: url, widget: text },
+                ],
             }
 
-    - name: "pages"
-      label: "Pages"
-      files:
-          - file: "src/pages/about/index.md"
-            label: "About"
-            name: "about"
-            fields:
-                - {
-                      label: "Template Key",
-                      name: "templateKey",
-                      widget: "hidden",
-                      default: "about-page",
-                  }
-                - { label: "Title", name: "title", widget: "string" }
-                - { label: "Body", name: "body", widget: "markdown" }
-          #- file: "src/pages/products/index.md"
-          #  label: "Products Page"
-          #  name: "products"
-          #  fields:
-          #    - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
-          #    - {label: Title, name: title, widget: string}
-          #    - {label: Image, name: image, widget: image}
-          #    - {label: Heading, name: heading, widget: string}
-          #    - {label: Description, name: description, widget: string}
-          ##    - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
-          #   - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
-          #   - {label: Full_image, name: full_image, widget: image}
-          #   - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
-          - file: "src/pages/vendors/index.md"
-            label: "Vendors Page"
-            name: "vendors"
-            fields:
-                - {
-                      label: "Template Key",
-                      name: "templateKey",
-                      widget: "hidden",
-                      default: "product-page",
-                  }
-                - { label: Title, name: title, widget: string }
-                - {
-                      label: Vendor List,
-                      name: vendorList,
-                      widget: list,
-                      fields:
-                          [
-                              { label: Image, name: image, widget: image },
-                              { label: Links To URL, name: url, widget: text },
-                          ],
-                  }
+      - file: "src/pages/services/index.md"
+        label: "Services Page"
+        name: "services"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "product-page",
+            }
+          - { label: Title, name: title, widget: string }
+          - { label: "Body", name: "body", widget: "markdown" }
 
-          - file: "src/pages/services/index.md"
-            label: "Services Page"
-            name: "services"
-            fields:
-                - {
-                      label: "Template Key",
-                      name: "templateKey",
-                      widget: "hidden",
-                      default: "product-page",
-                  }
-                - { label: Title, name: title, widget: string }
-                - { label: "Body", name: "body", widget: "markdown" }
+      - file: "src/pages/examples/index.md"
+        label: "Examples Page"
+        name: "examples"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "examples-page",
+            }
+          - { label: Title, name: title, widget: string }
+          - { label: "Body", name: "body", widget: "markdown" }
+          - {
+              label: "Images",
+              name: "images",
+              widget: "list",
+              fields:
+                [
+                  { label: Image, name: image, widget: image },
+                  { label: Tag, name: tag, widget: string },
+                ],
+            }
 
-          - file: "src/pages/examples/index.md"
-            label: "Examples Page"
-            name: "examples"
-            fields:
-                - {
-                      label: "Template Key",
-                      name: "templateKey",
-                      widget: "hidden",
-                      default: "examples-page",
-                  }
-                - { label: Title, name: title, widget: string }
-                - { label: "Body", name: "body", widget: "markdown" }
-                - {
-                      label: "Images",
-                      name: "images",
-                      widget: "list",
-                      fields:
-                          [
-                              { label: Image, name: image, widget: image },
-                              { label: Tag, name: tag, widget: string },
-                          ],
-                  }
-
-          - file: "src/pages/index.md"
-            label: "Home Page"
-            name: "index"
-            fields:
-                - { label: Welcome Text, name: welcomeText, widget: string }
-                - { label: About Text, name: aboutText, widget: text }
+      - file: "src/pages/index.md"
+        label: "Home Page"
+        name: "index"
+        fields:
+          - { label: Welcome Text, name: welcomeText, widget: string }
+          - { label: About Text, name: aboutText, widget: text }
