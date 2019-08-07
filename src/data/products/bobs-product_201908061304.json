@@ -1,0 +1,23 @@
+{
+  "id": "{{slug}}_{{year}}{{month}}{{day}}{{minute}}{{second}}",
+  "title": "Bob's Product",
+  "type": "flower",
+  "image": "/img/mechoBoardRoom.jpg",
+  "description": "This is a premium product but it isn't good.",
+  "attributes": {
+    "strain": "Hybrid",
+    "flavors": [
+      "mint"
+    ],
+    "effects": [
+      {
+        "effect": "happy",
+        "level": 10
+      }
+    ]
+  },
+  "pricePerUnit": 5,
+  "availUnits": [
+    "Bags"
+  ]
+}
