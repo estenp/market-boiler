@@ -3,6 +3,7 @@ import {navigate} from "@reach/router";
 import "./Cart.module.scss";
 
 const Cart = props => {
+	console.log(props);
 	const [cartIsExpanded, setCartIsExpanded] = useState(true);
 
 	const [cartButtonState, setCartButtonState] = useState({
@@ -24,13 +25,14 @@ const Cart = props => {
 				buttonClass: "",
 				navigateTo: "/products/order-form/"
 			});
-		} else {
-			setCartButtonState({
-				text: "Continue",
-				buttonClass: "fa-arrow-right",
-				navigateTo: "/products/order-form/"
-			});
 		}
+		//  else {
+		// 	setCartButtonState({
+		// 		text: "Continue",
+		// 		buttonClass: "fa-arrow-right",
+		// 		navigateTo: "/products/order-form/"
+		// 	});
+		// }
 	});
 
 	const toggleCart = () => {
