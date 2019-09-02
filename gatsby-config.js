@@ -14,6 +14,7 @@ module.exports = {
 		// 		]
 		// 	}
 		// },
+		"gatsby-plugin-postcss",
 		{
 			resolve: `gatsby-plugin-react-css-modules`,
 			options: {
@@ -88,6 +89,18 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-create-client-paths`,
 			options: {prefixes: [`/products/*`]}
+		},
+		{
+			resolve: "gatsby-source-sanity",
+			options: {
+				projectId: "<yourProjectId>",
+				dataset: "<yourDatasetName>",
+				// To enable preview of drafts, copy .env-example into .env,
+				// and add a token with read permissions
+				token: process.env.SANITY_TOKEN,
+				watchMode: true,
+				overlayDrafts: true
+			}
 		},
 		"gatsby-plugin-netlify" // make sure to keep it last in the array
 	]
