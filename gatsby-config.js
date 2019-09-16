@@ -25,16 +25,6 @@ module.exports = {
 	},
 	plugins: [
 		"gatsby-plugin-react-helmet",
-		// {
-		// 	resolve: `gatsby-plugin-postcss`,
-		// 	options: {
-		// 		postCssPlugins: [
-		// 			require(`postcss-preset-env`)({
-		// 				stage: 2
-		// 			})
-		// 		]
-		// 	}
-		// },
 		"gatsby-plugin-postcss",
 		{
 			resolve: `gatsby-plugin-react-css-modules`,
