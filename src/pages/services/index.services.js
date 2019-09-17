@@ -3,9 +3,18 @@ import PropTypes from "prop-types";
 import Content, {HTMLContent} from "../../components/Content";
 import {graphql} from "gatsby";
 import Layout from "../../components/Layout";
-export const ServicePageTemplate = ({title, content, contentComponent}) => {
-	const PageContent = contentComponent || Content;
+import BlockContent from "../../components/BlockContent/BlockContent";
 
+export const servicesPageQuery = graphql`
+	query ServicesPage {
+		page: sanityPage(_id: {regex: "/(drafts.|)services/"}) {
+			title
+			_rawBody
+		}
+	}
+`;
+
+export const ServicePageTemplate = ({title, content}) => {
 	return (
 		<Layout>
 			<section className="section section--gradient">
@@ -16,7 +25,7 @@ export const ServicePageTemplate = ({title, content, contentComponent}) => {
 								<h2 className="title">{title}</h2>
 								<div className="side-by-side columns">
 									<div className="column text-pane">
-										<PageContent className="content" content={content} />
+										<BlockContent className="content" content={content} />
 									</div>
 									<div id="service-page-image" className="column image-pane">
 										<iframe
@@ -39,16 +48,16 @@ export const ServicePageTemplate = ({title, content, contentComponent}) => {
 	);
 };
 
-ServicePageTemplate.propTypes = {
-	title: PropTypes.string.isRequired,
-	content: PropTypes.string,
-	contentComponent: PropTypes.func
-};
+// ServicePageTemplate.propTypes = {
+// 	title: PropTypes.string.isRequired,
+// 	content: PropTypes.string,
+// 	contentComponent: PropTypes.func
+// };
 
-const ServicePage = ({data}) => {
-	const {markdownRemark: post} = data;
+const ServicePage = ({props}) => {
+	const page = useCatchMissingData(props);
 
-	return <ServicePageTemplate contentComponent={HTMLContent} title={post.frontmatter.title} content={post.html} />;
+	return <ServicePageTemplate title={page.title} content={page._rawBody} />;
 };
 
 ServicePage.propTypes = {
@@ -56,14 +65,3 @@ ServicePage.propTypes = {
 };
 
 export default ServicePage;
-
-export const servicePageQuery = graphql`
-	query ServicePage($id: String!) {
-		markdownRemark(id: {eq: $id}) {
-			html
-			frontmatter {
-				title
-			}
-		}
-	}
-`;

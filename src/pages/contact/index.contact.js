@@ -3,9 +3,24 @@ import PropTypes from "prop-types";
 import Content, {HTMLContent} from "../../components/Content";
 import {graphql} from "gatsby";
 import Layout from "../../components/Layout";
-export const ContactPageTemplate = ({title, content, contentComponent}) => {
-	const PageContent = contentComponent || Content;
+import BlockContent from "../../components/BlockContent/BlockContent";
 
+export const contactPageQuery = graphql`
+	query ContactPage {
+		page: sanityPage(_id: {regex: "/(drafts.|)contact/"}) {
+			title
+			_rawBody
+		}
+	}
+`;
+
+// ContactPageTemplate.propTypes = {
+// 	title: PropTypes.string.isRequired,
+// 	content: PropTypes.string,
+// 	contentComponent: PropTypes.func
+// };
+
+export const ContactPageTemplate = ({title, content, contentComponent}) => {
 	return (
 		<Layout>
 			<section className="section section--gradient">
@@ -15,7 +30,7 @@ export const ContactPageTemplate = ({title, content, contentComponent}) => {
 							<section className="section">
 								<h2 className="title">{title}</h2>
 								<div>
-									<PageContent className="content" content={content} />
+									<BlockContent className="content" content={content} />
 								</div>
 							</section>
 							<section>
@@ -76,16 +91,9 @@ export const ContactPageTemplate = ({title, content, contentComponent}) => {
 	);
 };
 
-ContactPageTemplate.propTypes = {
-	title: PropTypes.string.isRequired,
-	content: PropTypes.string,
-	contentComponent: PropTypes.func
-};
-
 const ContactPage = ({data}) => {
-	const {markdownRemark: post} = data;
-
-	return <ContactPageTemplate contentComponent={HTMLContent} title={post.frontmatter.title} content={post.html} />;
+	const page = useCatchMissingData(props);
+	return <ContactPageTemplate title={page.title} content={page._rawBody} />;
 };
 
 ContactPage.propTypes = {
@@ -93,14 +101,3 @@ ContactPage.propTypes = {
 };
 
 export default ContactPage;
-
-export const ContactPageQuery = graphql`
-	query ContactPage($id: String!) {
-		markdownRemark(id: {eq: $id}) {
-			html
-			frontmatter {
-				title
-			}
-		}
-	}
-`;
