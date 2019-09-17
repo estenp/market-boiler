@@ -4,7 +4,7 @@ import Content, {HTMLContent} from "../components/Content";
 import {graphql} from "gatsby";
 import Layout from "../components/Layout";
 import BlockContent from "../components/BlockContent/BlockContent";
-import useCatchPageError from "../hooks/useCatchPageError.js";
+import {useCatchPageError} from "../hooks/useCatchPageError";
 
 export const servicesPageQuery = graphql`
 	query ServicesPage {

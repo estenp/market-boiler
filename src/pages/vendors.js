@@ -4,7 +4,7 @@ import Features from "../components/Features";
 import BlockContent from "../components/BlockContent/BlockContent";
 import {graphql} from "gatsby";
 import Layout from "../components/Layout";
-import useCatchPageError from "../hooks/useCatchPageError.js";
+import {useCatchPageError} from "../hooks/useCatchPageError";
 
 export const query = graphql`
 	query VendorPage {

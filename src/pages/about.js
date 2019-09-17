@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import {graphql} from "gatsby";
 import Layout from "../components/Layout";
 import BlockContent from "../components/BlockContent/BlockContent";
-import useCatchPageError from "../hooks/useCatchPageError.js";
+import {useCatchPageError} from "../hooks/useCatchPageError";
 
-export const aboutPageQuery = graphql`
+export const pageQuery = graphql`
 	query AboutPage {
 		page: sanityPage(_id: {regex: "/(drafts.|)about/"}) {
 			title
@@ -42,7 +42,8 @@ export const AboutPageTemplate = ({title, content}) => {
 // 	data: PropTypes.object.isRequired
 // };
 
-const AboutPage = ({props}) => {
+const AboutPage = props => {
+	console.log(props);
 	const page = useCatchPageError(props);
 
 	return <AboutPageTemplate title={page.title} content={page._rawBody} />;

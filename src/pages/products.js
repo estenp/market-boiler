@@ -10,7 +10,7 @@ import ProductDetail from "../components/Order/ProductDetail/ProductDetail";
 import ProductList from "../components/Order/ProductList/ProductList";
 import {Router, Location} from "@reach/router";
 import {Link} from "gatsby";
-import useCatchPageError from "../hooks/useCatchPageError.js";
+import {useCatchPageError} from "../hooks/useCatchPageError";
 
 export class ProductPageTemplate extends React.Component {
 	// constructor(props) {
