@@ -2,7 +2,7 @@ import React from "react";
 import GraphQLErrorList from "../components/graphql-error-list.js";
 import Layout from "../components/Layout";
 
-function useCatchMissingData({data, errors}) {
+export default function useCatchMissingData({data, errors}) {
 	if (errors) {
 		return (
 			<Layout>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {graphql} from "gatsby";
 import Layout from "../components/Layout";
 import BlogPostShort from "../components/BlogPostShort/BlogPostShort";
+import useCatchMissingData from "../hooks/useCatchMissingData";
 
 export const query = graphql`
 	query ContactPageQuery {
@@ -15,10 +16,11 @@ export const query = graphql`
 
 export default class IndexPage extends React.Component {
 	render() {
-		const {data} = this.props;
+		// const {data} = this.props;
+		// const page = useCatchMissingData(this.props);
 
-		const {edges: posts} = data.blogPost;
-		const {edges: indexPageData} = data.indexPage;
+		// const {edges: posts} = data.blogPost;
+		// const {edges: indexPageData} = data.indexPage;
 
 		return (
 			<Layout>
@@ -26,13 +28,13 @@ export default class IndexPage extends React.Component {
 					<div className="container hero-image-text has-text-grey-dark is-centered">
 						<div className="side-by-side columns">
 							<div className="column text-pane">
-								<h1>{indexPageData[0].node.frontmatter.welcomeText}</h1>
+								{/* <h1>{indexPageData[0].node.frontmatter.welcomeText}</h1> */}
 
 								<hr />
-								<p>{indexPageData[0].node.frontmatter.aboutText}</p>
+								{/* <p>{indexPageData[0].node.frontmatter.aboutText}</p> */}
 							</div>
 
-							<BlogPostShort post={posts[0].node} />
+							{/* <BlogPostShort post={posts[0].node} /> */}
 						</div>
 					</div>
 				</div>

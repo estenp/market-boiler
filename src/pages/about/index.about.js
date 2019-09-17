@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Content, {HTMLContent} from "../../components/Content";
 import {graphql} from "gatsby";
 import Layout from "../../components/Layout";
 import BlockContent from "../../components/BlockContent/BlockContent";
+import useCatchMissingData from "../../hooks/useCatchMissingData.js";
 
 export const aboutPageQuery = graphql`
 	query AboutPage {
@@ -38,9 +38,9 @@ export const AboutPageTemplate = ({title, content}) => {
 	);
 };
 
-AboutPage.propTypes = {
-	data: PropTypes.object.isRequired
-};
+// AboutPage.propTypes = {
+// 	data: PropTypes.object.isRequired
+// };
 
 const AboutPage = ({props}) => {
 	const page = useCatchMissingData(props);

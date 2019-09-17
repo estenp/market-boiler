@@ -4,7 +4,7 @@ import Features from "../../components/Features";
 import BlockContent from "../../components/BlockContent/BlockContent";
 import {graphql} from "gatsby";
 import Layout from "../../components/Layout";
-import useCatchMissingData from "../../hooks/useCatchMissingData";
+import useCatchMissingData from "../../hooks/useCatchMissingData.js";
 
 export const query = graphql`
 	query VendorPage {

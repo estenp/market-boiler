@@ -4,6 +4,7 @@ import Content, {HTMLContent} from "../../components/Content";
 import {graphql} from "gatsby";
 import Layout from "../../components/Layout";
 import BlockContent from "../../components/BlockContent/BlockContent";
+import useCatchMissingData from "../../hooks/useCatchMissingData.js";
 
 export const servicesPageQuery = graphql`
 	query ServicesPage {

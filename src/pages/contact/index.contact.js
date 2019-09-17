@@ -4,6 +4,7 @@ import Content, {HTMLContent} from "../../components/Content";
 import {graphql} from "gatsby";
 import Layout from "../../components/Layout";
 import BlockContent from "../../components/BlockContent/BlockContent";
+import useCatchMissingData from "../../hooks/useCatchMissingData.js";
 
 export const contactPageQuery = graphql`
 	query ContactPage {
@@ -20,7 +21,7 @@ export const contactPageQuery = graphql`
 // 	contentComponent: PropTypes.func
 // };
 
-export const ContactPageTemplate = ({title, content, contentComponent}) => {
+export const ContactPageTemplate = ({title, content}) => {
 	return (
 		<Layout>
 			<section className="section section--gradient">
@@ -91,7 +92,7 @@ export const ContactPageTemplate = ({title, content, contentComponent}) => {
 	);
 };
 
-const ContactPage = ({data}) => {
+const ContactPage = ({props}) => {
 	const page = useCatchMissingData(props);
 	return <ContactPageTemplate title={page.title} content={page._rawBody} />;
 };

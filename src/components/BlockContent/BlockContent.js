@@ -3,7 +3,7 @@ import React from "react";
 import Figure from "./Figure";
 import Slideshow from "./Slideshow";
 
-import typography from "../typography.module.css";
+import typography from "../typography.module.scss";
 
 const serializers = {
 	types: {
