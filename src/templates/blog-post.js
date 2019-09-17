@@ -7,6 +7,73 @@ import Content, {HTMLContent} from "../components/Content";
 import {graphql} from "gatsby";
 import Layout from "../components/Layout";
 //building both blog post template and the and the component that uses it, because the template could need to display HTML content?
+export const pageQuery = graphql`
+	query BlogPostQuery($id: String!) {
+		post: sanityPost(id: {eq: $id}) {
+			id
+			publishedAt
+			categories {
+				_id
+				title
+			}
+			mainImage {
+				crop {
+					_key
+					_type
+					top
+					bottom
+					left
+					right
+				}
+				hotspot {
+					_key
+					_type
+					x
+					y
+					height
+					width
+				}
+				asset {
+					_id
+				}
+				alt
+			}
+			title
+			slug {
+				current
+			}
+			_rawBody
+			authors {
+				_key
+				person {
+					image {
+						crop {
+							_key
+							_type
+							top
+							bottom
+							left
+							right
+						}
+						hotspot {
+							_key
+							_type
+							x
+							y
+							height
+							width
+						}
+						asset {
+							_id
+						}
+					}
+					name
+				}
+				roles
+			}
+		}
+	}
+`;
 
 export const BlogPostTemplate = ({content, contentComponent, description, tags, title, helmet}) => {
 	// appears to be saying, if a component is passed in to render content use that, otherwise use the main Content component
@@ -80,18 +147,3 @@ BlogPost.propTypes = {
 };
 
 export default BlogPost;
-
-export const pageQuery = graphql`
-	query BlogPostByID($id: String!) {
-		markdownRemark(id: {eq: $id}) {
-			id
-			html
-			frontmatter {
-				date(formatString: "MMMM DD, YYYY")
-				title
-				description
-				tags
-			}
-		}
-	}
-`;

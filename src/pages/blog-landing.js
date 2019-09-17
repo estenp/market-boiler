@@ -58,18 +58,21 @@ BlogLanding.propTypes = {
 
 export const pageQuery = graphql`
 	query BlogLandingQuery {
-		allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}, filter: {frontmatter: {templateKey: {eq: "blog-post"}}}) {
+		posts: allSanityPost(limit: 12, sort: {fields: [publishedAt], order: DESC}) {
 			edges {
 				node {
-					excerpt(pruneLength: 400)
 					id
-					fields {
-						slug
+					publishedAt
+					mainImage {
+						asset {
+							_id
+						}
+						alt
 					}
-					frontmatter {
-						title
-						templateKey
-						date(formatString: "MMMM DD, YYYY")
+					title
+					_rawExcerpt
+					slug {
+						current
 					}
 				}
 			}
