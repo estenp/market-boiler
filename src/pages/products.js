@@ -220,7 +220,7 @@ export class ProductPageTemplate extends React.Component {
 // };
 
 const ProductPage = ({props}) => {
-	const page = useCatchMissingData(props);
+	const page = useCatchPageError(props);
 	// const productPageData = props.productPage;
 	// const {edges: products} = props.products;
 	// const {edges: flavors} = props.flavors;

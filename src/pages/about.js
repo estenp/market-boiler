@@ -43,7 +43,7 @@ export const AboutPageTemplate = ({title, content}) => {
 // };
 
 const AboutPage = ({props}) => {
-	const page = useCatchMissingData(props);
+	const page = useCatchPageError(props);
 
 	return <AboutPageTemplate title={page.title} content={page._rawBody} />;
 };

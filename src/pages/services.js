@@ -56,7 +56,7 @@ export const ServicePageTemplate = ({title, content}) => {
 // };
 
 const ServicePage = ({props}) => {
-	const page = useCatchMissingData(props);
+	const page = useCatchPageError(props);
 
 	return <ServicePageTemplate title={page.title} content={page._rawBody} />;
 };

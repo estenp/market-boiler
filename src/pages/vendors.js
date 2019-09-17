@@ -16,7 +16,7 @@ export const query = graphql`
 `;
 
 export const VendorPage = props => {
-	const page = useCatchMissingData(props);
+	const page = useCatchPageError(props);
 
 	// VendorPage.propTypes = {
 	// 	data: PropTypes.shape({
