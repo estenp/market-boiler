@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import {graphql} from "gatsby";
-import Layout from "../../components/Layout";
+import Layout from "../components/Layout";
 export default class BlogLanding extends React.Component {
 	render() {
 		const {data} = this.props;

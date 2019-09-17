@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Content, {HTMLContent} from "../../components/Content";
+import Content, {HTMLContent} from "../components/Content";
 import {graphql} from "gatsby";
-import Layout from "../../components/Layout";
-import BlockContent from "../../components/BlockContent/BlockContent";
-import useCatchMissingData from "../../hooks/useCatchMissingData.js";
+import Layout from "../components/Layout";
+import BlockContent from "../components/BlockContent/BlockContent";
+import useCatchMissingData from "../hooks/useCatchMissingData.js";
 
 export const contactPageQuery = graphql`
 	query ContactPage {

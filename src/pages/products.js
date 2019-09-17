@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Content, {HTMLContent} from "../../components/Content";
+import Content, {HTMLContent} from "../components/Content";
 import {graphql} from "gatsby";
-import Layout from "../../components/Layout";
-import ProductCard from "../../components/ProductCard/ProductCard";
-import Cart from "../../components/Cart/Cart";
-import OrderForm from "../../components/Order/OrderForm/OrderForm";
-import ProductDetail from "../../components/Order/ProductDetail/ProductDetail";
-import ProductList from "../../components/Order/ProductList/ProductList";
+import Layout from "../components/Layout";
+import ProductCard from "../components/ProductCard/ProductCard";
+import Cart from "../components/Cart/Cart";
+import OrderForm from "../components/Order/OrderForm/OrderForm";
+import ProductDetail from "../components/Order/ProductDetail/ProductDetail";
+import ProductList from "../components/Order/ProductList/ProductList";
 import {Router, Location} from "@reach/router";
 import {Link} from "gatsby";
-import useCatchMissingData from "../../hooks/useCatchMissingData.js";
+import useCatchMissingData from "../hooks/useCatchMissingData.js";
 
 export class ProductPageTemplate extends React.Component {
 	// constructor(props) {

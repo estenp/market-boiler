@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Features from "../../components/Features";
-import BlockContent from "../../components/BlockContent/BlockContent";
+import Features from "../components/Features";
+import BlockContent from "../components/BlockContent/BlockContent";
 import {graphql} from "gatsby";
-import Layout from "../../components/Layout";
-import useCatchMissingData from "../../hooks/useCatchMissingData.js";
+import Layout from "../components/Layout";
+import useCatchMissingData from "../hooks/useCatchMissingData.js";
 
 export const query = graphql`
 	query VendorPage {

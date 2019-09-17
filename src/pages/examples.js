@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Content, {HTMLContent} from "../../components/Content";
-import ImageGallery from "../../components/ImageGallery";
+import Content, {HTMLContent} from "../components/Content";
+import ImageGallery from "../components/ImageGallery";
 import {graphql} from "gatsby";
-import Layout from "../../components/Layout";
+import Layout from "../components/Layout";
 const ExamplesPage = ({data}) => {
 	// return (
 	// 	<Layout>
