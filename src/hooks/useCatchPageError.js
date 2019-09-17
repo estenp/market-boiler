@@ -14,9 +14,7 @@ export default function useCatchMissingData({data, errors}) {
 	const page = data.page;
 
 	if (!page) {
-		throw new Error(
-			'Missing "Contact" page data. Open the studio at http://localhost:3333 and add "Contact" page data and restart the development server.'
-		);
+		throw new Error("Missing page data. Add data in Sanity to correspond to this page.");
 	}
 
 	return page;
