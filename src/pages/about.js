@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {graphql} from "gatsby";
 import Layout from "../components/Layout";
 import BlockContent from "../components/BlockContent/BlockContent";
-import useCatchMissingData from "../hooks/useCatchMissingData.js";
+import useCatchMissingData from "../hooks/useCatchPageError.js";
 
 export const aboutPageQuery = graphql`
 	query AboutPage {
