@@ -219,7 +219,7 @@ export class ProductPageTemplate extends React.Component {
 // 	contentComponent: PropTypes.func
 // };
 
-const ProductPage = ({props}) => {
+const ProductPage = props => {
 	const page = useCatchPageError(props);
 	// const productPageData = props.productPage;
 	// const {edges: products} = props.products;

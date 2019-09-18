@@ -16,7 +16,6 @@ export const query = graphql`
 `;
 
 export const VendorPage = props => {
-	console.log(props);
 	const page = useCatchPageError(props);
 
 	// VendorPage.propTypes = {
