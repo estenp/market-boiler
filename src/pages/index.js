@@ -6,8 +6,8 @@ import BlogPostShort from "../components/BlogPostShort/BlogPostShort";
 import useCatchPageError from "../hooks/useCatchPageError";
 
 export const query = graphql`
-	query ContactPageQuery {
-		page: sanityPage(_id: {regex: "/(drafts.|)home/"}) {
+	query HomePage {
+		page: sanityPage(path: {current: {eq: "home"}}) {
 			title
 			_rawBody
 		}

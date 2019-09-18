@@ -7,7 +7,7 @@ import {useCatchPageError} from "../hooks/useCatchPageError";
 
 export const pageQuery = graphql`
 	query AboutPage {
-		page: sanityPage(_id: {regex: "/(drafts.|)about/"}) {
+		page: sanityPage(path: {current: {eq: "about"}}) {
 			title
 			_rawBody
 		}
@@ -28,7 +28,7 @@ export const AboutPageTemplate = ({title, content}) => {
 						<div className="column is-10 is-offset-1">
 							<div className="section">
 								<h2 className="title">{title}</h2>
-								<BlockContent className="content" content={content} />
+								<BlockContent blocks={content || []} />
 							</div>
 						</div>
 					</div>

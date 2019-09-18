@@ -6,15 +6,18 @@ export default {
 	// __experimental_actions: ["update", "publish" /* 'create', 'delete' */],
 	fields: [
 		{
-			name: "templateKey",
-			title: "Template Key",
-			type: "string",
-			hidden: true
-		},
-		{
 			name: "title",
 			title: "Title",
 			type: "string"
+		},
+		{
+			name: "path",
+			title: "Path",
+			type: "slug",
+			// readOnly: true,
+			options: {
+				source: "title"
+			}
 		},
 		{
 			name: "body",

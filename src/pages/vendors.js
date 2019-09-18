@@ -8,7 +8,7 @@ import {useCatchPageError} from "../hooks/useCatchPageError";
 
 export const query = graphql`
 	query VendorPage {
-		page: sanityPage(_id: {regex: "/(drafts.|)vendor/"}) {
+		page: sanityPage(path: {current: {eq: "vendors"}}) {
 			title
 			_rawBody
 		}
@@ -16,6 +16,7 @@ export const query = graphql`
 `;
 
 export const VendorPage = props => {
+	console.log(props);
 	const page = useCatchPageError(props);
 
 	// VendorPage.propTypes = {

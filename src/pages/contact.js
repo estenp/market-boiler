@@ -6,9 +6,9 @@ import Layout from "../components/Layout";
 import BlockContent from "../components/BlockContent/BlockContent";
 import {useCatchPageError} from "../hooks/useCatchPageError";
 
-export const contactPageQuery = graphql`
+export const pageQuery = graphql`
 	query ContactPage {
-		page: sanityPage(_id: {regex: "/(drafts.|)contact/"}) {
+		page: sanityPage(path: {current: {eq: "contact"}}) {
 			title
 			_rawBody
 		}
