@@ -6,15 +6,15 @@ import Link from "gatsby-link";
 import Content, {HTMLContent} from "../components/Content";
 import {graphql} from "gatsby";
 import Layout from "../components/Layout";
-//building both blog post template and the and the component that uses it, because the template could need to display HTML content?
+
 export const pageQuery = graphql`
 	query BlogPostQuery($id: String!) {
 		post: sanityPost(id: {eq: $id}) {
 			id
-			publishedAt
-			categories {
-				_id
-				title
+			title
+			author {
+				id
+				name
 			}
 			mainImage {
 				crop {
@@ -35,42 +35,23 @@ export const pageQuery = graphql`
 				}
 				asset {
 					_id
-				}
-				alt
-			}
-			title
-			slug {
-				current
-			}
-			_rawBody
-			authors {
-				_key
-				person {
-					image {
-						crop {
-							_key
-							_type
-							top
-							bottom
-							left
-							right
-						}
-						hotspot {
-							_key
-							_type
-							x
-							y
-							height
-							width
-						}
-						asset {
-							_id
-						}
+					fluid {
+						base64
+						aspectRatio
+						src
+						srcSet
+						srcWebp
+						srcSetWebp
+						sizes
 					}
-					name
+					url
 				}
-				roles
 			}
+			categories {
+				id
+			}
+			publishedAt
+			_rawBody
 		}
 	}
 `;
@@ -116,7 +97,6 @@ export const BlogPostTemplate = ({content, contentComponent, description, tags, 
 		</Layout>
 	);
 };
-
 BlogPostTemplate.propTypes = {
 	content: PropTypes.string.isRequired,
 	contentComponent: PropTypes.func,
@@ -139,11 +119,9 @@ const BlogPost = ({data}) => {
 		/>
 	);
 };
-
 BlogPost.propTypes = {
 	data: PropTypes.shape({
 		markdownRemark: PropTypes.object
 	})
 };
-
 export default BlogPost;

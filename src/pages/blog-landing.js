@@ -67,10 +67,9 @@ export const pageQuery = graphql`
 						asset {
 							_id
 						}
-						alt
 					}
 					title
-					_rawExcerpt
+
 					slug {
 						current
 					}
