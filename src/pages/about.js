@@ -44,7 +44,7 @@ export const AboutPageTemplate = ({title, content}) => {
 
 const AboutPage = props => {
 	console.log(props);
-	const page = useCatchPageError(props);
+	const {page} = useCatchPageError(props);
 
 	return <AboutPageTemplate title={page.title} content={page._rawBody} />;
 };

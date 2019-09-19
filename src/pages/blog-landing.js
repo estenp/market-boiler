@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import {graphql} from "gatsby";
 import Layout from "../components/Layout";
+import useCatchPageError from "../hooks/useCatchPageError";
+
 export default class BlogLanding extends React.Component {
 	render() {
-		const {data} = this.props;
-		const {edges: posts} = data.allMarkdownRemark;
+		const page = useCatchPageError(this.props);
+		console.log("page:", page);
 
 		return (
 			<Layout>
@@ -15,7 +17,7 @@ export default class BlogLanding extends React.Component {
 						<div className="content">
 							<h2 className="title">Latest Stories</h2>
 						</div>
-						{posts.map(({node: post}) => (
+						{page.posts.map(({node: post}) => (
 							<div
 								className="content"
 								style={{
@@ -25,17 +27,17 @@ export default class BlogLanding extends React.Component {
 								key={post.id}
 							>
 								<p>
-									<Link className="has-text-primary" to={post.fields.slug}>
-										{post.frontmatter.title}
+									<Link className="has-text-primary" to={post.slug.current}>
+										{post.title}
 									</Link>
 									<span> &bull; </span>
 									<small>{post.frontmatter.date}</small>
 								</p>
 								<p>
-									{post.excerpt}
+									{/* {post.excerpt} */}
 									<br />
 									<br />
-									<Link className="button is-small" to={post.fields.slug}>
+									<Link className="button is-small" to={post.slug.current}>
 										Keep Reading →
 									</Link>
 								</p>
@@ -48,28 +50,34 @@ export default class BlogLanding extends React.Component {
 	}
 }
 
-BlogLanding.propTypes = {
-	data: PropTypes.shape({
-		allMarkdownRemark: PropTypes.shape({
-			edges: PropTypes.array
-		})
-	})
-};
+// BlogLanding.propTypes = {
+// 	data: PropTypes.shape({
+// 		allMarkdownRemark: PropTypes.shape({
+// 			edges: PropTypes.array
+// 		})
+// 	})
+// };
 
 export const pageQuery = graphql`
 	query BlogLandingQuery {
 		posts: allSanityPost(limit: 12, sort: {fields: [publishedAt], order: DESC}) {
 			edges {
 				node {
-					id
+					_id
+					author {
+						id
+					}
+					title
+					categories {
+						id
+					}
+					_rawBody
 					publishedAt
 					mainImage {
 						asset {
 							_id
 						}
 					}
-					title
-
 					slug {
 						current
 					}

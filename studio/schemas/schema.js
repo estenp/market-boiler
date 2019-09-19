@@ -10,6 +10,11 @@ import category from "./category";
 import post from "./post";
 import author from "./author";
 import page from "./page";
+import product from "./product";
+import productOption from "./productOption";
+import productType from "./productType";
+import productEffect from "./productEffect";
+import productFlavor from "./productFlavor";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,6 +29,11 @@ export default createSchema({
 		post,
 		author,
 		category,
+		product,
+		productOption,
+		productType,
+		productEffect,
+		productFlavor,
 		// When added to this list, object types can be used as
 		// { type: 'typename' } in other document schemas
 		blockContent

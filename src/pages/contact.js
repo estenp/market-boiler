@@ -93,7 +93,7 @@ export const ContactPageTemplate = ({title, content}) => {
 };
 
 const ContactPage = props => {
-	const page = useCatchPageError(props);
+	const {page} = useCatchPageError(props);
 	return <ContactPageTemplate title={page.title} content={page._rawBody} />;
 };
 

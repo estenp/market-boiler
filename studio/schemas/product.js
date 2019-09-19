@@ -10,50 +10,49 @@ export default {
 			title: "Product Name",
 			type: "string"
 		},
-    {
-      name: "type",
-      title: "Product Type",
-      type: "array",
-      of: [
-        type: "reference",
-        weak: true,
-        to: [{type: "productType"}]
-      ]
-    },
-    {
-      name: "type",
-      title: "Product Options",
-      type: "array",
-      of: [
-        {type: "object"}
-      ]
-    },
-    {
-      name: "type",
-      title: "Product Effects",
-      type: "array",
-      of: [
-        type: "reference",
-        weak: true,
-        to: [{type: "productEffect"}]
-      ]
-    },
-    {
-      name: "type",
-      title: "Product Flavors",
-      type: "array",
-      of: [
-        type: "reference",
-        weak: true,
-        to: [{type: "productFlavor"}]
-      ]
-    },
-    // TODO: create and use a custom image scheme that includes field for alt text
 		{
-      name: "image",
-      title: "Product Image",
-      type: "image"
-    },
+			name: "type",
+			title: "Product Type",
+			type: "reference",
+			weak: true,
+			to: {type: "productType"}
+		},
+		{
+			name: "options",
+			title: "Product Options",
+			type: "array",
+			of: [{type: "productOption"}]
+		},
+		{
+			name: "effects",
+			title: "Product Effects",
+			type: "array",
+			of: [
+				{
+					type: "reference",
+					weak: true,
+					to: [{type: "productEffect"}]
+				}
+			]
+		},
+		{
+			name: "flavors",
+			title: "Product Flavors",
+			type: "array",
+			of: [
+				{
+					type: "reference",
+					weak: true,
+					to: [{type: "productFlavor"}]
+				}
+			]
+		},
+		// TODO: create and use a custom image scheme that includes field for alt text
+		{
+			name: "image",
+			title: "Product Image",
+			type: "image"
+		},
 		{
 			name: "description",
 			title: "Description",

@@ -3,7 +3,6 @@ import GraphQLErrorList from "../components/graphql-error-list.js";
 import Layout from "../components/Layout";
 
 export const useCatchPageError = props => {
-	//console.log(props);
 	const {data, errors} = props;
 
 	if (errors) {
@@ -20,5 +19,5 @@ export const useCatchPageError = props => {
 		throw new Error("Missing page data. The path queried on this page does not match one in Sanity.");
 	}
 
-	return page;
+	return data;
 };
