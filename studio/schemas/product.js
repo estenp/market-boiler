@@ -18,6 +18,13 @@ export default {
 			to: {type: "productType"}
 		},
 		{
+			name: "strain",
+			title: "Product Strain",
+			type: "reference",
+			weak: true,
+			to: {type: "productStrain"}
+		},
+		{
 			name: "options",
 			title: "Product Options",
 			type: "array",

@@ -28,7 +28,7 @@ export const AboutPageTemplate = ({title, content}) => {
 						<div className="column is-10 is-offset-1">
 							<div className="section">
 								<h2 className="title">{title}</h2>
-								<BlockContent blocks={content || []} />
+								<BlockContent className="content" blocks={content || []} />
 							</div>
 						</div>
 					</div>

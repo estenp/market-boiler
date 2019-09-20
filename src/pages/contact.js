@@ -31,7 +31,7 @@ export const ContactPageTemplate = ({title, content}) => {
 							<section className="section">
 								<h2 className="title">{title}</h2>
 								<div>
-									<BlockContent className="content" content={content} />
+									<BlockContent className="content" blocks={content || []} />
 								</div>
 							</section>
 							<section>

@@ -7,7 +7,7 @@ export default class RadarDataChart extends React.Component {
 	constructor(props) {
 		super(props);
 		//this.state = {};
-		// console.log(props);
+		console.log(props);
 	}
 
 	render() {
@@ -75,12 +75,12 @@ export default class RadarDataChart extends React.Component {
 
 		var chartDataArray = [
 			{
-				name: this.props.data.title
+				name: this.props.data.name
 			}
 		];
 		var chartDomainArray = [];
 
-		this.props.data.attributes.effects.forEach(e => {
+		this.props.data.effects.forEach(e => {
 			// console.log(e);
 			chartDataArray[0][e.label] = e.level;
 			var obj = {
@@ -95,7 +95,7 @@ export default class RadarDataChart extends React.Component {
 			domain: chartDomainArray
 		};
 
-		//console.log(chartData);
+		console.log(chartData);
 		return (
 			<RadarChart
 				data={chartData.data}

@@ -8,13 +8,15 @@ import {Link} from "gatsby";
 export default class ProductCard extends React.Component {
 	constructor(props) {
 		super(props);
+		// console.log("product card props", props);
 
+		// TODO - better way to handle this. Also Radar chart
 		if (props.location.pathname.indexOf("product-detail") > -1) {
 			this.detailPage = true;
 		}
 
 		this.isDisabled.bind(this);
-		//console.log(props.productDetails.attributes.flavors);
+		//console.log(props.productDetails.flavors);
 	}
 
 	isDisabled(productID) {
@@ -22,7 +24,7 @@ export default class ProductCard extends React.Component {
 	}
 
 	render() {
-		let productID = this.props.productDetails.id;
+		let productID = this.props.productDetails._id;
 		let unitValue = this.props.productState[productID].unit;
 		let quantityValue = this.props.productState[productID].quantity;
 
@@ -31,14 +33,12 @@ export default class ProductCard extends React.Component {
 				<div className="card" styleName={this.props.isInCart === true ? "isInCart" : ""}>
 					<Link to={`/products/product-detail/${productID}`}>
 						<div className="card-header" styleName="card-header">
-							<div className="card-header-title">{this.props.productDetails.title}</div>
+							<div className="card-header-title">{this.props.productDetails.name}</div>
 							<br />
 							{/* <span className="is-italic has-text-weight-light has-text-light has-text-primary">{this.props.productDetails.type}</span> */}
 							<div className="tags has-addons" styleName="tags">
-								<span className="tag">{this.props.productDetails.type}</span>
-								{this.props.productDetails.attributes.strain && (
-									<span className="tag is-primary">{this.props.productDetails.attributes.strain}</span>
-								)}
+								<span className="tag">{this.props.productDetails.type.label}</span>
+								{this.props.productDetails.strain && <span className="tag is-primary">{this.props.productDetails.strain.label}</span>}
 							</div>
 						</div>
 					</Link>
@@ -51,28 +51,28 @@ export default class ProductCard extends React.Component {
 								<img
 									className={!this.detailPage ? "is-rounded" : ""}
 									styleName="product-image"
-									src={this.props.productDetails.image}
+									src={this.props.productDetails._rawImage}
 									alt="Placeholder"
 								/>
 							</figure>
 							<div className="column">
-								{this.props.productDetails.attributes.flavors.length > 0 && (
+								{this.props.productDetails.flavors.length > 0 && (
 									<div styleName="flavor-section">
 										{/* <h6 className="subtitle is-6 has-text-primary" styleName="attribute-section-subheader">
 									Flavors
 								</h6> */}
 										<div>
 											<div className="tags">
-												{this.props.productDetails.attributes.flavors.map((flavor, i) => (
+												{this.props.productDetails.flavors.map((flavor, i) => (
 													<span key={i} className="tag is-info is-rounded">
-														{flavor}
+														{flavor.label}
 													</span>
 												))}
 											</div>
 										</div>
 									</div>
 								)}
-								{this.props.productDetails.attributes.effects.length > 0 && (
+								{this.props.productDetails.effects.length > 0 && (
 									<div styleName="effect-chart">
 										{/* <h6 className="subtitle is-6 has-text-primary" styleName="attribute-section-subheader">
 											Effects
@@ -104,9 +104,9 @@ export default class ProductCard extends React.Component {
 							<label>Unit: </label> <br />
 							<div className="select" styleName={!this.detailPage ? "unit-select-full" : ""}>
 								<select name="unit" value={unitValue} onChange={this.props.handleChange.bind(this, productID)}>
-									{this.props.productDetails.availUnits.map((unit, i) => (
-										<option key={i} value={unit}>
-											{unit}
+									{this.props.productDetails.options.map((option, i) => (
+										<option key={i} value={option.unitType}>
+											{option.unitType}
 										</option>
 									))}
 								</select>

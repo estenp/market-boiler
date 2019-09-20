@@ -7,14 +7,14 @@ import RadarDataChart from "../../RadarDataChart/RadarDataChart";
 export class ProductDetail extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 		this.productDetails = this.props.getProductInfoByID(this.props.productID);
+		// console.log("product details", this.productDetails);
 	}
 
 	render() {
 		return (
 			<ProductCard
-				key={this.productDetails.id}
+				key={this.productDetails._id}
 				productDetails={this.productDetails}
 				productState={this.props.orderState.products}
 				isInCart={this.props.isInCart(this.productDetails.id)}

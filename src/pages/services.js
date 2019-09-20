@@ -26,7 +26,7 @@ export const ServicePageTemplate = ({title, content}) => {
 								<h2 className="title">{title}</h2>
 								<div className="side-by-side columns">
 									<div className="column text-pane">
-										<BlockContent className="content" content={content} />
+										<BlockContent className="content" blocks={content || []} />
 									</div>
 									<div id="service-page-image" className="column image-pane">
 										<iframe

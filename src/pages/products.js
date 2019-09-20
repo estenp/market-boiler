@@ -11,41 +11,22 @@ import ProductList from "../components/Order/ProductList/ProductList";
 import {Router, Location} from "@reach/router";
 import {Link} from "gatsby";
 import {useCatchPageError} from "../hooks/useCatchPageError";
+import BlockContent from "../components/BlockContent/BlockContent";
 
 export class ProductPageTemplate extends React.Component {
 	constructor(props) {
 		super(props);
-		//console.log("product page props", props);
-		const flavorsDict = {};
-		const effectsDict = {};
-		this.props.flavors.forEach(({node: f}) => {
-			flavorsDict[f.value] = f.label;
-		});
-		this.props.effects.forEach(({node: e}) => {
-			effectsDict[e.value] = e.label;
-		});
-		this.productsData = [];
-		// build all product data object
-		this.props.products.forEach(p => {
-			if (p.node.attributes.flavors.length > 0) {
-				p.node.attributes.flavors.forEach((f, i) => {
-					p.node.attributes.flavors[i] = flavorsDict[f];
-				});
-			}
-			if (p.node.attributes.effects.length > 0) {
-				p.node.attributes.effects.forEach((e, i) => {
-					p.node.attributes.effects[i]["label"] = effectsDict[e.effect];
-				});
-			}
-			this.productsData.push(p.node);
-			// console.log(this.productsData);
-		});
+		console.log(props);
+
+		this.productsData = props.products.edges;
+
 		// // // build state for products order form
 		let prodState = {};
-		this.productsData.forEach(p => {
-			prodState[p.id] = {
+		this.productsData.forEach(({node: p}) => {
+			// console.log(p);
+			prodState[p._id] = {
 				quantity: 1,
-				unit: p.availUnits[0]
+				unit: p.options.unitType
 			};
 		});
 		this.state = {
@@ -131,8 +112,8 @@ export class ProductPageTemplate extends React.Component {
 		});
 	};
 	render() {
-		const {title, content, contentComponent} = this.props;
-		const PageContent = contentComponent || Content;
+		const {title, content} = this.props;
+		// const Content = contentComponent || Content;
 		return (
 			<Layout>
 				<section className="section section--gradient">
@@ -155,7 +136,7 @@ export class ProductPageTemplate extends React.Component {
 								<section className="section">
 									<h2 className="title">{title}</h2>
 									<div className="content">
-										<PageContent className="content" content={content} />
+										<BlockContent className="content" blocks={content || []} />
 									</div>
 									<Location>
 										{({location}) => (
@@ -187,7 +168,7 @@ export class ProductPageTemplate extends React.Component {
 														isInCart={this.isInCart}
 														path="/products/"
 													/>
-													<ProductDetail
+													{/* <ProductDetail
 														products={this.productsData}
 														orderState={this.state}
 														isInCart={this.isInCart}
@@ -197,7 +178,7 @@ export class ProductPageTemplate extends React.Component {
 														getProductInfoByID={this.getProductInfoByID}
 														location={location}
 														path="/products/product-detail/:productID"
-													/>
+													/> */}
 													<OrderForm submit={this.submitOrder} orderState={this.state} path="/products/order-form/" />
 												</Router>
 											</div>
@@ -222,20 +203,9 @@ export class ProductPageTemplate extends React.Component {
 const ProductPage = props => {
 	// console.log(props);
 	const {page, products} = useCatchPageError(props);
-	console.log(page, products);
-	// const productPageData = props.productPage;
-	// const {edges: products} = props.products;
-	// const {edges: flavors} = props.flavors;
-	// const {edges: effects} = props.effects;
-	return (
-		<ProductPageTemplate
-			title={page.title}
-			content={page._rawBody}
-			// 	// products={products}
-			// 	// flavors={flavors}
-			// 	// effects={effects}
-		/>
-	);
+	// console.log(page, products);
+
+	return <ProductPageTemplate title={page.title} content={page._rawBody} products={products} />;
 };
 
 // ProductPage.propTypes = {
@@ -257,7 +227,8 @@ export const ProductPageQuery = graphql`
 					_id
 					name
 					type {
-						id
+						_id
+						label
 					}
 					options {
 						_key
@@ -265,11 +236,18 @@ export const ProductPageQuery = graphql`
 						unitType
 						unitPrice
 					}
+					strain {
+						_id
+						label
+					}
 					effects {
-						id
+						_id
+						label
+						level
 					}
 					flavors {
-						id
+						_id
+						label
 					}
 					_rawImage
 					description

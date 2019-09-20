@@ -35,7 +35,7 @@ export const VendorPage = props => {
 								<div className="column is-10 is-offset-1">
 									<section className="section">
 										<h2 className="title">{page.title}</h2>
-										<BlockContent blocks={page._rawBody || []} />
+										<BlockContent className="content" blocks={page._rawBody || []} />
 									</section>
 								</div>
 							</div>

@@ -15,6 +15,7 @@ import productOption from "./productOption";
 import productType from "./productType";
 import productEffect from "./productEffect";
 import productFlavor from "./productFlavor";
+import productStrain from "./productStrain";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -34,6 +35,7 @@ export default createSchema({
 		productType,
 		productEffect,
 		productFlavor,
+		productStrain,
 		// When added to this list, object types can be used as
 		// { type: 'typename' } in other document schemas
 		blockContent
