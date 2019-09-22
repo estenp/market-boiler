@@ -47,14 +47,16 @@ export default class ProductCard extends React.Component {
 							<line x1="0" y1="7" x2="30" y2="7" stroke="black" stroke-dasharray="4 4 1 1" stroke-dashoffset="4" />
 						</svg> */}
 						<div className="columns is-multiline" styleName="product-attributes-container">
-							<figure className="column image">
-								<img
-									className={!this.detailPage ? "is-rounded" : ""}
-									styleName="product-image"
-									src={this.props.productDetails._rawImage}
-									alt="Placeholder"
-								/>
-							</figure>
+							{this.props.productDetails.image && (
+								<figure className="column image">
+									<img
+										className={!this.detailPage ? "is-rounded" : ""}
+										styleName="product-image"
+										src={this.props.productDetails.image.asset.url}
+										alt="Placeholder"
+									/>
+								</figure>
+							)}
 							<div className="column">
 								{this.props.productDetails.flavors.length > 0 && (
 									<div styleName="flavor-section">

@@ -6,8 +6,6 @@ import {RadarChart} from "react-vis";
 export default class RadarDataChart extends React.Component {
 	constructor(props) {
 		super(props);
-		//this.state = {};
-		console.log(props);
 	}
 
 	render() {
@@ -81,10 +79,6 @@ export default class RadarDataChart extends React.Component {
 			}, {})
 		];
 
-		// chartDataArray.push({
-		// 	name: this.props.data.name
-		// });
-
 		let chartDomainArray = this.props.data.effects.reduce((arr, effect) => {
 			return [
 				...arr,
@@ -94,8 +88,7 @@ export default class RadarDataChart extends React.Component {
 				}
 			];
 		}, []);
-		console.log("domain log", chartDomainArray);
-		console.dir("data dir", chartDataArray);
+
 		return (
 			<RadarChart
 				data={chartDataArray}

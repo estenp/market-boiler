@@ -94,13 +94,8 @@ export class ProductPageTemplate extends React.Component {
 		return this.state.cart.indexOf(productID) === -1 ? false : true;
 	};
 	getProductInfoByID = id => {
-		let prodInfo;
-		this.productsData.forEach(p => {
-			if (p.id === id) {
-				prodInfo = p;
-			}
-		});
-		return prodInfo;
+		const product = this.productsData.find(({node: p}) => p._id === id);
+		return product.node;
 	};
 	updateQuantity = (productID, newQuant) => {
 		this.setState(state => {
@@ -117,7 +112,7 @@ export class ProductPageTemplate extends React.Component {
 		return (
 			<Layout>
 				<section className="section section--gradient">
-					<Location>
+					{/* <Location>
 						{({location}) => (
 							<Cart
 								cart={this.state.cart}
@@ -129,7 +124,7 @@ export class ProductPageTemplate extends React.Component {
 								getProductInfoByID={this.getProductInfoByID}
 							/>
 						)}
-					</Location>
+					</Location> */}
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">
@@ -168,7 +163,7 @@ export class ProductPageTemplate extends React.Component {
 														isInCart={this.isInCart}
 														path="/products/"
 													/>
-													{/* <ProductDetail
+													<ProductDetail
 														products={this.productsData}
 														orderState={this.state}
 														isInCart={this.isInCart}
@@ -178,7 +173,7 @@ export class ProductPageTemplate extends React.Component {
 														getProductInfoByID={this.getProductInfoByID}
 														location={location}
 														path="/products/product-detail/:productID"
-													/> */}
+													/>
 													<OrderForm submit={this.submitOrder} orderState={this.state} path="/products/order-form/" />
 												</Router>
 											</div>
@@ -251,6 +246,13 @@ export const ProductPageQuery = graphql`
 						label
 					}
 					_rawImage
+					image {
+						_key
+						_type
+						asset {
+							url
+						}
+					}
 					description
 				}
 			}
