@@ -72,7 +72,7 @@ export default class ProductCard extends React.Component {
 										</div>
 									</div>
 								)}
-								{this.props.productDetails.effects.length > 0 && (
+								{this.props.productDetails.effects[0].labelReference && (
 									<div styleName="effect-chart">
 										{/* <h6 className="subtitle is-6 has-text-primary" styleName="attribute-section-subheader">
 											Effects

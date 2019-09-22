@@ -14,6 +14,7 @@ import product from "./product";
 import productOption from "./productOption";
 import productType from "./productType";
 import productEffect from "./productEffect";
+import productEffectDetail from "./productEffectDetail.schema";
 import productFlavor from "./productFlavor";
 import productStrain from "./productStrain";
 
@@ -34,6 +35,7 @@ export default createSchema({
 		productOption,
 		productType,
 		productEffect,
+		productEffectDetail,
 		productFlavor,
 		productStrain,
 		// When added to this list, object types can be used as

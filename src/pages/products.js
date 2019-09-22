@@ -241,8 +241,9 @@ export const ProductPageQuery = graphql`
 						label
 					}
 					effects {
-						_id
-						label
+						labelReference {
+							label
+						}
 						level
 					}
 					flavors {

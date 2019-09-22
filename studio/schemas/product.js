@@ -34,13 +34,7 @@ export default {
 			name: "effects",
 			title: "Product Effects",
 			type: "array",
-			of: [
-				{
-					type: "reference",
-					weak: true,
-					to: [{type: "productEffect"}]
-				}
-			]
+			of: [{type: "productEffectDetail"}]
 		},
 		{
 			name: "flavors",

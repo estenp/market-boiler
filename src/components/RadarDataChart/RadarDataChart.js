@@ -73,35 +73,35 @@ export default class RadarDataChart extends React.Component {
 		const basicFormat = format(".1r");
 		const wideFormat = format(".3r");
 
-		var chartDataArray = [
-			{
-				name: this.props.data.name
-			}
+		let chartDataArray = [
+			this.props.data.effects.reduce((obj, effect) => {
+				// console.log("effect", effect);
+				obj[effect.labelReference.label] = effect.level;
+				return obj;
+			}, {})
 		];
-		var chartDomainArray = [];
 
-		this.props.data.effects.forEach(e => {
-			// console.log(e);
-			chartDataArray[0][e.label] = e.level;
-			var obj = {
-				name: e.label,
-				domain: [0, 10]
-			};
-			chartDomainArray.push(obj);
-		});
+		// chartDataArray.push({
+		// 	name: this.props.data.name
+		// });
 
-		const chartData = {
-			data: chartDataArray,
-			domain: chartDomainArray
-		};
-
-		console.log(chartData);
+		let chartDomainArray = this.props.data.effects.reduce((arr, effect) => {
+			return [
+				...arr,
+				{
+					name: effect.labelReference.label,
+					domain: [0, 10]
+				}
+			];
+		}, []);
+		console.log("domain log", chartDomainArray);
+		console.dir("data dir", chartDataArray);
 		return (
 			<RadarChart
-				data={chartData.data}
+				data={chartDataArray}
 				tickFormat={t => basicFormat(t)}
 				startingAngle={0}
-				domains={chartData.domain}
+				domains={chartDomainArray}
 				style={radarStyle.styleObj}
 				width={radarStyle.width}
 				height={radarStyle.height}
