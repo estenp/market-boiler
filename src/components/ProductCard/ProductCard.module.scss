@@ -38,11 +38,12 @@
 }
 
 .card-header {
-	flex-wrap: wrap;
-	br {
-		width: 100%;
-		content: "";
-	}
+	// flex-wrap: wrap;
+	// br {
+	// 	width: 100%;
+	// 	content: "";
+	// }
+	display: block;
 	.tags {
 		padding: 0 0.75rem 0.75rem 0.75rem;
 	}

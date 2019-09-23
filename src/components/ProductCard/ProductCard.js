@@ -16,7 +16,6 @@ export default class ProductCard extends React.Component {
 		}
 
 		this.isDisabled.bind(this);
-		//console.log(props.productDetails.flavors);
 	}
 
 	isDisabled(productID) {
@@ -24,9 +23,9 @@ export default class ProductCard extends React.Component {
 	}
 
 	render() {
-		let productID = this.props.productDetails._id;
-		let unitValue = this.props.productState[productID].unit;
-		let quantityValue = this.props.productState[productID].quantity;
+		const productID = this.props.productDetails._id;
+		const unitValue = this.props.productState[productID].unit;
+		const quantityValue = this.props.productState[productID].quantity;
 
 		return (
 			<div key={productID} className="column">
@@ -34,7 +33,6 @@ export default class ProductCard extends React.Component {
 					<Link to={`/products/product-detail/${productID}`}>
 						<div className="card-header" styleName="card-header">
 							<div className="card-header-title">{this.props.productDetails.name}</div>
-							<br />
 							{/* <span className="is-italic has-text-weight-light has-text-light has-text-primary">{this.props.productDetails.type}</span> */}
 							<div className="tags has-addons" styleName="tags">
 								<span className="tag">{this.props.productDetails.type.label}</span>

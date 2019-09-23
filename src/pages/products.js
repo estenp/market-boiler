@@ -21,14 +21,15 @@ export class ProductPageTemplate extends React.Component {
 		this.productsData = props.products.edges;
 
 		// // // build state for products order form
-		let prodState = {};
-		this.productsData.forEach(({node: p}) => {
-			// console.log(p);
-			prodState[p._id] = {
+		const prodState = this.productsData.reduce((stateObj, {node: p}) => {
+			stateObj[p._id] = {
 				quantity: 1,
-				unit: p.options.unitType
+				unit: p.options[0].unitType
 			};
-		});
+
+			return stateObj;
+		}, {});
+
 		this.state = {
 			products: prodState,
 			cart: [],
@@ -112,7 +113,7 @@ export class ProductPageTemplate extends React.Component {
 		return (
 			<Layout>
 				<section className="section section--gradient">
-					{/* <Location>
+					<Location>
 						{({location}) => (
 							<Cart
 								cart={this.state.cart}
@@ -124,7 +125,7 @@ export class ProductPageTemplate extends React.Component {
 								getProductInfoByID={this.getProductInfoByID}
 							/>
 						)}
-					</Location> */}
+					</Location>
 					<div className="container">
 						<div className="columns">
 							<div className="column is-10 is-offset-1">

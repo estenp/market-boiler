@@ -12,7 +12,7 @@ const Cart = props => {
 		navigateTo: "/products/order-form/"
 	});
 
-	useEffect(() => {
+	/* useEffect(() => {
 		if (props.location.pathname.indexOf("product-detail") > -1) {
 			setCartButtonState({
 				text: "Back to Products",
@@ -33,7 +33,7 @@ const Cart = props => {
 		// 		navigateTo: "/products/order-form/"
 		// 	});
 		// }
-	});
+	}); */
 
 	const toggleCart = () => {
 		if (props.cart.length > 0) {
@@ -69,7 +69,7 @@ const Cart = props => {
 								{props.cart.map(prodID => {
 									return (
 										<li key={prodID}>
-											<span className="is-size-6">{props.getProductInfoByID(prodID).title}</span>
+											<span className="is-size-6">{props.getProductInfoByID(prodID).name}</span>
 											<br />
 											<span className="is-size-7">
 												{props.productState[prodID].quantity} {props.productState[prodID].unit}

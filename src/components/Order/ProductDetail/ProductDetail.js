@@ -16,7 +16,7 @@ export class ProductDetail extends React.Component {
 				key={this.productDetails._id}
 				productDetails={this.productDetails}
 				productState={this.props.orderState.products}
-				isInCart={this.props.isInCart(this.productDetails.id)}
+				isInCart={this.props.isInCart(this.productDetails._id)}
 				handleClick={this.props.handleProductAdd}
 				handleChange={this.props.handleInputChange}
 				updateQuantity={this.props.updateQuantity}
