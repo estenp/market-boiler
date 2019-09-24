@@ -1,7 +1,10 @@
+import MallIcon from "react-icons/lib/md/local-mall";
+
 export default {
 	name: "product",
 	title: "Product",
 	type: "document",
+	icon: MallIcon,
 	// liveEdit: false,
 	// __experimental_actions: ["update", "publish" /* 'create', 'delete' */],
 	fields: [

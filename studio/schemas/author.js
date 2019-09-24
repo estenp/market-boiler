@@ -1,9 +1,9 @@
-import MovieIcon from "react-icons/lib/md/local-movies";
+import PersonIcon from "react-icons/lib/md/account-box";
 export default {
 	name: "author",
 	title: "Author",
 	type: "document",
-	icon: MovieIcon,
+	icon: PersonIcon,
 	fields: [
 		{
 			name: "name",
