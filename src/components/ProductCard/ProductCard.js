@@ -105,7 +105,7 @@ export default class ProductCard extends React.Component {
 							<div className="select" styleName={!this.detailPage ? "unit-select-full" : ""}>
 								<select name="unit" value={unitValue} onChange={this.props.handleChange.bind(this, productID)}>
 									{this.props.productDetails.options.map((option, i) => (
-										<option key={i} value={option.unitType}>
+										<option key={i} value={option._key}>
 											{option.unitType}
 										</option>
 									))}
