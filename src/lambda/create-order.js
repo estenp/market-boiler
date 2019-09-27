@@ -7,12 +7,12 @@ const token =
 // this isn't supporting `const` within the function block??
 exports.handler = (event, context, callback) => {
 	let params = querystring.parse(event.body);
-	// console.log(params.productID);
+	// console.log(params);
 
 	// get product info for items in cart to get proper prices
 	axios({
 		method: "GET",
-		url: `https://c7lrcttj.api.sanity.io/v1/data/query/production?query=*[_id in ${JSON.stringify(params.productID)}]{name, options}`,
+		url: `https://c7lrcttj.api.sanity.io/v1/data/query/production?query=*[_id in ${JSON.stringify(params.productID)}]{_id, name, options}`,
 		headers: {
 			"Content-Type": "application/json",
 			Authorization: `Bearer ${token}`
@@ -49,35 +49,60 @@ exports.handler = (event, context, callback) => {
 
 	// calculateTotal(); - will need this especially if promo's are implemented
 	function buildOrder(response, formData) {
-		let productData = response.data.result;
-		return {
-			firstName: formData.firstName,
-			lastName: formData.lastName,
+		let productsData = response.data.result;
+		let order = {
+			_type: "order",
+			first: formData.firstName,
+			last: formData.lastName,
 			email: formData.email,
 			phone: formData.phone,
 			comments: formData.comments,
 			orderDetails: formData.productID.map((id, i) => {
 				return {
-					productID: id,
+					_key: id,
+					product: {
+						_type: "reference",
+						_ref: "id"
+					},
 					quantity: formData.quantity[i],
-					quantity: formData.unit[i],
-					total: productData.filter(product => product.options._key === formData.unit[i]).unitPrice * formData.quantity[i]
+					unit: getProdOptionsInfoByUnitKey(productsData, formData.unitKey[i]).unitType,
+					total: calculateTotal(productsData, formData.unitKey[i], formData.quantity[i])
 				};
 			})
 		};
+
+		order["grandTotal"] = order.orderDetails.reduce((total, obj) => {
+			Math.round((obj.total + total) * 100 + Number.EPSILON) / 100;
+		}, 0);
+
+		return order;
+	}
+
+	function getProdOptionsInfoByUnitKey(productsData, unitKey) {
+		return productsData
+			.reduce((arr, prodObj) => {
+				// console.log(prodObj.options.flat());
+				return [...arr, prodObj.options].flat();
+			}, [])
+			.find(option => option._key === unitKey);
+	}
+
+	function calculateTotal(productsData, unitKey, quantity) {
+		return Math.round(getProdOptionsInfoByUnitKey(productsData, unitKey).unitPrice * quantity * 100 + Number.EPSILON) / 100;
 	}
 
 	function submitOrder(order) {
 		// post request with order data
-		order["_type"] = "order";
-		const mutations = [
-			{
-				create: order
-			}
-		];
+		const mutations = {
+			mutations: [
+				{
+					create: order
+				}
+			]
+		};
 
 		axios({
-			method: "GET",
+			method: "POST",
 			url: `https://c7lrcttj.api.sanity.io/v1/data/mutate/production`,
 			headers: {
 				"Content-Type": "application/json",

@@ -24,7 +24,7 @@ export class ProductPageTemplate extends React.Component {
 		const prodState = this.productsData.reduce((stateObj, {node: p}) => {
 			stateObj[p._id] = {
 				quantity: 1,
-				unit: p.options[0].unitType
+				unit: p.options[0]._key
 			};
 
 			return stateObj;

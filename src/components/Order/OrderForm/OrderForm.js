@@ -11,7 +11,7 @@ export default class OrderForm extends React.Component {
 				return {
 					[p]: {
 						quantity: props.orderState.products[p].quantity,
-						unit: props.orderState.products[p].unit
+						unit: props.orderState.products[p].unitType
 					}
 				};
 			})
@@ -98,7 +98,7 @@ export default class OrderForm extends React.Component {
 						<div key={"product" + id}>
 							<input name="productID" type="hidden" value={id} />
 							<input name="quantity" type="hidden" value={this.props.orderState.products[id].quantity} />
-							<input name="unit" type="hidden" value={this.props.orderState.products[id].unit} />
+							<input name="unitKey" type="hidden" value={this.props.orderState.products[id].unit} />
 						</div>
 					))}
 

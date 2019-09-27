@@ -72,7 +72,7 @@ const Cart = props => {
 											<span className="is-size-6">{props.getProductInfoByID(prodID).name}</span>
 											<br />
 											<span className="is-size-7">
-												{props.productState[prodID].quantity} {props.productState[prodID].unit}
+												{props.productState[prodID].quantity} {props.getProductInfoByID(prodID).options.unit}
 											</span>
 										</li>
 									);
