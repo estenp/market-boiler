@@ -17,8 +17,7 @@ export default {
 		{
 			name: "unit",
 			title: "Unit",
-			type: "reference",
-			to: [{type: "productOption"}]
+			type: "string"
 		},
 		{
 			name: "total",
