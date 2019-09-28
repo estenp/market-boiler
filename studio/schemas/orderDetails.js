@@ -4,20 +4,14 @@ export default {
 	type: "object",
 	fields: [
 		{
-			name: "product",
+			name: "productReference",
 			title: "Product",
-			type: "reference",
-			to: [{type: "product"}]
+			type: "productReference"
 		},
 		{
 			name: "quantity",
 			title: "Quantity",
 			type: "number"
-		},
-		{
-			name: "unit",
-			title: "Unit",
-			type: "string"
 		},
 		{
 			name: "total",

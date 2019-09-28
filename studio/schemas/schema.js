@@ -19,6 +19,7 @@ import productFlavor from "./productFlavor";
 import productStrain from "./productStrain";
 import order from "./order";
 import orderDetails from "./orderDetails";
+import productReference from "./productReference";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -34,6 +35,7 @@ export default createSchema({
 		author,
 		category,
 		product,
+		productReference,
 		productOption,
 		productType,
 		productEffect,
