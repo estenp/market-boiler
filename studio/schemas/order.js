@@ -35,7 +35,8 @@ export default {
 		{
 			name: "orderDetails",
 			title: "Order Details",
-			type: "orderDetails"
+			type: "array",
+			of: [{type: "orderDetails"}]
 		},
 		{
 			name: "grandTotal",

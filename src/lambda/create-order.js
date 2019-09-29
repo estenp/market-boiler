@@ -7,7 +7,7 @@ const token =
 // this isn't supporting `const` within the function block??
 exports.handler = (event, context, callback) => {
 	let params = querystring.parse(event.body);
-	// console.log(params);
+	console.log(params);
 
 	// get product info for items in cart to get proper prices
 	axios({
@@ -60,12 +60,21 @@ exports.handler = (event, context, callback) => {
 			orderDetails: formData.productID.map((id, i) => {
 				return {
 					_key: id,
-					product: {
-						_type: "reference",
-						_ref: "id"
+					_type: "orderDetails",
+					productReference: {
+						_type: "productReference",
+						product: {
+							_type: "reference",
+							_ref: id
+						},
+						unit: {
+							_key: "31aeda5519eb",
+							_type: "productOption",
+							unitPrice: getProdOptionsInfoByUnitKey(productsData, formData.unitKey[i]).unitPrice,
+							unitType: getProdOptionsInfoByUnitKey(productsData, formData.unitKey[i]).unitType
+						}
 					},
-					quantity: formData.quantity[i],
-					unit: getProdOptionsInfoByUnitKey(productsData, formData.unitKey[i]).unitType,
+					quantity: parseInt(formData.quantity[i]),
 					total: calculateTotal(productsData, formData.unitKey[i], formData.quantity[i])
 				};
 			})
@@ -74,6 +83,8 @@ exports.handler = (event, context, callback) => {
 		order["grandTotal"] = order.orderDetails.reduce((total, obj) => {
 			Math.round((obj.total + total) * 100 + Number.EPSILON) / 100;
 		}, 0);
+
+		console.log("order", order);
 
 		return order;
 	}
