@@ -18,5 +18,19 @@ export default {
 			title: "Cost",
 			type: "number"
 		}
-	]
+	],
+	preview: {
+		select: {
+			title: "productReference.product.name",
+			quantity: "quantity",
+			unit: "productReference.unit.unitType"
+		},
+		prepare(selection) {
+			const {title, quantity, unit} = selection;
+			return {
+				title: title,
+				subtitle: `${quantity} ${unit}`
+			};
+		}
+	}
 };
