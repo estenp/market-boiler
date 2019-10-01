@@ -1,13 +1,15 @@
 const axios = require("axios");
 const querystring = require("querystring");
 // const token = process.env.SANITY_WRITE_TOKEN;
+
+// need to remove this
 const token =
-	"skU72lF7XXpKO973yvCtFi2nUKcMARue6As9LB3a4b8Qc4xfk22ZXbOrSKG21o1MnLrZg99M6W4JsyF8nE3QZGAfgFh2otEJ1s48PqLX9BSa0RXNmgpuU2FQ3tJyMfjxqHiKTMf65q50z7L5YX1sn3uWyhiSxjScdnYNfhSWW3siMiiEQZjh";
+	"skgVwmHAL4cnhjgr586wy4WYh5Z7PLzFm4z9p5C4ROR1eBPcxMgO3DLciUj3JqkZO3kXSg9qja8oOjnebsKW4EoLXn6gNmeYi1HjRlml8SnqjJd8BquuVydZrMoxOs3MtbPAltT0Xyk2sKWk3AacL6nn7CI5TNK13Tr7UCLTTPtJuc8USze3";
 
 // this isn't supporting `const` within the function block??
 exports.handler = (event, context, callback) => {
 	let params = querystring.parse(event.body);
-	console.log(params);
+	// console.log(params);
 
 	// get product info for items in cart to get proper prices
 	axios({
@@ -33,7 +35,7 @@ exports.handler = (event, context, callback) => {
 			});
 		})
 		.catch(e => {
-			console.log("error", e);
+			// console.log("error", e);
 			//const error = e.response.data;
 			var errorResponse = {
 				statusCode: 501,
@@ -68,13 +70,14 @@ exports.handler = (event, context, callback) => {
 							_ref: id
 						},
 						unit: {
-							_key: "31aeda5519eb",
+							_key: getProdOptionsInfoByUnitKey(productsData, formData.unitKey[i])._key,
 							_type: "productOption",
-							unitPrice: getProdOptionsInfoByUnitKey(productsData, formData.unitKey[i]).unitPrice,
-							unitType: getProdOptionsInfoByUnitKey(productsData, formData.unitKey[i]).unitType
+							unitType: getProdOptionsInfoByUnitKey(productsData, formData.unitKey[i]).unitType,
+							unitPrice: getProdOptionsInfoByUnitKey(productsData, formData.unitKey[i]).unitPrice
 						}
 					},
-					quantity: parseInt(formData.quantity[i]),
+					// quantity: formData.quantity[i],
+					quantity: parseFloat(formData.quantity[i]),
 					total: calculateTotal(productsData, formData.unitKey[i], formData.quantity[i])
 				};
 			})
