@@ -1,10 +1,6 @@
 const axios = require("axios");
 const querystring = require("querystring");
-// const token = process.env.SANITY_WRITE_TOKEN;
-
-// need to remove this
-const token =
-	"skgVwmHAL4cnhjgr586wy4WYh5Z7PLzFm4z9p5C4ROR1eBPcxMgO3DLciUj3JqkZO3kXSg9qja8oOjnebsKW4EoLXn6gNmeYi1HjRlml8SnqjJd8BquuVydZrMoxOs3MtbPAltT0Xyk2sKWk3AacL6nn7CI5TNK13Tr7UCLTTPtJuc8USze3";
+const token = process.env.SANITY_WRITE_TOKEN;
 
 // this isn't supporting `const` within the function block??
 exports.handler = (event, context, callback) => {
